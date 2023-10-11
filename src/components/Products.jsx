@@ -7,7 +7,7 @@ const Products = () => {
     return (
         <div>
         {/* Le texte d'appropos */}
-         <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto my-8'id='produits'>
+         <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto my-8 mt-40'>
             
              <div className='md:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center gap-12'>
              <div>
@@ -28,7 +28,7 @@ const Products = () => {
         
     </div>
     {/* company */}
-    <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto bg-neutralSilver w-screen py-16'id='discution'>
+    <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto bg-neutralSilver w-screen py-16'>
         <div className='flex flex-col md:flex-row justify-between items-center gap-8'>
             <div className='md:w-1/3'> 
                 <img src={bannerImage} alt=""  className="float-left ml-20" />

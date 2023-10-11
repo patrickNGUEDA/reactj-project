@@ -1,77 +1,59 @@
 'use client';
 
-import {Carousel} from 'flowbite-react';
+ //import {Carousel} from 'flowbite-react';
 import React from 'react';
 import banner1 from '../assets/banner1.jpg'
 import banner2 from '../assets/banner2.jpg';
+import banner3 from '../assets/banner3.jpg';
+import banner4 from '../assets/banner4.jpg';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 
+const MainBanner = () => {
+  // ... Code du composant MainBanner
 
-const Home =()=>{
-    return(
-        <div className='bg-neutralSilver w-screen' id='accueil'>
-            <div className='px-4 lg:px-14 max-w-screen2xl mx-auto w-screen h-screen'>
-   
-            <Carousel className='w-full mx-auto'>
-                    <div className='my-28 md:my-8 py-12 flex flex-col md:flex-row-reverse items-center justify-between gap-12'>
-                        <div>
-                            <img src={banner1} alt="" />
-                        </div>
-                         {/**ajout du texte*/}
-                         <div className='md:w-1/2'>
+  
+};
 
-                         <h1 className='text-4xl font-semibold mb-4 text-neutralDGrey md:w-2/4 leading-snug'>
-                            Ta propriété est <span className='text-brandPrimary leading-snug'>notre priorité</span>
-                            </h1>
-                            <p className='text-neutralGrey italic text-base mb-4'> L'innovation , au coeur de nos activitées</p>
-                            <button className='px-4 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4'>Registre</button>
-                         </div>
-                    </div>
-                    <div className='my-28 md:my-8 py-12 flex flex-col md:flex-row-reverse items-center justify-between gap-12'>
-                        <div>
-                            <img src={banner2} alt="" />
-                        </div>
-                         {/**ajout du texte*/}
-                         <div className='md:w-1/2'>
-
-                         <h1 className='text-4xl font-semibold mb-4 text-neutralDGrey md:w-2/4 leading-snug'>
-                            Ta propriété est <span className='text-brandPrimary leading-snug'>notre priorité</span>
-                            </h1>
-                            <p className='text-neutralGrey italic text-base mb-4'>Pensez et nous realisons</p>
-                            <button className='px-4 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4'>Registre</button>
-                         </div>
-                    </div>
-                    <div className='my-28 md:my-8 py-12 flex flex-col md:flex-row-reverse items-center justify-between gap-12'>
-                        <div>
-                            <img src={banner2} alt="" />
-                        </div>
-                         {/**ajout du texte*/}
-                         <div className='md:w-1/2'>
-
-                         <h1 className='text-2xl font-semibold mb-4 text-neutralDGrey md:w-2/4 leading-snug'>
-                            Ta propriété est <span className='text-brandPrimary leading-snug'>notre priorité</span>
-                            </h1>
-                            <p className='text-neutralGrey italic text-base mb-4'> L'innovation , au coeur de nos actions</p>
-                            <button className='px-4 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4'>Registre</button>
-                         </div>
-                    </div>
-                    {/* <div className='flex h-full items-center justify-center '>
-                         slide 2
-                    </div>
-                    <div className='flex h-full items-center justify-center '>
-                         slide 3
-                    </div>
-                    <div className='flex h-full items-center justify-center'>
-                        slide 4
-                    </div>
-                    <div className='flex h-full items-center justify-center'>
-                        slide 5
-                    </div> */}
-                </Carousel>
+const Home = () => {
+    return (
+      <div className='bg-gray-200 h-screen '>
+      
+        <div className='px-0 lg:px-0 py-20'>
+        <Carousel className='w-full shadow-2xl mb-20 border border-gray-500'
+          interval={8000}
+          transitionTime= {500}
+          showStatus={false}
+          autoPlay={true}
+          showThumbs={false}
+          mouseTracking
+          infiniteLoop
+          dynamicHeight
+          transitionMode="fade"
+          
+          
+        > 
+        
+            <div>
+              <img src={banner1} className='' alt='Slide 1' />
+             
             </div>
+            <div>
+              <img src={banner2} className='' alt='Slide 2' />
+              
+            </div>
+            <div>
+              <img src={banner3} className='' alt='Slide 3' />
+            
+         </div>
+        </Carousel>
+        <div></div>
         </div>
-    )
-}
+      </div>
+    );
+  }
+  
 
 
   

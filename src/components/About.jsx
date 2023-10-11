@@ -5,11 +5,11 @@ const About = () => {
     return (
         <div>
             {/* Le texte d'appropos */}
-             <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto my-8' id='a propos'>
+             <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto my-8 mt-40'>
                 
                  <div className='md:w-11/12 mx-auto flex flex-col md:flex-row-reverse justify-between items-center gap-12'>
                  <div>
-                     <img src={aboutImage} alt="" className="w-22 h-22" />
+                     <img src={aboutImage} alt="" className="w-96 h-" />
                 </div>
                     <div className='md:w-3/5 mx-auto text-center md:text-left'>
                         <h2 className='text-5xl font-semibold mb-4 text-neutralDGrey  md:w-4/5'>À Propos d'EFFICACE</h2>

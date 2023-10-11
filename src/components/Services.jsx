@@ -10,7 +10,7 @@ const Services = () => {
 
     ]
     return (
-        <div className='md:px-14 px-4 py-16 max-w-screen-2x1 mx-auto' id='services'>
+        <div className='md:px-14 px-4 py-16 max-w-screen-2x1 mx-auto mt-16'>
             <div className='text-center my-8'>
                 <h2 className='text-4x1 text-neutralDGrey font-semibold mb-2'> Nos clients</h2>
                 <p className='text-neutralDGrey'>Nous avons travaillé avec plusieurs clients qui nous ont entierement confiance</p>

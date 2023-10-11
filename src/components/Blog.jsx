@@ -4,7 +4,7 @@ const Blog = () => {
     const blog = [{id:1, title:"Créer des processus de sauvegarde rationalisés", image:"/src/assets/image18.png"},{id:2, title:"Quelles sont vos responsabilités en matière d'immobilier et comment pouvez-vous les gérer ?", image:"/src/assets/image19.png"},{id:3, title:"Réorganiser le modèle de vos proprietes avec nos notre equipe", image:"/src/assets/image20.png"}];
     
     return (
-        <div className='px-4 lg:px-14 max-w-screen-2xl mx-auto my-12'id='faq'>
+        <div className='px-4 lg:px-14 max-w-screen-2xl mx-auto my-12 mt-40'>
             <div className='text-center md:-end-1/2 mx-auto'>
             <h2 className='text-4xl font-semibold mb-4 text-neutralDGrey'>De l'efficassité dans l'immobiler</h2>
                          <p className='text-sm text-neutralDGrey mb-8 md:w-3/4 mx-auto' >

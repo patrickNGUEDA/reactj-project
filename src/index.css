@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active {
+    color: #f7a721; /* Couleur de texte pour le lien actif */
+  }
+  
+
+  
