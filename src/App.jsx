@@ -4,9 +4,12 @@ import Home from './components/Home';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Products from './components/Products';
-import Blog from './components/Blog';
-import Newsletter from './components/Newsletter';
+import Terrain from './components/Terrain';
+import Contact from './components/Contact';
+import Login from './components/Login';
 import MyFooter from './components/MyFooter';
+import Proposer from './components/Proposer';
+import Aide from './components/Aide';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -21,11 +24,12 @@ function App() {
         <Route path="/accueil" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/produits" element={<Products />} />
-        <Route path="/investissements" element={<Blog />} />
-        <Route path="/newsletter" element={<Newsletter />} />
-        <Route path="/contact" element={<Newsletter />} />
-        <Route path="/faq" element={<Newsletter />} />
+        <Route path="/produits" element={<Proposer />} />
+        <Route path="/terrain" element={<Terrain />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/proposer" element={<Proposer />} />
+        <Route path="/aide" element={<Aide />} />
       </Routes>
     <MyFooter/>
 </BrowserRouter>

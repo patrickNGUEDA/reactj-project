@@ -1,9 +1,13 @@
 import React from 'react';
 import aboutImage from '../assets/about1.jpg';
+import Services from "./Proposer"
 
 const About = () => {
     return (
+       
+
         <div>
+             {/* <Services/> */}
             {/* Le texte d'appropos */}
              <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto my-8 mt-40'>
                 
@@ -11,9 +15,9 @@ const About = () => {
                  <div>
                      <img src={aboutImage} alt="" className="w-96 h-" />
                 </div>
-                    <div className='md:w-3/5 mx-auto text-center md:text-left'>
-                        <h2 className='text-5xl font-semibold mb-4 text-neutralDGrey  md:w-4/5'>À Propos d'EFFICACE</h2>
-                         <p className='md:w-3/4 text-base text-neutralDGrey mb-8 text-justify' >
+                    <div className='md:w-3/5 mx-auto text-center md:text-center ml-7'>
+                        <h2 className='text-5xl font-semibold mb-7 text-neutralDGrey  md:w-4/5'>À Propos d'EFFICACE</h2>
+                         <p className='md:w-3/4 text-base text-neutralDGrey mb-8  text-justify' >
                               {/* ... Votre texte ... */}   
                          Bienvenue chez EFFICACE, votre partenaire de confiance dans le domaine de l'immobilier depuis 2023. Nous sommes fiers de mettre à votre disposition notre expertise et notre passion pour l'immobilier, afin de vous accompagner dans toutes vos transactions immobilières.
                         <h3 className='text-3xl font-semibold mb-4 text-neutralDGrey md:w-4/5'>Notre Mission</h3>
@@ -39,8 +43,9 @@ const About = () => {
              </div>
             
         </div>
+        <Services/>
         {/* company */}
-        <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto bg-neutralSilver w-screen py-16'>
+        <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto bg-neutralSilve w-screen py-16'>
             <div className='flex flex-col md:flex-row justify-between items-center gap-8'>
                 <div className='md:w-1/2'>
                 <h2 className='text-5xl font-semibold mb-4 text-neutralDGrey md:w-2/3'>Faites vos differentes <br /> <span className='text-brandPrimary'>contirbutions</span></h2>
