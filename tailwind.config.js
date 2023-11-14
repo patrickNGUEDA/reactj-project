@@ -19,6 +19,7 @@ export default {
       pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       bounce: 'bounce 1s infinite',
     },
+    safelist: ['animate-[drop-in_0.5s]', 'animate-[drop-out_0.5s]'],
     aria: {
       busy: 'busy="true"',
       checked: 'checked="true"',

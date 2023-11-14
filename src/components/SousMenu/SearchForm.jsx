@@ -76,15 +76,15 @@ function MyForm() {
   return (
     <div>
       <div className='text-center justify-center text-Csecondary2 font-montserrat mx-auto md:text-center lg:mb-5'>
-        <h3 className='text-2xl font-semibold lg:mb-5 mt-14 lg:text-3xl' >L'innovation au cœur de nos actions</h3>
-        <p className='text-xl ' >Devient investisseur a partir de 100.000f</p>
+        <h3 className='text-xl font-semibold lg:mb-5 mt-14 lg:text-3xl' >L'innovation au cœur de nos actions</h3>
+        <p className='text-lg ' >Devient investisseur a partir de 100.000f</p>
 
       </div>
       
 
-      <div className="flex mb-4 justify-center items-center lg:mb-7">
+      <div className="flex mb-4 justify-center items-center lg:mb-7 ">
         {/* Options de radio pour choisir le type de propriété */}
-        <div className="mb-[0.125rem] mr-10 inline-flex items-center min-h-[2rem] pl-[7rem]">
+        <div className="mb-[0.125rem] lg:mr-10 ml-7 inline-flex items-center min-h-[2rem] pl-[7rem]">
           <input
             type="radio"
             name="propertyType"
@@ -94,11 +94,11 @@ function MyForm() {
             checked={propertyType === 'Terrain'}
             onChange={() => setPropertyType('Terrain')}
           />
-          <label htmlFor="terrainRadio" className='text-Csecondary2 font-lato text-base px-2'>Terrain</label>
+          <label htmlFor="terrainRadio" className='text-Csecondary2 font-lato text-base px-1'>Terrain</label>
           
         </div>
 
-        <div className="mb-[0.125rem] mr-10 inline-flex items-center min-h-[2rem] pl-[1.5rem] ">
+        <div className="mb-[0.125rem] inline-flex items-center min-h-[2rem] pl-[1rem]  ">
           <input
             type="radio"
             name="propertyType"
@@ -108,11 +108,11 @@ function MyForm() {
             checked={propertyType === 'Batiment'}
             onChange={() => setPropertyType('Batiment')}
           />
-          <label htmlFor="batimentRadio" className='text-Csecondary2 font-lato text-base px-2'>Bâtiment</label>
+          <label htmlFor="batimentRadio" className='text-Csecondary2 font-lato text-base px-1 '>Bâtiment</label>
         </div>
 
 
-        <div className="mb-[0.125rem] mr-32 inline-flex items-center min-h-[1.5rem] pl-[1.5rem]">
+        <div className="mb-[0.125rem] mr-36 inline-flex items-center min-h-[1.5rem] pl-[1rem]">
           <input
             type="radio"
             name="propertyType"
@@ -122,11 +122,11 @@ function MyForm() {
             checked={propertyType === 'Investissement'}
             onChange={() => setPropertyType('Investissement')}
           />
-          <label htmlFor="investmentRadio" className='text-Csecondary2 font-lato text-base px-2'>Investissement</label>
+          <label htmlFor="investmentRadio" className='text-Csecondary2 font-lato text-base px-1'>Investissement</label>
         </div>
       </div>
 
-      <form ref={formRef} className="relative mx-28 sm:mx-auto mx -top-4 lg:bg-Csecondary1 p-0.5">
+      <form ref={formRef} className="relative mx-32 sm:mx-auto mx -top-5 lg:bg-Csecondary1 p-0.5">
         <div className="w-full flex items-center">
           <input
             type="text"
@@ -159,7 +159,7 @@ function MyForm() {
       </form>
 
       {/* Afficher les résultats de la recherche */}
-      <div className='text-white'>
+      <div className='text-whit text-center -mt-5'>
         {noResults ? (
           <p >Aucun résultat trouvé.</p>
         ) : (

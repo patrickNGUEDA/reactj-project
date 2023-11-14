@@ -74,13 +74,13 @@ const Navbar = ()=>{
     return(
        <header className="w-full bg-white md:bg-transparent fixed top-0 left-0 right-0 shadow-md">
            {/** aligner les elements de la barre de navigation */}
-        <nav className={`py-4 lg:px-16 px-4 ${isSticky ?" sticky top-0 left-0 right-0 border bg-white duration-300" : ""}`}>
+        <nav className={`py-4 lg:px-5 px-4 ${isSticky ?" sticky top-0 left-0 right-0 border bg-white duration-300" : ""}`}>
             <div className="flex justify-between items-center text-base gap-8">
-                <a href="" className="text-2x1 font-semibold flex items-center space-x-3">
-                    <img src={logo} alt="" className="w-10px h-12 inline-block items-center "/> 
+                <a href="" className="text-2xl font-semibold flex items-center">
+                    <img src={logo} alt="" className="lg:w-10px lg:h-12 inline-block items-center "/> 
                 </a>
             
-                <ul className="md:flex gap-x-10 2xl:ml-44 hidden font-lato text-base">
+                <ul className="md:flex gap-x-6 2xl:ml-44 hidden font-lato text-base ml-14 2xl:gap-x-10">
                     {navItems.map((navItem) => (
                         <li key={navItem.link} >
                         {navItem.subMenu ? (

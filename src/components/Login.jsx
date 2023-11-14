@@ -39,7 +39,7 @@ function Login() {
   return (
     
     <section className="h-full bg-neutralSilver py-0 mt-20 rounded-md">
-      <div className="bg-Cprimary h-16 text-white font-montserrat text-4xl text-center py-4 "> Login</div>
+      <div className="bg-Cprimary h-16 text-white font-poppins font-semibold text-4xl text-center py-4 "> Login</div>
       <div className="container h-full px-6 py-14">
         <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
           {/* Left column container with background */}
