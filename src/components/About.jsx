@@ -183,15 +183,15 @@ const About = () => {
             alt="About image"
             className="w-full h-[550px] bg-gradient-to-r opacity-80 object-cover z-0 absolute top-0 left-0  "
           />
-          <div className="relative z-10  mx-auto text-center md:text-center  lg:ml-48 ml-5 mr-5  bg-Csecondary1 rounded-md md:w-[700px] lg:mt-0 hover:scale-95 transition-all duration-300 border border-Cprimary -mt-10">
+          <div className="relative z-10  mx-auto text-center md:text-center  lg:ml-48 ml-5 mr-5  bg-Csecondary bg-neutralSilver  rounded-md md:w-[700px] lg:mt-0 hover:scale-95 transition-all duration-300 border border-Cprimary -mt-10">
             <div className="mx-auto text-center md:text-center ml-7 ">
               <h2 className="text-2xl font-semibold mb-7 text-Cprimary md:w-4/5 uppercase ml-0 mr-8 py-4 underline italic ">
                 Qui sommes nous ?
               </h2>
-              <h2 className="text-3xl font-semibold mb-7 text-white md:w-4/5 uppercase ml-0 mr-7 py-4 -mt-12">
+              <h2 className="text-3xl font-semibold mb-7 text-black md:w-4/5 uppercase ml-0 mr-7 py-4 -mt-12">
                 À Propos d'EFFICACE
               </h2>
-              <p className="text-base font-lato text-white mb-0 mr-7 text-justify -mt-10 lg:font-poppins  ">
+              <p className="text-base font-lato text-Csecondary1 mb-0 mr-7 text-justify -mt-10 lg:font-poppins  ">
                 {/* ... Votre texte ... */}
                 {/* Bienvenue chez EFFICACE, votre partenaire de confiance dans le domaine de l'immobilier depuis 2023. Nous sommes fiers de mettre à votre disposition notre expertise et notre passion pour l'immobilier, afin de vous accompagner dans toutes vos transactions immobilières. <br />  */}
                 <span className="font-semibold italic"> EFFICACE</span> est une

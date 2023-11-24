@@ -124,7 +124,7 @@ const Home = () => {
   ];
 
   return (
-    <div className=" h-full ">
+    <div className=" h-full  ">
       <div className="px-0 lg:px-0 py-20  relative">
         <div className="absolute inset-0 z-10 flex justify-center items-center ">
           <SearchForm />
@@ -154,7 +154,7 @@ const Home = () => {
         </h2>
       </div>
       <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto bg-neutralSilver w-screen py-1 mt-0">
-        <div className="grid lg:grid-cols-4 gap-x-3 mb-20 mt-3">
+        <div className="grid lg:grid-cols-4 gap-x-3 mb-20 mt-3 ">
           {explorez.map((explorez) => (
             <div
               key={explorez.id}
@@ -268,13 +268,13 @@ const Home = () => {
       <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto  bg-neutralSilver  w-screen py-2 ">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="md:w-1/2 ">
-            {/* <h2 className='text-3xl font-semibold font-poppins mb-4 text-Csecondary1 md:w-2/3 text-center'>Obtenez des recommandations </h2> */}
+           
             <p className="md:w-2/3 text-2xl font-bold text-texteCouleur font-serif mb-8 text-center ">
               {" "}
               Devenez propriétaire d'un bien en moins de{" "}
               <span className="text-Csecondary1"> 5 min </span> top chrono !
             </p>
-            {/* <button className="bg-Csecondary1 lg:flex items-center flex justify-center text-white py-2 px-4  transition-all duration-300 rounded hover:bg-Cprimary animate ml-40 font-poppins text-base"> <a href="/login">Se connecter</a> </button> */}
+           
           </div>
           {/* stats */}
           <div className="md:w-1/2 mx-auto flex sm:flex-row flex-col sm:items-center justify-around gap-12 p-7">

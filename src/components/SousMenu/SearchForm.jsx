@@ -82,9 +82,9 @@ function MyForm() {
       </div>
       
 
-      <div className="flex mb-4 justify-center items-center lg:mb-7 ">
+      <div className="flex mb-4 justify-center items-center lg:mb-7 w-80 ">
         {/* Options de radio pour choisir le type de propriété */}
-        <div className="mb-[0.125rem] lg:mr-10 ml-7 inline-flex items-center min-h-[2rem] pl-[7rem]">
+        <div className="mb-[0.125rem] lg:mr-10 lg:ml-60 ml-24  inline-flex items-center min-h-[2rem] pl-[7rem]">
           <input
             type="radio"
             name="propertyType"
@@ -126,13 +126,13 @@ function MyForm() {
         </div>
       </div>
 
-      <form ref={formRef} className="relative mx-32 sm:mx-auto mx -top-5 lg:bg-Csecondary1 p-0.5">
-        <div className="w-full flex items-center">
+      <form ref={formRef} className="relative mx-3 sm:mx-auto -top-5 lg:bg-Csecondary1 p-0.5 ">
+        <div className="flex items-center ">
           <input
             type="text"
             placeholder="Entrez un pays, une ville, un quartier"
             autoComplete='on'
-            className="w-full py-3 pl-4 pr-12 text-texteCouleur border rounded-md outline-none bg-gray-50 focus:bg-white"
+            className="w-full  py-3 pl-4 pr-12 text-texteCouleur border rounded-md outline-none bg-gray-50 focus:bg-white"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />

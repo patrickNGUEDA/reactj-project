@@ -52,7 +52,7 @@ function Login() {
           </div>
 
           {/* Right column container with form */}
-          <div className="md:w-8/12 lg:ml-6 lg:w-5/12 px-28">
+          <div className="md:w-8/12 lg:ml-6 lg:w-5/12 ">
             <form  ref={formRef} >
               {/* Email input */}
               <div className="relative mb-6" data-te-input-wrapper-init>
@@ -90,7 +90,7 @@ function Login() {
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 -right-32 pr-0 flex ri items-center cursor-pointer "
+                  className="absolute inset-y-0 -right-32 pr-0 flex  items-center cursor-pointer "
                   onClick={togglePasswordVisibility}
                 >
                   {showPassword ? <FiEyeOff /> : <FiEye />}
@@ -100,8 +100,8 @@ function Login() {
   
 
               {/* Remember me checkbox */}
-               <div className="mb-6 flex items-center justify-between    mx-auto ">  {/* sm:flex-row flex-col sm:items-center gap-1 */}
-                <div className="mb-[0.125rem] inline-block min-h-[1.5rem] pl-0">
+               <div className="mb-2 flex items-center justify-between mx-auto lg:mr-32 ">  {/* sm:flex-row flex-col sm:items-center gap-1 */}
+                <div className="mb-[0.125rem] inline-block min-h-[1.5rem] -ml-2">
                 <Checkbox
                 checked={checked}
                 onChange={handleChange}
@@ -109,7 +109,7 @@ function Login() {
                 className="relative"
                 />
                   <label
-                    className="  pl-0 hover:cursor-pointer"
+                    className=" pl-0 hover:cursor-pointer"
                     for="exampleCheck3"
                   >
                     Remember me
@@ -128,7 +128,7 @@ function Login() {
               {/* Submit button */}
               <button
                 type="submit"
-                className="inline-block w-full rounded bg-Cprimary px-7 pb-2.5 pt-3 text-base font-serif uppercase leading-normal text-white  transition duration-150 ]"
+                className="inline-block w-96 rounded bg-Cprimary px-7 pb-2.5 pt-3 text-base font-serif uppercase leading-normal text-white  transition duration-150 ]"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >

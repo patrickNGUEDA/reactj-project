@@ -3,7 +3,7 @@ import Services from './components/Services';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import About from './components/About';
-import Products from './components/Products';
+import TerrainDetail from './components/TerrainDetail';
 import Terrain from './components/Terrain';
 import Contact from './components/Contact';
 import Login from './components/Login';
@@ -29,7 +29,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/proposer" element={<Proposer />} />
-        <Route path="/aide" element={<Aide />} />
+        <Route path="/aide" element={<Aide />} />  
+        <Route path="/terrainDetail" element={<TerrainDetail />} />   
       </Routes>
     <MyFooter/>
 </BrowserRouter>

@@ -174,7 +174,7 @@ const Contact = () => {
         {" "}
         Contact
       </div>
-      <div className="px-4 lg:px-7 max-w-screen-2x1 mx-auto bg-neutralSilver w-screen py-10">
+      <div className=" lg:px-7 max-w-screen-2x1 mx-auto bg-neutralSilver w-screen py-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="md:w-1/2">
             <div className="md:w-2/3">
@@ -186,12 +186,12 @@ const Contact = () => {
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-                className="lg:px-0 px-20 mr-7 ml-4 lg:-mr-4  w-[500px]  "
+                className="lg:px-0 lg:-mr-4 w-[360px] lg:w-[500px]  "
               ></iframe>
             </div>
           </div>
 
-          <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto  w-screen py-5">
+          <div className="px-10 lg:px-14 max-w-screen-2x1 mx-auto  w-screen py-5">
             <h2 className="text-xl font-semibold  text-Csecondary1 -ml-4  mr-4 ">
               Engagez la conversation <br />{" "}
               <span className="text-Cprimary text-2xl lg:text-center">
@@ -200,7 +200,7 @@ const Contact = () => {
               </span>
             </h2>
 
-            <div className=" grid lg:grid-cols-2 gap-14 mb-2  items-center lg:-mr-16 lg:-ml-7 mt-7 mr-7 -ml-5  ">
+            <div className=" grid lg:grid-cols-2 gap-14 mb-2  items-center lg:-mr-16 lg:-ml-7 mt-7 -ml-5  ">
               <div className="flex items-center gap-2 w-full md:w-2/3 lg:w-[310px] h-full  shadow-2xl mb-1 border border-Csecondary1 bg-Cprimary px-2 py-1 shadow-lgrounded-md mx-auto rounded-md hover:scale-95 transition-all duration-300 lg:ml-12  2xl:ml-14">
                 <div className="relative  items-center  rounded-md ">
                   <img
@@ -393,7 +393,7 @@ const Contact = () => {
                             </div> */}
             </div>
 
-            <div className=" grid lg:grid-cols-2 gap-7 mb-2  items-center lg:-mr-12 lg:-ml-7 mt-7 mr-7 -ml-5 ">
+            <div className=" grid lg:grid-cols-2 gap-7 mb-2  items-center lg:-mr-12 lg:-ml-7 mt-7  -ml-5 ">
               {Contact.map((Contact) => (
                 <div
                   key={Contact.id}
@@ -417,9 +417,9 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="md:w-8/12 lg:ml-[430px] lg:w-5/12 px-7 mt-4 border-2 border-Cprimary ml-2 mr-2">
+      <div className="md:w-8/12 lg:ml-[430px] 2xl:ml-[500px] lg:w-5/12 px-10 2xl:px-24 mt-4 border-2 border-Cprimary ml-2 mr-2">
         <div className="text-center md:-end-1/2 mx-auto">
-          <h2 className="text-3xl font-semibold mb-4 text-Csecondary1 pt-5">
+          <h2 className="text-3xl font-semibold mb-4 text-Csecondary1 pt-5 ">
             Envoyez-nous un message
           </h2>
         </div>

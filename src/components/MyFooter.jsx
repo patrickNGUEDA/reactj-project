@@ -128,7 +128,7 @@ const MyFooter = () => {
                 </p>
               </div>
 
-              <div className="relative md:mb-6" data-te-input-wrapper-init>
+              <div className="md:mb-6" data-te-input-wrapper-init>
               <label htmlFor='email'>
                   {/* Email */}
                 </label>
@@ -137,7 +137,7 @@ const MyFooter = () => {
                   name='email'
                   id='email'
                   autoComplete='off'
-                  className={ `peer block min-h-[auto] w-full rounded border-2  px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100   motion-reduce:transition-none dark:text-neutral-500 focus:ring-Cprimary focus:border-Cprimary focus:border border-Csecondary1 text-black ${isValid ? '' : 'border-red-500'}`}
+                  className={ `peer block min-h-[auto] w-full rounded border-2  px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100   motion-reduce:transition-none dark:text-neutral-500 focus:ring-Cprimary focus:border-Cprimary focus:border border-Csecondary1 text-black  ${isValid ? '' : 'border-red-500'}`}
                   placeholder='contact@efficace.com'
                   value={email}
                   onChange={handleChange1}
