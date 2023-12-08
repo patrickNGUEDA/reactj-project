@@ -135,41 +135,42 @@ const About = () => {
   ];
 
   const Services = [
+    
     {
       id: 1,
-      service: "Accompagnement des Sociétés Civiles Immobilières (SCI) ",
-      descriptin:
-        "Ce service consiste à fournir un soutien complet dans la gestion administrative et patrimoniale des biens immobiliers détenus par ces entités.",
-    },
-    {
-      id: 2,
       service: "Conception et mise en service des ERP de gestion en BTP ",
       descriptin:
         "  Il s'agit de développer des solutions logicielles ou de conseiller sur l'utilisation d'ERP existants pour gérer les processus, les ressources, les coûts et la logistique dans le domaine du BTP.",
     },
     {
-      id: 3,
+      id: 2,
       service: "Création immobilière et BTP ",
       descriptin:
         " Ce service consiste en la conception, le développement et la mise en œuvre de projets immobiliers et de construction dans le secteur du BTP. ",
     },
     {
-      id: 4,
-      service: " Gestion immobilière ",
+      id: 3,
+      service: " Gestion des actifs immobilièrs ",
       descriptin:
         " La gestion immobilière implique la supervision quotidienne des biens immobiliers, y compris la collecte des loyers, l'entretien, la gestion des locataires, la comptabilité et le reporting financier pour les propriétaires de biens immobiliers.",
     },
     {
-      id: 5,
+      id: 4,
       service: "Investissements immobiliers ",
       descriptin:
         " Ce service propose des conseils et des stratégies d'investissement dans le secteur immobilier pour maximiser les rendements et réduire les risques.",
     },
     {
-      id: 6,
+      id: 5,
       service: "Transformations immobilières",
       descriptin:
         "Ce service se concentre sur la rénovation, la réhabilitation ou la transformation de biens immobiliers existants.",
+    },
+    {
+      id: 6,
+      service: "Accompagnement des Sociétés Civiles Immobilières (SCI) ",
+      descriptin:
+        "Ce service consiste à fournir un soutien complet dans la gestion administrative et patrimoniale des biens immobiliers détenus par ces entités.",
     },
   ];
 
@@ -181,19 +182,18 @@ const About = () => {
           <img
             src={AboutImage}
             alt="About image"
-            className="w-full h-[550px] bg-gradient-to-r opacity-80 object-cover z-0 absolute top-0 left-0  "
+            className="w-full h-[550px] bg-gradient-to-r opacity-80 object-cover z-0 absolute top-0 md:mt-12 left-0  "
           />
-          <div className="relative z-10  mx-auto text-center md:text-center  lg:ml-48 ml-5 mr-5  bg-Csecondary bg-neutralSilver  rounded-md md:w-[700px] lg:mt-0 hover:scale-95 transition-all duration-300 border border-Cprimary -mt-10">
+          <div className="relative z-10  mx-auto text-center md:text-center md:ml-44  lg:ml-48 ml-5 mr-5  bg-Csecondary bg-gray-300  rounded-md lg:w-[800px] lg:mt-0 hover:scale-95 transition-all duration-300 border border-Cprimary mt-2 ">
             <div className="mx-auto text-center md:text-center ml-7 ">
               <h2 className="text-2xl font-semibold mb-7 text-Cprimary md:w-4/5 uppercase ml-0 mr-8 py-4 underline italic ">
                 Qui sommes nous ?
               </h2>
-              <h2 className="text-3xl font-semibold mb-7 text-black md:w-4/5 uppercase ml-0 mr-7 py-4 -mt-12">
+              {/* <h2 className="text-3xl font-semibold mb-7 text-black md:w-4/5 uppercase ml-0 mr-7 py-4 -mt-12">
                 À Propos d'EFFICACE
-              </h2>
-              <p className="text-base font-lato text-Csecondary1 mb-0 mr-7 text-justify -mt-10 lg:font-poppins  ">
-                {/* ... Votre texte ... */}
-                {/* Bienvenue chez EFFICACE, votre partenaire de confiance dans le domaine de l'immobilier depuis 2023. Nous sommes fiers de mettre à votre disposition notre expertise et notre passion pour l'immobilier, afin de vous accompagner dans toutes vos transactions immobilières. <br />  */}
+              </h2> */}
+              <p className="lg:text-lg  font-lato text-texteCouleur mb-0 mr-7 text-justify -mt-10 lg:font-poppins  ">
+              
                 <span className="font-semibold italic"> EFFICACE</span> est une
                 entreprise{" "}
                 <span className="font-semibold italic">
@@ -228,7 +228,7 @@ const About = () => {
       {/* Le texte d'appropos */}
 
       <div className="text-center md:-end-1/2 mx-auto">
-        <h2 className="text-3xl font-semibold mb-4 text-Csecondary1 lg:pt-36 uppercase -mt-20">
+        <h2 className="text-3xl font-semibold mb-4 text-Csecondary1 lg:pt-36 uppercase ">
           Les valeurs d'EFFICACE
         </h2>
       </div>
@@ -238,7 +238,7 @@ const About = () => {
           {explorez.map((explorez) => (
             <div
               key={explorez.id}
-              className="w-full md:w-2/3 lg:w-full h-full mx-auto bg-Csecondary1 rounded-2xl shadow-2xl mb-2 border border-Cprimary hover:scale-95 transition-all duration-300 "
+              className="w-full md:w-2/3 lg:w-full h-full mx-auto bg-Cprimary rounded-2xl shadow-2xl mb-2 hover:scale-95 transition-all duration-300 "
             >
               <a href={explorez.pageUrl}>
                 <div className=" relative w-full h-72 ">
@@ -253,7 +253,7 @@ const About = () => {
                 <h3 className="my-2 text-2xl font-poppins font-semibold text-white uppercase">
                   {explorez.title}
                 </h3>
-                <p className=" text-lg font-serif text-texteCouleur text-justify">
+                <p className=" text-lg font-serif text-white text-justify">
                   {explorez.descriptin}
                 </p>
                 {/* <p color= 'secondary1' className='font-secondary mb-10 lg:mb-0'>Commandez</p> */}
@@ -479,11 +479,7 @@ const About = () => {
                     alt=""
                     className="cursor-pointer w-16 h-16"
                   />
-                  <img
-                    src="src/assets/company/company3.jpg"
-                    alt=""
-                    className="cursor-pointer w-16 h-16"
-                  />
+                  
                 </div>
                 {/* <div className='flex items-center mt-8 '>
                             <a href="/" className='font-bold text-brandPrimary hover:text-neutral-700 flex items-center'>

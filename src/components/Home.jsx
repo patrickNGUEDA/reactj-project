@@ -50,7 +50,7 @@ const Home = () => {
         "  Ils sont des parcelles de terrain non développées, offrant aux acheteurs la possibilité de construire leur maison ou leur entreprise sur mesure.",
       image: "/src/assets/exploration/terrain.jpg ",
       alt: "image terrain",
-      pageUrl: "/login",
+      pageUrl: "/terrain",
     },
     {
       id: 2,
@@ -59,7 +59,7 @@ const Home = () => {
         "Elles sont des propriétés de luxe offrant un espace de vie spacieux et des équipements haut de gamme.",
       image: "/src/assets/exploration/villa.jpg",
       alt: "image villa",
-      pageUrl: "/login",
+      pageUrl: "/villa",
     },
     {
       id: 3,
@@ -68,7 +68,7 @@ const Home = () => {
         "Ils sont des propriétés résidentielles ou commerciales comprenant plusieurs unités. Ils sont un excellent investissement pour les propriétaires cherchant à générer des revenus locatifs.",
       image: "/src/assets/exploration/immeuble.jpg",
       alt: "image immeuble",
-      pageUrl: "/login",
+      pageUrl: "/immeuble",
     },
     {
       id: 4,
@@ -77,7 +77,7 @@ const Home = () => {
         "Ils offrent un espace de vie pratique et confortable pour les individus et les familles.",
       image: "/src/assets/exploration/appartement.jpg",
       alt: "image appatement",
-      pageUrl: "/login",
+      pageUrl: "/immeuble",
     },
     {
       id: 5,
@@ -86,7 +86,7 @@ const Home = () => {
         "Ils sont des espaces commerciaux destinés à la vente au détail. Ils varient en taille et en emplacement, offrant aux commerçants un lieu idéal pour établir leur entreprise.",
       image: "/src/assets/exploration/magasin.jpg",
       alt: "immage magasin",
-      pageUrl: "/login",
+      pageUrl: "#",
     },
     {
       id: 6,
@@ -95,7 +95,7 @@ const Home = () => {
         "Ils sont conçus pour offrir un séjour confortable et pratique aux clients, que ce soit pour les voyages d'affaires ou de loisirs.",
       image: "/src/assets/exploration/studio.jpg",
       alt: "immage hotel",
-      pageUrl: "/login",
+      pageUrl: "#",
     },
     {
       id: 7,
@@ -104,6 +104,7 @@ const Home = () => {
         "Ils offrent un environnement professionnel pour le travail, avec différentes configurations allant des espaces de travail partagés aux bureaux privés.",
       image: "/src/assets/exploration/bureau.jpg",
       alt: "image bureau",
+      pageUrl: "#",
     },
     {
       id: 8,
@@ -112,7 +113,7 @@ const Home = () => {
         "Projets Architecturaux : C'est sont des plans et des conceptions pour de futurs bâtiments et structures.",
       image: "/src/assets/exploration/duplex.jpg",
       alt: "imge projet archi",
-      pageUrl: "/login",
+      pageUrl: "#",
     },
   ];
 
@@ -236,7 +237,7 @@ const Home = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="md:w-1/2  -mt-10">
             <h2 className="text-3xl font-semibold font-poppins mb-4 text-Csecondary1 md:w-2/3 text-center">
-              Obtenez des recommandations{" "}
+              Obtenez des conseils{" "}
             </h2>
             <p className="md:w-2/3 text-xl text-texteCouleur font-serif mb-8 text-center ">
               {" "}

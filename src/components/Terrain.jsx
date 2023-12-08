@@ -1,94 +1,128 @@
 import React, { useState, Fragment } from "react";
 import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
 import YourComponent from "../components/SousMenu/MaisonDropdown";
-import TerrainDetail from "../components/TerrainDetail";
 import ModalTerrain from "./modals/ModalTerrain";
+import ModalCarousel from "./modals/modalCarousel";
 import aboutImage from "../assets/banner3.jpg";
+import Modal from "react-modal";
+import {
+  FaMapMarkerAlt,
+ 
+  FaChartArea,
+  FaRegCalendarAlt,
+} from "react-icons/fa";
+
+import { MdPriceCheck,  } from "react-icons/md";
+
 
 const Terrain = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenMin, setIsOpenMin] = useState(false);
   const [selectedPrixMin, setSelectedPrixMin] = useState(null);
   const [isOpenLocation, setIsOpenLocation] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(null);
-  const [isOpenPrice, setIsOpenPrice] = useState(false);
+  const [isOpenMax, setIsOpenMax] = useState(false);
   const [selectedPrixMax, setSelectedPrixMax] = useState(null);
-  const [propertyType, setPropertyType] = useState("");
   const [selectedTerrain, setSelectedTerrain] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [referenceNumber, setReferenceNumber] = useState("");
+  const [etatSelectionne, setEtatSelectionne] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleTerrainClick = (Terrain) => {
     const paddedIndex = `00${filteredTerrains.indexOf(Terrain) + 1}`.slice(-3);
     const newReferenceNumber = `${
-      Terrain.etat === "A vendre" ? "TV" : "TL"
+      Terrain.etat === "vendre" ? "TV" : "TL"
     }-${paddedIndex}`;
     setReferenceNumber(newReferenceNumber);
 
     setSelectedTerrain(Terrain);
     setShowModal(true);
   };
-  const handleSelection = (prixmin) => {
-    setSelectedPrixMin(prixmin);
-    setIsOpen(false);
-    const foundItem = PrixMin.find(
-      (item) => item.prix === selectedPrixMin.name
-    );
-    if (foundItem) {
-      setPhoneNum(foundItem.contact);
-    } else {
-      setPhoneNum("Numéro non trouvé");
-    }
-  };
 
-  const handleLocationSelection = (location) => {
-    setSelectedLocation(location);
-    // setSelectedCity(location);
-    setIsOpenLocation(false);
-    console.log("Selected Location:", location);
-  };
+ // Fonction pour gérer la sélection de l'emplacement
+ const handleLocationSelection = (location) => {
+  setSelectedLocation(location);
+  setIsOpenLocation(false);
+};
+// Fonction pour gérer la sélection du prix min
+const handleSelection = (prixmin) => {
+  setSelectedPrixMin(prixmin);
+  setIsOpenMin(false);
+};
 
-  const handlePriceSelection = (prixmax) => {
-    if (
-      selectedPrixMin &&
-      parseInt(prixmax, 10) > parseInt(selectedPrixMin, 10)
-    ) {
-      setSelectedPrixMax(prixmax);
-      setIsOpenPrice(false); // Ferme le dropdown du prix maximum après la sélection
-      // Votre logique pour la sélection du prix maximum
-    } else {
-      // Afficher un message ou appliquer une logique appropriée pour informer l'utilisateur
-      alert("Le prix maximum doit être supérieur au prix minimum sélectionné.");
-    }
-  };
+// Fonction pour gérer la sélection du prix max
+const handlePriceSelection = (pricemax) => {
+  setSelectedPrixMax(pricemax);
+  setIsOpenMax(false);
+};
 
-  const PrixMin = [
-    "3.000",
-    "5.000",
-    "10.000",
-    "12.000",
-    "15.000",
-    "20.000",
-    "25.000",
-    "30.000",
-    "40.000",
-    "50.000",
-    "60.000",
-    "70.000",
-    "80.000",
-    "100.000",
-  ];
-  const PrixMax = [
-    "15.000",
-    "25.000",
-    "30.000",
-    "40.000",
-    "60.000",
-    "70.000",
-    "80.000",
-    "100.000",
-    "115.000",
-    "150.000",
-  ];
+const handleDropdownClickMin = () => {
+  if (!etatSelectionne) {
+    // Set the state to show the message
+    setShowMessage(true);
+    return;
+  }
+  setIsOpenMin((prev) => !prev);
+};
+
+const handleDropdownClickMax = () => {
+  if (!etatSelectionne) {
+    // Set the state to show the message
+    setShowMessage(true);
+    return;
+  }
+  setIsOpenMax((prev) => !prev);
+};
+
+
+    // Liste des prix min pour chaque état
+    const prixMinParEtat = {
+      vendre: [
+        "3,000",
+        "5,000",
+        "10,000",
+        "15,000",
+        "20,000",
+        "300,000",
+        "1,000,000",
+        "200,000,000,000"/* ... autres valeurs pour A vendre */,
+      ],
+      louer: [
+        "10,000",
+        "15,000",
+        "20,000",
+        "25,000",
+        "30,000" ,
+        "20,000,000,000,"/* ... autres valeurs pour A louer */,
+      ],
+    };
+    // Liste des prix max pour chaque état
+    const prixMaxParEtat = {
+      vendre: [
+        "15,000",
+        "25,000",
+        "30,000",
+        "40,000",
+        "50,000" ,
+        "60,000",
+        "70,000",
+        "80,000",
+        "90,000",
+        "100,000",
+        "500,000,000,000"/* ... autres valeurs pour A vendre */,
+      ],
+      louer: [
+        "50,000",
+        "60,000",
+        "70,000",
+        "80,000",
+        "90,000",
+        "100,000" /* ... autres valeurs pour A louer */,
+      ],
+    };
+  
+
+
   const locations = ["Douala", "Yaoundé", "Bafoussam", "Maroua", "Bertoua"];
 
   const blog = [
@@ -109,7 +143,30 @@ const Terrain = () => {
       image: "/src/assets/image20.png",
     },
   ];
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
+  const openModal = (imageIndex) => {
+    setSelectedImageIndex(imageIndex);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedImageIndex(null);
+    setModalIsOpen(false);
+  };
+
+  const navigate = (direction) => {
+    if (direction === "prev") {
+      setSelectedImageIndex((prevIndex) =>
+        prevIndex > 0 ? prevIndex - 1 : selectedTerrain.images.length - 1
+      );
+    } else if (direction === "next") {
+      setSelectedImageIndex((prevIndex) =>
+        prevIndex < selectedTerrain.images.length - 1 ? prevIndex + 1 : 0
+      );
+    }
+  };
   const Terrains = [
     {
       id: 1,
@@ -128,11 +185,11 @@ const Terrain = () => {
         // ... autres liens d'images
       ],
       alt: "image terrain",
-      pageUrl: "/terrainDetail",
-      dimension: "50.000m²",
+      pageUrl: "/login",
+      dimension: "50,000m²",
       prix: "10.000fcfa/m²",
       date: "12/05/2023",
-      etat: "A louer",
+      etat: "louer",
     },
     {
       id: 2,
@@ -151,11 +208,11 @@ const Terrain = () => {
         // ... autres liens d'images
       ],
       alt: "image villa",
-      pageUrl: "/terrainDetail",
+      pageUrl: "/login",
       dimension: "400m²",
-      prix: "20.000fcfa/m²",
+      prix: "20,000fcfa/m²",
       date: "12/05/2023",
-      etat: "A vendre",
+      etat: "vendre",
     },
     {
       id: 3,
@@ -174,11 +231,11 @@ const Terrain = () => {
         // ... autres liens d'images
       ],
       alt: "image immeuble",
-      pageUrl: "/terrainDetail",
+      pageUrl: "/login",
       dimension: "500m²",
-      prix: "35.000fcfa/m²",
+      prix: "35,000fcfa/m²",
       date: "12/05/2023",
-      etat: "A vendre",
+      etat: "vendre",
     },
     {
       id: 4,
@@ -197,11 +254,11 @@ const Terrain = () => {
         // ... autres liens d'images
       ],
       alt: "image appatement",
-      pageUrl: "/terrainDetail",
+      pageUrl: "/login",
       dimension: "400m²",
-      prix: "20.000fcfa/m²",
+      prix: "20,000fcfa/m²",
       date: "12/05/2023",
-      etat: "A vendre",
+      etat: "vendre",
     },
     {
       id: 5,
@@ -222,9 +279,9 @@ const Terrain = () => {
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "1000m²",
-      prix: "20.000fcfa/m²",
+      prix: "20,000fcfa/m²",
       date: "12/05/2023",
-      etat: "A louer",
+      etat: "louer",
     },
     {
       id: 6,
@@ -245,9 +302,9 @@ const Terrain = () => {
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "300m²",
-      prix: "7.000fcfa/m²",
+      prix: "7,000fcfa/m²",
       date: "12/05/2023",
-      etat: "A vendre",
+      etat: "vendre",
     },
     {
       id: 7,
@@ -269,9 +326,9 @@ const Terrain = () => {
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "400m²",
-      prix: "10.000FCFA/m²",
+      prix: "10,000FCFA/m²",
       date: "12/05/2023",
-      etat: "A vendre",
+      etat: "vendre",
     },
     {
       id: 8,
@@ -292,9 +349,9 @@ const Terrain = () => {
       ],
       pageUrl: "/login",
       dimension: "1000m²",
-      prix: "100.000fcfa/m²",
+      prix: "100,000fcfa/m²",
       date: "12/05/2023",
-      etat: "A louer",
+      etat: "louer",
     },
     {
       id: 9,
@@ -315,9 +372,9 @@ const Terrain = () => {
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "400m²",
-      prix: "8.000fcfa/m²",
+      prix: "8,000fcfa/m²",
       date: "12/05/2023",
-      etat: "A vendre",
+      etat: "vendre",
     },
     {
       id: 10,
@@ -331,35 +388,61 @@ const Terrain = () => {
         "/src/assets/galerieTerrain/terrain1.jpg",
         "/src/assets/galerieTerrain/terrain2.jpg",
         "/src/assets/galerieTerrain/terrain3.jpg",
-
         "/src/assets/galerieTerrain/terrain5.jpg",
         // ... autres liens d'images
       ],
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "100.000m²",
-      prix: "150.000fcfa/m²",
+      prix: "150,000fcfa/m²",
       date: "12/05/2023",
-      etat: "A vendre",
+      etat: "louer",
+    },
+    {
+      id: 10,
+      title: "T",
+      ville: "Maroua",
+      pays: "Camroun",
+      quartier: "Domayo",
+      descriptin: "Deux voix, derriere le foyer des jeunes",
+      image: "/src/assets/exploration/appartement.jpg",
+      images: [
+        "/src/assets/galerieTerrain/terrain11.jpg",
+        "/src/assets/galerieTerrain/terrain2.jpg",
+        "/src/assets/galerieTerrain/terrain6.jpg",
+
+        "/src/assets/galerieTerrain/terrain8.jpg",
+        // ... autres liens d'images
+      ],
+      alt: "image appatement",
+      pageUrl: "/login",
+      dimension: "100.000m²",
+      prix: "120,000fcfa/m²",
+      date: "12/05/2023",
+      etat: "louer",
     },
   ];
-  const handlePropertyTypeChange = (value) => {
-    setPropertyType(value);
+  const handlePropertyTypeChange = (etat) => {
+    setEtatSelectionne(etat);
+    setShowMessage(false);
+    // Réinitialisez les prix sélectionnés lorsque l'état change
+    setSelectedPrixMin(null);
+    setSelectedPrixMax(null);
   };
   const filteredTerrains = Terrains.filter((Terrain) => {
     const isTypeMatch =
-      !propertyType ||
-      Terrain.etat.toLowerCase() === propertyType.toLowerCase();
+      !etatSelectionne  ||
+      Terrain.etat.toLowerCase() === etatSelectionne .toLowerCase();
 
     const isLocationMatch =
       !selectedLocation ||
       Terrain.ville.toLowerCase() === selectedLocation.toLowerCase();
 
-    const isPriceRangeMatch =
+      const isPriceRangeMatch =
       (!selectedPrixMin ||
-        parseInt(Terrain.prix, 10) >= parseInt(selectedPrixMin, 10)) &&
+        parseFloat(Terrain.prix.replace(/,/g, ''), 10) >= parseFloat(selectedPrixMin.replace(/,/g, ''), 10)) &&
       (!selectedPrixMax ||
-        parseInt(Terrain.prix, 10) <= parseInt(selectedPrixMax, 10));
+        parseFloat(Terrain.prix.replace(/,/g, ''), 10) <= parseFloat(selectedPrixMax.replace(/,/g, ''), 10));
 
     return isTypeMatch && isLocationMatch && isPriceRangeMatch;
   });
@@ -370,14 +453,14 @@ const Terrain = () => {
         <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto  bg-neutralSilver py-2 mt-20 w-screen rounded-md">
           <div className="flex flex-col md:flex-row justify-between items-center gap-1">
             <div className="md:w-1/2 ">
-              <div className="flex mb-1 justify-center lg:items-center lg:mb-2 lg:-mr-44 mt-5 mr-14 gap-5 ">
+              <div className="flex mb-1 justify-center lg:items-center lg:mb-2 mt-5 mr-14 gap-5 ">
                 {/* Options de radio pour choisir le type de propriété */}
                 <div className="mb-[0.125rem] lg:mr-10 ml-6 inline-flex items-center h-[40px] w-[100px]  bg-Cprimary rounded-lg ">
                   <input
                     type="radio"
-                    name="propertyType"
-                    value="A vendre"
-                    onChange={() => handlePropertyTypeChange("A vendre")}
+                    name="etatSelectionne"
+                    value="vendre"
+                    onChange={() => handlePropertyTypeChange("vendre")}
                     className="h-5 w-5 appearance-none checked:bg-Csecondary1 rounded-full border-2 checked:border-white m-1"
                   />
                   <label
@@ -391,10 +474,10 @@ const Terrain = () => {
                 <div className="mb-[0.125rem] inline-flex items-center h-[40px] w-[100px]  bg-Cprimary rounded-lg  ">
                   <input
                     type="radio"
-                    name="propertyType"
+                    name="etatSelectionne"
                     id="batimentRadio"
-                    value="A louer"
-                    onChange={() => handlePropertyTypeChange("A louer")}
+                    value="louer"
+                    onChange={() => handlePropertyTypeChange("louer")}
                     className="h-5 w-5 appearance-none checked:bg-Csecondary1 rounded-full border-2 checked:border-whiter m-1"
                   />
                   <label
@@ -431,13 +514,13 @@ const Terrain = () => {
                   <div></div>
                 </form>
 
-                <div className="relative flex flex-col items-center h-10 lg:w-[120px] rounded-md ml-0 lg:mr-10 mr-6 ">
-                  <h2 className="lg:mr-5 mr-28 -mt-6 font-semibold text text-base text-Cprimary">
+                <div className="relative flex flex-col items-center h-10 lg:w-[200px] rounded-md ml-0 lg:mr-10 mr-2 right-3 ">
+                  <h2 className="lg:mr-5 mr-28 -mt-6 font-semibold text-base text-Cprimary">
                     Localisation
                   </h2>
                   <button
                     onClick={() => setIsOpenLocation((prev) => !prev)}
-                    className="bg-Csecondary1 p-0 flex w-full items-center justify-between font-bold text-sm rounded-lg tracking-wider border-4 border-transparent active:border-Cprimary duration-300 active:text-Cprimary text-Cprimary"
+                    className="bg-Csecondary1 flex w-full items-center justify-between font-semibold text-base rounded-lg tracking-wider border-4 border-transparent active:border-Cprimary duration-300 active:text-Cprimary text-white"
                   >
                     {selectedLocation ? selectedLocation : "Lieu"}
                     {!isOpenLocation ? (
@@ -463,24 +546,25 @@ const Terrain = () => {
                   )}
                 </div>
 
-                <div className="relative flex flex-col items-center h-10 lg:w-[120px] rounded-md ml-0 lg:mr-10 mr-6">
+                <div className="relative flex flex-col items-center h-10 lg:w-[200px] rounded-md ml-0 lg:mr-10 mr-2 right-3">
                   <h2 className="lg:mr-14 mr-36  -mt-6 font-semibold text-base text-Cprimary">
                     Prix min
                   </h2>
                   <button
-                    onClick={() => setIsOpen((prev) => !prev)}
-                    className="bg-Csecondary1 p-0  flex w-full items-center justify-between font-bold text-sm rounded-lg tracking-wider border-4 border-transparent active:border-Cprimary duration-300 active:text-Cprimary text-Cprimary"
+                    // onClick={() => setIsOpen((prev) => !prev)}
+                    onClick={handleDropdownClickMin}
+                    className="bg-Csecondary1 p-0  flex w-full items-center justify-between font-bold text-sm rounded-lg tracking-wider border-4 border-transparent active:border-Cprimary duration-300 active:text-Cprimar text-white"
                   >
                     {selectedPrixMin ? selectedPrixMin : "Prix min"}
-                    {!isOpen ? (
+                    {!isOpenMin ? (
                       <AiOutlineCaretDown className="h-8" />
                     ) : (
                       <AiOutlineCaretUp className="h-8" />
                     )}
                   </button>
-                  {isOpen && (
+                  {isOpenMin && (
                     <div className="bg-white absolute top-10 flex-col items-start rounded-lg p-2 w-full overflow-y-auto max-h-52 border-2 z-10">
-                      {PrixMin.map((prixmin, i) => (
+                      {prixMinParEtat[etatSelectionne]?.sort((a, b) => parseFloat(a.replace(/,/g, ""), 10) - parseFloat(b.replace(/,/g, ""), 10)).map((prixmin, i) => (
                         <div
                           className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
                           key={i}
@@ -495,38 +579,42 @@ const Terrain = () => {
                   )}
                 </div>
 
-                <div className="relative flex flex-col items-center h-10 lg:w-[120px] rounded-md ml-0 lg:mr-10 mr-6 ">
+                <div className="relative flex flex-col items-center h-10 lg:w-[200px] rounded-md ml-0 lg:mr-10 mr-2 right-3">
                   <h2 className="lg:mr-14 mr-36 -mt-6 font-semibold text-base text-Cprimary">
                     Prix max
                   </h2>
                   <button
-                    onClick={() => setIsOpenPrice(!isOpenPrice)}
-                    className="bg-Csecondary1 p-0  flex w-full items-center justify-between font-bold text-sm rounded-lg tracking-wider border-4 border-transparent active:border-Cprimary duration-300 active:text-Cprimary text-Cprimary"
+                    // onClick={() => setIsOpenPrice(!isOpenPrice)}
+                    
+                    onClick={handleDropdownClickMax}
+                    className="bg-Csecondary1 p-0  flex w-full items-center justify-between font-bold text-sm rounded-lg tracking-wider border-4 border-transparent active:border-Cprimary duration-300 active:text-Cprimary text-white"
                   >
                     {selectedPrixMax ? selectedPrixMax : "Prix max"}
-                    {!isOpenPrice ? (
+                    {!isOpenMax ? (
                       <AiOutlineCaretDown className="h-8" />
                     ) : (
                       <AiOutlineCaretUp className="h-8" />
                     )}
                   </button>
-                  {isOpenPrice && (
+                  {isOpenMax&& (
                     <div className="bg-white absolute top-10 flex-col items-start rounded-lg p-2 w-full overflow-y-auto max-h-52 border-2 z-10">
-                      {PrixMax.filter(
-                        (price) =>
-                          parseInt(price, 10) >
-                          (selectedPrixMin ? parseInt(selectedPrixMin, 10) : 0)
-                      ).map((price, i) => (
-                        <div
-                          className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
-                          key={i}
-                          onClick={() => handlePriceSelection(price)}
-                        >
-                          <h3 className="font-semibold mr-44 px-0 text-sm text-Cprimary">
-                            {price}
-                          </h3>
-                        </div>
-                      ))}
+                      {prixMaxParEtat[etatSelectionne]
+                    ?.filter(
+                      (price) =>
+                      parseFloat(price.replace(/,/g, ""), 10) >
+                      (selectedPrixMin ? parseFloat(selectedPrixMin.replace(/,/g, ""), 10) : 0)
+                    ).sort((a, b) => parseFloat(a.replace(/,/g, ""), 10) - parseFloat(b.replace(/,/g, ""), 10))
+                    .map((price, i) => (
+                      <div
+                        className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
+                        key={i}
+                        onClick={() => handlePriceSelection(price)}
+                      >
+                        <h3 className="font-semibold mr-44 px-0 text-sm text-Cprimary">
+                          {price}
+                        </h3>
+                      </div>
+                    ))}
                     </div>
                   )}
                 </div>
@@ -542,7 +630,12 @@ const Terrain = () => {
             </div>
           </div>
         </div>
-
+        {showMessage && (
+          <div className="text-red-500 text-center font-semibold text-base italic lg:mt-0 mt-10">
+            S'il vous plaît sélectionnez un type de propriété (Acheter ou Louer)
+            avant de choisir votre marge de prix!
+          </div>
+        )}
         {/* <YourComponent/>
 
         <div className='text-center md:-end-1/2 mx-auto '>
@@ -586,7 +679,7 @@ const Terrain = () => {
             </div> */}
 
         <div className="text-center md:-end-1/2 mx-auto mt-7 lg:-ml-44 ">
-          <h2 className="text-4xl font-semibold mb-4 text-Csecondary1 lg:pt-7 uppercase  ">
+          <h2 className="text-4xl font-bold mb-4 text-Csecondary1 lg:pt-7 uppercase  ">
             Nos Terrains
           </h2>
           <h2 className="text-lg font-semibold mb-4 text-Cprimary ">
@@ -595,7 +688,7 @@ const Terrain = () => {
           </h2>
         </div>
         <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto my-8 -mt-20   ">
-          <div className="md:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center gap-7 2xl:ml-24">
+          <div className="md:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center lg:gap-0 gap-7 2xl:ml-14">
             <div>
               <div className="grid lg:grid-cols-2 gap-7 mb-20 mt-20 items-center lg:px-7">
                 {filteredTerrains.length === 0 ? (
@@ -609,7 +702,7 @@ const Terrain = () => {
                     const paddedIndex = `00${index + 1}`.slice(-3);
 
                     const referenceNumber = `${
-                      Terrain.etat === "A vendre" ? "TV" : "TL"
+                      Terrain.etat === "vendre" ? "TV" : "TL"
                     }-${paddedIndex}`;
                     Terrain.referenceNumber = referenceNumber;
                     return (
@@ -647,74 +740,38 @@ const Terrain = () => {
                                 <div></div>
                               </div>
                               <h3 className="lg:ml-32 ml-12 italic text-base text-white bg-Cprimary rounded-lg px-1 py-1">
-                                {Terrain.etat}
+                                A {Terrain.etat}
                               </h3>
                             </h3>
                             <p className="text-base font-serif text-texteCouleur text-justify  mr-2 flex ">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={2}
-                                stroke="currentColor"
-                                className="lg:w-6 lg:h-6 w-[50px] lg:mt-0 -mt-12 mr-1 border-Csecondary1 uppercase leading-normal  transition duration-150 ease-in-out focus:outline-none focus:ring-0 text-Cprimary"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                            <FaMapMarkerAlt
+                                  className="mr-2 mt-1"
+                                  style={{ color: "blue" }}
                                 />
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                                />
-                              </svg>
+                             
                               {Terrain.pays},{Terrain.ville}-{Terrain.quartier},
                               {Terrain.descriptin}
                             </p>
                             <p className="text-base font-serif text-texteCouleur text-justify mr-2 flex  ">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6 mr-1  border-Csecondary1 uppercase leading-normal  transition duration-150 ease-in-out focus:outline-none focus:ring-0 text-Cprimary"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
+                            <FaRegCalendarAlt
+                                  className="mr-2 mt-1"
+                                  style={{ color: "blue" }}
                                 />
-                              </svg>
 
                               {Terrain.date}
                             </p>
-                            <p className="text-base font-serif text-texteCouleur text-justify mr-4 flex flex-wrap pt-2 lg:px-0 px-2 lg:ml-0 -ml-1 ">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 512 512"
-                                fill="none"
-                                strokeWidth={20}
-                                stroke="currentColor"
-                                className="lg:w-6 lg:h-6 w-[25px] lg:mt-0 -mt-2 mr-1 border-Csecondary1 uppercase leading-normal  transition duration-150 ease-in-out focus:outline-none focus:ring-0 text-Cprimary  "
-                              >
-                                <path d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm96 288H448c17.7 0 32-14.3 32-32V251.8c0-7.6-2.7-15-7.7-20.8l-65.8-76.8c-12.1-14.2-33.7-15-46.9-1.8l-21 21c-10 10-26.4 9.2-35.4-1.6l-39.2-47c-12.6-15.1-35.7-15.4-48.7-.6L135.9 215c-5.1 5.8-7.9 13.3-7.9 21.1v84c0 17.7 14.3 32 32 32z" />
-                              </svg>
+                            <p className="text-base font-serif text-texteCouleur text-justify mr-4 flex flex-wrap pt-2 lg:px-0 px-2 lg:ml-0  ">
+                            <  FaChartArea
+                                  className="mr-2 mt-1"
+                                  style={{ color: "blue" }}
+                                />
+ 
                               {Terrain.dimension}
                               <div className="lg:px-3 px-3 flex flex-wrap lg:mt-0 mt-1">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  height="1em"
-                                  fill="none"
-                                  viewBox="0 0 320 512"
-                                  strokeWidth={50}
-                                  stroke="currentColor"
-                                  className="lg:w-4 lg:h-4 w-[25px]   border-Csecondary1 uppercase leading-normal  transition duration-150 ease-in-out focus:outline-none focus:ring-0 text-Cprimary lg:mt-1 lg:mr-1 mt-1  lg:px-0 lg:ml-0 -ml-5 "
-                                >
-                                  <path d="M0 96C0 60.7 28.7 32 64 32h96c88.4 0 160 71.6 160 160s-71.6 160-160 160H64v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V320 96zM64 288h96c53 0 96-43 96-96s-43-96-96-96H64V288z" />
-                                </svg>{" "}
+                              <MdPriceCheck
+                                  className="mr-2 mt-1"
+                                  style={{ color: "blue" }}
+                                />
                                 {Terrain.prix}
                               </div>
                             </p>
@@ -737,15 +794,37 @@ const Terrain = () => {
                 >
                   {selectedTerrain && (
                     <div className="p-4">
-                      <h3 className="text-xl font-semibold text-white mb-5 bg-Cprimary rounded-lg w-24 h-7 px-2">
-                        {/* {selectedTerrain.etat} 
+                      <div className="flex sticky top-1">
+                        <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-20 p-2 px-2">
+                          {/* {selectedTerrain.etat} 
                         {selectedTerrain.title} */}
-                        {referenceNumber}
-                      </h3>
+                          {referenceNumber}
+                        </h3>
+                        <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-24 p-2 px-2 ml-3">
+                          {selectedTerrain.etat}
+                        </h3>
+                        <a
+                          href={`https://wa.me/237686741680?text=Bonjour%20!%20Je%20suis%20intéressé%20par%20votre%20service,${referenceNumber}`}
+                          className=""
+                        >
+                          <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-44 px-2 p-2 ml-3 flex ">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              height="1em"
+                              className="mx-auto h-full w-4 mt-0.5 ml-1"
+                              fill="currentColor"
+                              viewBox="0 0 448 512"
+                            >
+                              <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+                            </svg>{" "}
+                            +237 686 741 680
+                          </h3>
+                        </a>
+                      </div>
                       <img
                         src={selectedTerrain.image}
                         alt={selectedTerrain.title}
-                        className="object-cover w-full h-full rounded-md"
+                        className="object-cover w-full h-[500px] rounded-md"
                       />
                       {selectedTerrain.pays} -{selectedTerrain.ville}
                       <p className="mb-5 font-normal text-texteCouleur text-lg text-justify ">
@@ -756,21 +835,95 @@ const Terrain = () => {
                         vous cherchiez à acheter votre première maison, à vendre
                         votre propriété existante, ou à investir dans des
                         opportunités immobilières.
+                        {selectedTerrain.pays}
                       </p>
                       <div className="px-4 lg:-ml-20 max-w-screen-2x1 mx-auto my-8 mt-4">
-                        <div className="md:w-11/12 mx-auto flex flex-col md:flex-row  gap-2">
-                          <div className="grid grid-cols-2 gap-4">
+                        <div className="md:w-11/12 mx-auto flex flex-col md:flex-row gap-2">
+                          <div className="grid lg:grid-cols-3 grid-cols-2 gap-4 ">
                             {selectedTerrain.images.map((image, imageIndex) => (
-                              <div key={imageIndex}>
+                              <div
+                                key={imageIndex}
+                                onClick={() => openModal(imageIndex)}
+                              >
                                 <img
                                   src={image}
                                   alt={`Image ${imageIndex + 1}`}
-                                  className="object-cover w-full h- rounded-md"
+                                  className="object-cover w-full h- rounded-md cursor-pointer"
                                 />
                               </div>
                             ))}
-                          </div>
 
+                            <Modal
+                              isOpen={modalIsOpen}
+                              onRequestClose={closeModal}
+                              contentLabel="Image Modal"
+                              className="-mt-12 w-[730px] h-[650px] lg:m-0 m-2 lg:-mt-12"
+                              style={{
+                                overlay: {
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                },
+                                content: {
+                                  position: "relative",
+                                },
+                              }}
+                            >
+                              {selectedImageIndex !== null && (
+                                <>
+                                  <button
+                                    onClick={() => navigate("prev")}
+                                    className="absolute left-0 top-1/2 transform -translate-y-1/2 mt-20"
+                                  >
+                                    {/* Utilisez l'icône "keyboard_arrow_left" de Material Icons */}
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      height="2em"
+                                      viewBox="0 0 448 512"
+                                      fill="none"
+                                      strokeWidth={50}
+                                      stroke="currentColor"
+                                      className="ml-2 "
+                                    >
+                                      <path d="M0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32C28.7 32 0 60.7 0 96L0 416zM128 256c0-6.7 2.8-13 7.7-17.6l112-104c7-6.5 17.2-8.2 25.9-4.4s14.4 12.5 14.4 22l0 208c0 9.5-5.7 18.2-14.4 22s-18.9 2.1-25.9-4.4l-112-104c-4.9-4.5-7.7-10.9-7.7-17.6z" />
+                                    </svg>
+                                  </button>
+                                  <button
+                                    onClick={() => navigate("next")}
+                                    className="absolute right-0 top-1/2 transform -translate-y-1/2 mt-20 "
+                                  >
+                                    {/* Utilisez l'icône "keyboard_arrow_right" de Material Icons */}
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      height="2em"
+                                      viewBox="0 0 448 512"
+                                      fill="none"
+                                      strokeWidth={50}
+                                      stroke="currentColor"
+                                      className="mr-2 "
+                                    >
+                                      <path d="M448 96c0-35.3-28.7-64-64-64L64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320zM320 256c0 6.7-2.8 13-7.7 17.6l-112 104c-7 6.5-17.2 8.2-25.9 4.4s-14.4-12.5-14.4-22l0-208c0-9.5 5.7-18.2 14.4-22s18.9-2.1 25.9 4.4l112 104c4.9 4.5 7.7 10.9 7.7 17.6z" />
+                                    </svg>
+                                  </button>
+                                  <img
+                                    src={
+                                      selectedTerrain.images[selectedImageIndex]
+                                    }
+                                    alt={`Image ${selectedImageIndex + 1}`}
+                                    className="object-contain w-full h-full mt-20"
+                                  />
+                                </>
+                              )}
+                              <button
+                                onClick={closeModal}
+                                className="absolute top-0 right-0 lg:m-0 m-1 lg:mt-24 mt-52 text-white font-semibold bg-Cprimary p-1 rounded-md font-poppins"
+                              >
+                                Fermer
+                              </button>
+                            </Modal>
+                          </div>
+                          
+                         
                           <div className="md:w-2/3 mx-auto text-center md:text-left ">
                             <h2 className="text-2xl font-semibold mb-4 text-neutralDGrey md:w-4/5 px-5 ">
                               À Propos d'EFFICACE
@@ -783,7 +936,7 @@ const Terrain = () => {
                               l'immobilier, afin de vous accompagner dans toutes
                               vos transactions immobilières.
                               <h3 className="text-2xl font-semibold mb-4 text-neutralDGrey md:w-4/5">
-                                Notre Mission
+                                Notre Mission au {selectedTerrain.pays}
                               </h3>
                               Chez EFFICACE, notre mission est de vous offrir un
                               service immobilier de premier ordre, basé sur
@@ -806,145 +959,35 @@ const Terrain = () => {
                 </ModalTerrain>
               </div>
 
-              {/* <div className="grid lg:grid-cols-2 gap-7 mb-20 mt-20 items-center lg:px-7 ">
-              {filteredTerrains.map((Terrain, index) => {
-                
-                const paddedIndex = `00${index + 1}`.slice(-3);
+      
 
-                const referenceNumber = `${
-                  Terrain.etat === "A vendre" ? "TV" : "TL"
-                }-${paddedIndex}`;
-                
-                return (
-                  <div
-                    key={Terrain.id}
-                    className="md:w-2/3 lg:w-full  lg:h-full mx-auto bg-Csecondary bg-neutralSilver rounded-2xl shadow-2xl mb-1 border  border-Cprimary hover:scale-95 transition-all duration-300 w-[380px] lg:-ml-24 "
-                  >
-                    
-                    <div className="flex items-center gap-2 px-">
-                      <a href={Terrain.pageUrl}>
-                        <div className="relative lg:w-[250px] lg:h-60 lg:-mb-1 w-36 w h-60 ">
-                          <img
-                            src={Terrain.image}
-                            alt="Les valeur d'efficace"
-                            className=" object-center rounded-md border border-Csecondary1 brightness-125 absolute top-0 left-0 w-full  h-full object-cover z-0  "
-                          />
-                        </div>
-                      </a>
-                      <div className="lg:w-[1300px] w-full h-full  ">
-                        <h3 className="my-2 mt-0 text-xl font-poppins font-semibold text-Cprimary flex   ">
-                         
-                          <a
-                            className="italic underline uppercase top-8"
-                            href={Terrain.pageUrl}
-                          >
-                            {" "}
-                            {referenceNumber}
-                          </a>
-                          <h3 className="lg:ml-32 ml-12 italic text-base text-Csecondary1">
-                            {Terrain.etat}
-                          </h3>
-                        </h3>
-                        <p className="text-base font-serif text-texteCouleur text-justify  mr-2 flex ">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={2}
-                            stroke="currentColor"
-                            className="lg:w-6 lg:h-6 w-[50px] lg:mt-0 -mt-12 mr-1 border-Csecondary1 uppercase leading-normal  transition duration-150 ease-in-out focus:outline-none focus:ring-0 text-Cprimary"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                            />
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                            />
-                          </svg>
-                          {Terrain.pays},{Terrain.ville}-{Terrain.quartier},{Terrain.descriptin}
-                        </p>
-                        <p className="text-base font-serif text-texteCouleur text-justify mr-2 flex  ">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6 mr-1  border-Csecondary1 uppercase leading-normal  transition duration-150 ease-in-out focus:outline-none focus:ring-0 text-Cprimary"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
-                            />
-                          </svg>
-
-                          {Terrain.date}
-                        </p>
-                        <p className="text-base font-serif text-texteCouleur text-justify mr-4 flex flex-wrap pt-2 lg:px-0 px-2 lg:ml-0 -ml-1 ">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512 512"
-                            fill="none"
-                            strokeWidth={20}
-                            stroke="currentColor"
-                            className="lg:w-6 lg:h-6 w-[25px] lg:mt-0 -mt-2 mr-1 border-Csecondary1 uppercase leading-normal  transition duration-150 ease-in-out focus:outline-none focus:ring-0 text-Cprimary  "
-                          >
-                            <path d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm96 288H448c17.7 0 32-14.3 32-32V251.8c0-7.6-2.7-15-7.7-20.8l-65.8-76.8c-12.1-14.2-33.7-15-46.9-1.8l-21 21c-10 10-26.4 9.2-35.4-1.6l-39.2-47c-12.6-15.1-35.7-15.4-48.7-.6L135.9 215c-5.1 5.8-7.9 13.3-7.9 21.1v84c0 17.7 14.3 32 32 32z" />
-                          </svg>
-                          {Terrain.dimension}
-                          <div className="lg:px-3 px-3 flex flex-wrap lg:mt-0 mt-1">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              height="1em"
-                              fill="none"
-                              viewBox="0 0 320 512"
-                              strokeWidth={50}
-                              stroke="currentColor"
-                              className="lg:w-4 lg:h-4 w-[25px]   border-Csecondary1 uppercase leading-normal  transition duration-150 ease-in-out focus:outline-none focus:ring-0 text-Cprimary lg:mt-1 lg:mr-1 mt-1  lg:px-0 lg:ml-0 -ml-5 "
-                            >
-                              <path d="M0 96C0 60.7 28.7 32 64 32h96c88.4 0 160 71.6 160 160s-71.6 160-160 160H64v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V320 96zM64 288h96c53 0 96-43 96-96s-43-96-96-96H64V288z" />
-                            </svg>{" "}
-                            {Terrain.prix}
-                          </div>
-                        </p>
-                        <div className="pt-3">
-                          <a className="italic underline" href="">
-                            voir plus
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div> */}
-
-              <img src="" alt="" />
+             
             </div>
-            <div className="md:w-3/5 lg:-mx-40  text-center md:text-left divide- divide-x-2 divide-gray-400 lg:mt-52 mt-36 pl-14 2xl:pl-36  ">
+            <div className="md:w-3/5 lg:-mx-40  text-center md:text-left divide- divide-x-2 divide-gray-400 lg:mt-52 mt-36 2xl:pl-36 ">
               <h2 className="text-2xl font-semibold mb-4 text-Cprimary  md:w-4/5 -mt-52 uppercase ">
                 Autres biens
               </h2>
-              <div className=" md:w-4/4 text-lg font-poppins mb-1 text-justify divide- divide-x- divide-gray-400  text-texteCouleur ">
+              <div className=" md:w-4/4 text-lg font-poppins mb-1 text-justify  divide-gray-400  text-texteCouleur">
                 <h2 className="pl-2 text-xl font-semibold mb-2 text-Cprimary  md:w-4/5">
                   Commerciaux
                 </h2>
-                <div className="pl-3  divide-  divide-gray-400  text-base font-poppins ">
+                <div className="pl-3 divide-gray-400  text-base font-poppins ">
                   <a
                     className="block p-1 hover:text-Csecondary1"
-                    href="/services"
+                    href="#"
                   >
                     Bureaux
                   </a>
-                  <a className="block p-1 hover:text-Csecondary1" href="/!#">
+                  <a
+                    className="block p-1 hover:text-Csecondary1"
+                    href="#"
+                  >
+                    Boutiques
+                  </a>
+                  <a className="block p-1 hover:text-Csecondary1" href="#">
                     Magasins
                   </a>
-                  <a className="block p-1 hover:text-Csecondary1" href="/!#">
+                  <a className="block p-1 hover:text-Csecondary1" href="#">
                     Fond de commerce
                   </a>
                 </div>
@@ -954,20 +997,20 @@ const Terrain = () => {
                 <div className="pl-3  divide- devide- divide-gray-400  text-base font-poppins ">
                   <a
                     className="block p-1 hover:text-Csecondary1"
-                    href="/services"
+                    href="/villa"
                   >
                     Villa
                   </a>
-                  <a className="block p-1 hover:text-Csecondary1" href="/!#">
+                  <a className="block p-1 hover:text-Csecondary1" href="#">
                     Appartement
                   </a>
-                  <a className="block p-1 hover:text-Csecondary1" href="/!#">
+                  <a className="block p-1 hover:text-Csecondary1" href="/immeuble">
                     Immeuble
                   </a>
-                  <a className="block p-1 hover:text-Csecondary1" href="/!#">
+                  <a className="block p-1 hover:text-Csecondary1" href="/duplex">
                     Duplex
                   </a>
-                  <a className="block p-1 hover:text-Csecondary1" href="/!#">
+                  <a className="block p-1 hover:text-Csecondary1" href="#">
                     Studio
                   </a>
                 </div>
@@ -986,17 +1029,17 @@ const Terrain = () => {
                 />
               </div>
 
-              <button className="btn-primary px-4 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4 ml-10">
+              {/* <button className="btn-primary px-4 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4 ml-10">
                 En savoir plus
-              </button>
+              </button> */}
             </div>
           </div>
-          <div id="scrollspy1" className="sticky-top pl-3 text-sm"></div>
+         
         </div>
 
-        {/* <TerrainDetail/> */}
+        
 
-        <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto  w-screen lg:py-10 ">
+        {/* <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto  w-screen lg:py-10 ">
           <div className="flex flex-col md:flex-row justify-between items-center mr-10 ml-10  gap-8">
             <div className="md:w-1/2 ml-20">
               <h2 className="text-3xl font-semibold mb-4 text-Cprimary md:w-2/3 ">
@@ -1010,6 +1053,32 @@ const Terrain = () => {
 
             <div className="md:w-1/2 mx-auto flex sm:flex-row flex-col sm:items-center justify-around gap-7 items-center flex-wrap -mt-4">
               <div className="space-y-5">
+                <div className="flex items-center gap-4 group relative">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="16"
+                    className="w-16 h-16 text-gray-500 group-hover:text-gray-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
+                    />
+                  </svg>
+                  <div className="absolute bg-gray-800 text-white p-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p>Texte au survol</p>
+                  </div>
+                  <div>
+                    <h4 className="text-2xl text-neutralDGrey font-semibold">
+                      2,245,548
+                    </h4>
+                    <p>Membres</p>
+                  </div>
+                </div>
                 <div className="flex items-center gap-4">
                   <img
                     src="src/assets/company/company1.jpg"
@@ -1036,17 +1105,30 @@ const Terrain = () => {
                     <p>Membres</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <img
-                    src="src/assets/company/company3.jpg"
-                    alt=""
-                    className="h-16 w-16"
-                  />
+                <div className="flex items-center gap-4 group relative">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-16 h-16 text-gray-500 group-hover:text-gray-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
+                    />
+                  </svg>
+                  <div className="absolute bg-gray-800 text-white p-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p>Texte au survol</p>
+                  </div>
                   <div>
-                    <h4 className="text-2x1 text-neutralDGrey font-semibold">
+                    <h4 className="text-2xl text-neutralDGrey font-semibold">
                       2,245,548
                     </h4>
-                    <p>Evenement</p>
+                    <p>Membres</p>
                   </div>
                 </div>
               </div>
@@ -1093,15 +1175,15 @@ const Terrain = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto my-12 mt-40">
+        {/* <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto my-12 mt-40">
           <div className="text-center md:-end-1/2 mx-auto">
             <h2 className="text-4xl font-semibold mb-4 text-neutralDGrey">
               De l'efficassité dans l'immobiler
             </h2>
             <p className="text-base font-montserrat text-justify text-neutralDGrey mb-8 md:w-3/4 mx-auto">
-              {/* ... Votre texte ... */}
+              
               Bienvenue chez EFFICACE, votre partenaire de confiance dans le
               domaine de l'immobilier depuis 2023. Nous sommes fiers de mettre à
               votre disposition notre expertise et notre passion pour
@@ -1115,7 +1197,7 @@ const Terrain = () => {
               personnalisé et des solutions sur mesure.
             </p>
           </div>
-          {/* notre blog */}
+          
           <div className="grid lg:grid-cols-3 sm:grid-cols- grid-cols-1 gap-8 items-center justify-between">
             {blog.map((blog) => (
               <div
@@ -1127,7 +1209,7 @@ const Terrain = () => {
                   alt=""
                   className="hover:scale-95 transition-all duration-300 z-10"
                 />
-                {/* eleent de survol sur les images */}
+              
                 <div className="text-center px-4 py-8 bg-white shadow-lgrounded-md md:w-3/4 mx-auto absolute left-0 right-0 -bottom-12 rounded-md">
                   <h3 className="mb-3 text-neutralGrey font-semibold">
                     {blog.title}
@@ -1157,7 +1239,7 @@ const Terrain = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </Fragment>
     </>
   );

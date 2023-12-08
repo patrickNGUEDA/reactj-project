@@ -4,6 +4,7 @@ import { Footer } from 'flowbite-react';
 import { BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import Logo from '../assets/logo/logo_fb.png';
 import Instagram from '../assets/reseauxsociaux/instagram.svg'
+import { FaYoutube } from "react-icons/fa";
 
 const MyFooter = () => {
 
@@ -27,7 +28,7 @@ const MyFooter = () => {
       <div className="container px-4 pt-6">
       <div className='space-y-4 mb-5'>
         <a href="" className="text-2x1 font-semibold flex items-center space-x-3 ">
-          <img src={Logo} alt="" className="w-12px h-24 inline-block items-center -ml-7 -mt-7"/>         
+          <img src={Logo} alt="" className="w-12px h-24 inline-block items-center lg:-ml-24 -ml-8 -mt-7"/>         
         </a>
        </div>
         {/* Social media icons container */}
@@ -53,15 +54,15 @@ const MyFooter = () => {
           <a
             href="#!"
             type="button"
-            className="m-2 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-whit transition duration-150 ease-in-out hover:bg-Csecondary1 focus:outline-none focus:ring-0 text-white bg-texteCouleur"
+            className="m-2 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-whit transition duration-150 ease-in-out hover:bg-Csecondary1 focus:outline-none focus:ring-0 text-white bg-Cred-primary"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
-            <svg xmlns="http://www.w3.org/2000/svg"   
-              className="mx-auto h-full w-4"
-              fill="currentColor" 
-              viewBox="0 0 512 512">
-              <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            <  FaYoutube
+                                  className="mr-2 mt-2 ml-2"
+                                  style={{ color: "white" }}
+                                />
+          
           </a>
 
 

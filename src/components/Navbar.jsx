@@ -76,15 +76,15 @@ const Navbar = ()=>{
            {/** aligner les elements de la barre de navigation */}
         <nav className={`py-4 lg:px-5 px-4 ${isSticky ?" sticky top-0 left-0 right-0 border bg-white duration-300" : ""} `}>
             <div className="flex justify-between items-center text-base gap-8">
-                <a href="" className="text-2xl font-semibold flex items-center">
-                    <img src={logo} alt="" className="lg:w-10px lg:h-12 inline-block items-center "/> 
+                <a href="" className="flex items-center">
+                    <img src={logo} alt="" className="lg:w-10px lg:h-12 sm:w-44 sm:h-14 inline-block items-center "/> 
                 </a>
                 <ul className="md:flex gap-x-6 2xl:ml-44 hidden font-lato text-base ml-14 2xl:gap-x-10">
                     {navItems.map((navItem) => (
                         <li key={navItem.link} >
                         {navItem.subMenu ? (
                             <div className="relative group inline-block">
-                            <button className="cursor-pointer text-base text-gray-900 hover:text-Cprimary first:font-medium divide-y md:flex ">
+                            <button className="cursor-pointer text-base text-texteCouleur hover:text-Cprimary first:font-medium divide-y md:flex ">
                                 {navItem.link} <span className="ml-2">&#9662;</span> {/* Flèche vers le bas */}
                             </button>
                              <div className="absolute hidden space-y-2 p-2 divide-y divide-gray-300 group-hover:block right-0 z-10 mt-0 w-44 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" > 
@@ -107,10 +107,10 @@ const Navbar = ()=>{
                  </ul>
 
                 {/** bouton*/}
-                <div className="space-x-10  lg:flex items-center flex justify-center ">
+                <div className="space-x-10  lg:flex items-center flex justify-center -ml-16  px-5">
                     {/* <a href="./Connection" className=" flex  justify-center ml-10 lg:flex items-center text-brandPrimary hover:text-Csecondary1">Login</a> */}
-                    <Link to="/login" className="flex justify-center ml-10 lg:flex items-center text-texteCouleur  hover:text-Csecondary1">Login</Link>
-                    <button className="bg-Cprimary  text-white py-2 px-4  transition-all duration-300 rounded hover:bg-Csecondary1 animate"> <a href="/login">Sign up</a> </button>
+                    <Link to="/login" className="flex justify-center ml-12 lg:flex items-center text-texteCouleur  hover:text-Csecondary1">Login</Link>
+                    <button className="bg-Cprimary text-white h-10 w-20  transition-all duration-300 rounded hover:bg-Csecondary1 animate"> <a href="/login" className=" ">Sign up</a> </button>
                 </div>
                {/** menu pour tout les divices*/}
                <div className="md:hidden cursor-pointer lg:hidden">
@@ -135,7 +135,7 @@ const Navbar = ()=>{
                         >
                             {link}
                         </Link>
-                        <div className={"ml-3 absolute hidden space-y-2 p-divide-y divide-gray-300 group-hover:block rig right-64 z-10 mt-0 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" }>
+                        <div className={"ml-3 absolute hidden space-y-2 p-divide-y divide-gray-300 group-hover:block right-56 lg:right-64 z-10 mt-0 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" }>
                             {subMenu}
                         </div>
                     </div>
