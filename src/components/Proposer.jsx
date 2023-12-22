@@ -8,21 +8,21 @@ const Proposer = () => {
     return (
         <div>
      
-            <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto my-8 mt-40'>
+            <div className='px-4 lg:px-14 max-w-screen-2x1 mx-auto my-8 mt-20 bg-neutralSilver'>
                 
                 <div className='md:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center gap-12'>
                 <div>
                     <img src={aboutImage} alt="" />
                 </div>
-                    <div className='md:w-3/5 mx-auto text-center md:text-left'>
-                        <h2 className='text-4xl font-semibold mb-4 text-neutralDGrey  md:w-4/5'>À Propos d'EFFICACE</h2>
+                    <div className='md:w-3/5 mx-auto text-center md:text-left '>
+                        <h2 className='text-2xl font-semibold mb-2 text-neutralDGrey  md:w-4/5'>À Propos d'EFFICACE</h2>
                         <p className='md:w-4/4 text-base text-neutralDGrey mb-8 text-justify' >
                             
                         Bienvenue chez EFFICACE, votre partenaire de confiance dans le domaine de l'immobilier depuis 2023. Nous sommes fiers de mettre à votre disposition notre expertise et notre passion pour l'immobilier, afin de vous accompagner dans toutes vos transactions immobilières.
-                        <h3 className='text-3xl font-semibold mb-4 text-neutralDGrey md:w-4/5'>Notre Mission</h3>
+                        <h3 className='text-3xl font-semibold mb-2 text-neutralDGrey md:w-4/5 mt-3'>Notre Mission</h3>
                         Chez EFFICACE, notre mission est de vous offrir un service immobilier de premier ordre, basé sur l'intégrité, la transparence et le professionnalisme. Nous comprenons que l'achat, la vente ou la location d'une propriété est l'une des décisions les plus importantes de votre vie, c'est pourquoi nous nous engageons à vous fournir un accompagnement personnalisé et des solutions sur mesure.
                         </p>
-                        <button className='btn-primary px-4 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4'>En savoir plus</button>
+                        <button className='btn-primary px-4 py-2 bg-Cprimary text-white rounded hover:bg-Csecondary1 transition-all duration-300 hover:-translate-y-4'>En savoir plus</button>
                     </div>
                 
             </div>

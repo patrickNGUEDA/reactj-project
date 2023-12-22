@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="40700__entities" id="40700__entities">
+	<SimpleField name="Layer" type="string"></SimpleField>
+	<SimpleField name="PaperSpace" type="int"></SimpleField>
+	<SimpleField name="SubClasses" type="string"></SimpleField>
+	<SimpleField name="Linetype" type="string"></SimpleField>
+	<SimpleField name="EntityHandle" type="string"></SimpleField>
+	<SimpleField name="Text" type="string"></SimpleField>
+</Schema>
+<Folder><name>40700__entities</name>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">0</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">A2</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.8263060285971,3.98449611459705 9.82638345772222,3.98428065290562 9.82621630913177,3.98421994196765 9.82613878988797,3.98443540374217 9.8263060285971,3.98449611459705</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">MAJ APRES LE 13.01.2023</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">A3</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82570997570524,3.98415902006195 9.82574504363259,3.98406162335967 9.82559704288697,3.98400790362238 9.82556199295674,3.9841053003035 9.82570997570524,3.98415902006195</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">MAJ APRES LE 13.01.2023</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">A4</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82596875635832,3.9838759566183 9.82604244966118,3.98367172471619 9.82593658309086,3.98363339501436 9.82586290773113,3.98383758166413 9.82596875635832,3.9838759566183</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">MAJ APRES LE 13.01.2023</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">A5</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82597955305712,3.9836108183623 9.82604150802838,3.98344107234005 9.82582913491743,3.98336389793281 9.82576788269737,3.98353386034305 9.82597955305712,3.9836108183623</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">0</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">A6</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82577813122843,3.98407393778932 9.82585086974791,3.98386965257651 9.82571285263904,3.98381930599409 9.82565518705806,3.98384643847384 9.8255969529299,3.98400802131003 9.82577813122843,3.98407393778932</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">MAJ APRES LE 13.01.2023</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">A7</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82614526710327,3.98394018612147 9.82621895136336,3.98373596326672 9.82604244078007,3.98367185136825 9.82596879239705,3.98387596562798 9.82614526710327,3.98394018612147</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">MAJ APRES LE 13.01.2023</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">A8</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82614919694367,3.98367190679744 9.82621051198248,3.98350179052932 9.82604103901087,3.98344043959617 9.82597972393656,3.98361055585822 9.82614919694367,3.98367190679744</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="Linetype">ByBlock</SimpleData>
+		<SimpleData name="EntityHandle">A9</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82683648978443,3.98468873946292 9.82689415434155,3.98466150052768 9.82695632201154,3.98448868037976 9.82678490456342,3.98442648900291 9.82670739592546,3.98464188873069 9.82683648978443,3.98468873946292</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="Linetype">ByBlock</SimpleData>
+		<SimpleData name="EntityHandle">AA</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82683648978443,3.98468873946292 9.82689415434155,3.98466150052768 9.82718491065187,3.98385326191932 9.82582949118521,3.98336165192376 9.82553880386834,3.98416970591616 9.82556583720307,3.9842276263591 9.82683648978443,3.98468873946292</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="Linetype">ByBlock</SimpleData>
+		<SimpleData name="EntityHandle">AB</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82577737076934,3.98430438885202 9.82585093597492,3.98410022865683 9.82574494344715,3.98406176650495 9.82567147247966,3.98426596228571</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">AC</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.8267069648243,3.98464318633815 9.82678446084416,3.98442770880612 9.82661718446995,3.98436713315452 9.82653968038247,3.9845826206155 9.8267069648243,3.98464318633815</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">MAJ JUILLET 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">AD</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82638963154217,3.9845265957526 9.8264671261715,3.98431119115054 9.8263834604576,3.98428085615754 9.82630605539334,3.9844962513608 9.82638963154217,3.9845265957526</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">MAJ OCT 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="Linetype">ByBlock</SimpleData>
+		<SimpleData name="EntityHandle">AE</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82613889375447,3.98443547257766 9.82621630821807,3.98422016735208 9.82594856007644,3.98412309712456 9.82587114554184,3.98433840233803 9.82613889375447,3.98443547257766</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">MAJ NOV 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="Linetype">ByBlock</SimpleData>
+		<SimpleData name="EntityHandle">AF</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82587122577413,3.98433830297294 9.82594856007644,3.98412309712456 9.8258549486557,3.98408913615155 9.82577750222996,3.98430437681244 9.82587122577413,3.98433830297294</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#40700__entities">
+		<SimpleData name="Layer">0</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">B0</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82586290382234,3.98383757988035 9.82593658451543,3.98363339847784 9.8257556176244,3.98356788265908 9.82569736863505,3.98372949400343 9.82572437073581,3.9837873504688 9.82586290382234,3.98383757988035</coordinates></LineString>
+  </Placemark>
+</Folder>
+</Document></kml>

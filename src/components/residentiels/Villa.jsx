@@ -12,6 +12,8 @@ import {
 } from "react-icons/fa";
 import { GiPoolDive } from "react-icons/gi";
 import { MdPriceCheck } from "react-icons/md";
+import ReactPaginate from "react-paginate";
+import { BsChevronBarLeft, BsChevronBarRight } from "react-icons/bs";
 
 const Villa = () => {
   const [isOpenMin, setIsOpenMin] = useState(false);
@@ -25,21 +27,69 @@ const Villa = () => {
   const [selectedVilla, setSelectedVilla] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [referenceNumber, setReferenceNumber] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 5; // Par exemple, 9 éléments par page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected + 1);
+  };
 
   // Liste des prix min pour chaque état
   const prixMinParEtat = {
-    vendre: ["3,000", "5,000", "10,000", "15,000",
-    "25,000", "30,000","100,000", "700,000","900,000", "1,000,000","2,500,000","70,000,000","70,000" /* ... autres valeurs pour A vendre */],
-    louer: ["10,000", "35,000", "20,000","70,000", "120,000","300,000","700,000","1,000,000"/* ... autres valeurs pour A louer */],
+    vendre: [
+      "3,000",
+      "5,000",
+      "10,000",
+      "15,000",
+      "25,000",
+      "30,000",
+      "100,000",
+      "700,000",
+      "900,000",
+      "1,000,000",
+      "2,500,000",
+      "70,000,000",
+      "70,000" /* ... autres valeurs pour A vendre */,
+    ],
+    louer: [
+      "10,000",
+      "35,000",
+      "20,000",
+      "70,000",
+      "120,000",
+      "300,000",
+      "700,000",
+      "1,000,000" /* ... autres valeurs pour A louer */,
+    ],
   };
   // Liste des prix max pour chaque état
   const prixMaxParEtat = {
     vendre: [
       "15,000",
       "25,000",
-      "30,000","150,000","100,000", "700,000","900,000","1,000,000","1,110,000","45,000,000", "100,000,000","1,000,000,000"/* ... autres valeurs pour A vendre */,
+      "30,000",
+      "150,000",
+      "100,000",
+      "700,000",
+      "900,000",
+      "1,000,000",
+      "1,110,000",
+      "45,000,000",
+      "100,000,000",
+      "1,000,000,000" /* ... autres valeurs pour A vendre */,
     ],
-    louer: ["50,000", "100,000", "70,000", "200,000","500,000","800,00","1,200,000"/* ... autres valeurs pour A louer */],
+    louer: [
+      "50,000",
+      "100,000",
+      "70,000",
+      "200,000",
+      "500,000",
+      "800,00",
+      "1,200,000" /* ... autres valeurs pour A louer */,
+    ],
   };
 
   const handleVillaClick = (Villa) => {
@@ -123,146 +173,196 @@ const Villa = () => {
   };
   const Villa = [
     {
-      id: 1,
-      title: "T",
+      numReference: 1,
+      title: "Villa F4",
       ville: "Douala",
       pays: "Camroun",
       quartier: "Mbangue",
       localisation: "derriere le college NAl",
       description: "",
-      image: "/src/assets/exploration/terrain.jpg ",
+      image: "/src/assets/villas/villa1-4.jpg ",
       images: [
-        "/src/assets/galerieTerrain/terrain1.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
+        "/src/assets/villas/villa1-1.jpg",
+        "/src/assets/villas/villa1-2.jpg",
+        "/src/assets/villas/villa1-3.jpg",
+        "/src/assets/villas/villa1-4.jpg",
+        "/src/assets/villas/villa1-5.jpg",
+        "/src/assets/villas/villa1-6.jpg",
         // ... autres liens d'images
       ],
-      alt: "image terrain",
+      alt: "img villa",
       pageUrl: "/login",
-      surface: "50.000m²",
+      surface: "121,000m²",
       nbreChambre: "5",
       nbreDouche: "2",
-      parking: "3",
+      parking: "2",
       piscine: "non",
-      prix: "200,000fcfa/mois",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "500,000 fcfa",
+      permiBatir: "810,000fcfa",
+      grosOeuvre: "10,970,000fcfa",
+      finition: "15,900,000fcfa",
+      prixHorsTerrain: "28,180,000fcfa",
+      surfaceTerrain: "230m²",
+      coutTerrain: "4,600,000fcfa",
+      prix: "28,180,000fcfa",
       date: "12/05/2023",
-      etat: "louer",
+      etat: "vendre",
     },
     {
-      id: 2,
-      title: "Ter",
+      numReference: 2,
+      title: "Villa F3",
       ville: "Yaoundé",
       pays: "Camroun",
       quartier: "Etoug-Ebe",
       localisation: "derriere le college NAl",
       description: "",
-      image: "/src/assets/exploration/villa.jpg",
+      image: "/src/assets/villas/villa2-7.png",
       images: [
-        "/src/assets/galerieTerrain/terrain6.jpg",
-        "/src/assets/galerieTerrain/terrain7.jpg",
-        "/src/assets/galerieTerrain/terrain8.jpg",
-        "/src/assets/galerieTerrain/terrain9.jpg",
-        "/src/assets/galerieTerrain/terrain10.jpg",
+        "/src/assets/villas/villa2-1.jpg ",
+        "/src/assets/villas/villa2-2.jpg ",
+        "/src/assets/villas/villa2-3.png ",
+        "/src/assets/villas/villa2-4.png ",
+        "/src/assets/villas/villa2-5.png ",
+        "/src/assets/villas/villa2-6.png ",
+        "/src/assets/villas/villa2-5.png ",
         // ... autres liens d'images
       ],
       alt: "image villa",
       pageUrl: "/login",
-      surface: "400m²",
-      nbreChambre: "5",
+      surface: "104 m²",
+      nbreChambre: "2",
       nbreDouche: "2",
-      parking: "3",
+      parking: "1",
       piscine: "non",
-      prix: "150,000,000fcfa",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "415,000 fcfa",
+      permiBatir: "760,000fcfa",
+      grosOeuvre: "8,840,000fcfa",
+      finition: "12,480,000fcfa",
+      prixHorsTerrain: "22,495,000fcfa",
+      surfaceTerrain: "320m²",
+      coutTerrain: "3,600,000fcfa",
+      prix: "22,495,000fcfa",
       date: "12/05/2023",
       etat: "vendre",
     },
     {
-      id: 3,
-      title: "T",
+      numReference: 3,
+      title: "Villa F1",
       ville: "Yaoundé",
       pays: "Camroun",
       quartier: "Mbangue",
       localisation: "derriere le college NAl",
       description: "",
-      image: "/src/assets/exploration/immeuble.jpg",
+      image: "/src/assets/villas/villa3-6.png",
       images: [
-        "/src/assets/galerieTerrain/terrain11.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
+        "/src/assets/villas/villa3-1.png",
+        "/src/assets/villas/villa3-2.png",
+        "/src/assets/villas/villa3-3.png",
+        "/src/assets/villas/villa3-4.png",
+        "/src/assets/villas/villa3-5.png",
+        "/src/assets/villas/villa3-7.jpg",
         // ... autres liens d'images
       ],
       alt: "image immeuble",
       pageUrl: "/login",
-      surface: "500m²",
-      nbreChambre: "5",
-      nbreDouche: "2",
+      surface: "120 m²",
+      nbreChambre: "3",
+      nbreDouche: "3",
       parking: "3",
       piscine: "non",
-      prix: "350,000fcfa/mois",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "480,000 fcfa",
+      permiBatir: "800,000fcfa",
+      grosOeuvre: "9,600,000fcfa",
+      finition: "15,000,000fcfa",
+      prixHorsTerrain: "25,200,000fcfa",
+      surfaceTerrain: "200m²",
+      coutTerrain: "6,600,000fcfa",
+      prix: "25,200,000fcfa",
+
       date: "12/05/2023",
-      etat: "louer",
+      etat: "vendre",
     },
     {
-      id: 4,
-      title: "T",
+      numReference: 4,
+      title: "villa F5",
       ville: "Yaoundé",
       pays: "Camroun",
       quartier: "Mvog-ada",
       localisation: "derriere le college NAl",
       description: "",
-      image: "/src/assets/exploration/appartement.jpg",
+      image: "/src/assets/villas/villa4-5.jpg ",
       images: [
-        "/src/assets/galerieTerrain/terrain1.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
+        "/src/assets/villas/villa4-1.jpg",
+        "/src/assets/villas/villa4-2.jpg",
+        "/src/assets/villas/villa4-3.jpg",
+        "/src/assets/villas/villa4-4.jpg",
+        "/src/assets/villas/villa4-6.jpg",
+        "/src/assets/villas/villa4-7.jpg",
       ],
-      alt: "image appatement",
+      alt: "img villa",
       pageUrl: "/login",
-      surface: "400m²",
-      nbreChambre: "5",
-      nbreDouche: "2",
-      parking: "3",
+      surface: "175 m²",
+      nbreChambre: "4",
+      nbreDouche: "3",
+      parking: "2",
       piscine: "non",
-      prix: "70,000,000fcfa",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "680,000 fcfa",
+      permiBatir: "925,000fcfa",
+      grosOeuvre: "13,600,000fcfa",
+      finition: "20,000,000fcfa",
+      prixHorsTerrain: "35,605,000fcfa",
+      surfaceTerrain: "320m²",
+      coutTerrain: "5,760,000fcfa",
+      prix: "35,605,000fcfa",
+
       date: "12/05/2023",
       etat: "vendre",
     },
     {
-      id: 5,
-      title: "T",
+      numReference: 5,
+      title: "Villa F5",
       ville: "Bafoussam",
       pays: "Camroun",
       quartier: "Tamdja",
       localisation: "derriere le college NAl",
       description: "",
-      image: "/src/assets/exploration/appartement.jpg",
+
+      image: "/src/assets/villas/villa5-3.png ",
       images: [
-        "/src/assets/galerieTerrain/terrain1.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
-        // ... autres liens d'images
+        "/src/assets/villas/villa5-1.png ",
+        "/src/assets/villas/villa5-2.png ",
+        "/src/assets/villas/villa5-4.jpg ",
       ],
-      alt: "image appatement",
+      alt: "img villa",
       pageUrl: "/login",
-      surface: "1000m²",
-      nbreChambre: "5",
-      nbreDouche: "2",
-      parking: "3",
+      surface: "150 m²",
+      nbreChambre: "4",
+      nbreDouche: "3",
+      parking: "2",
       piscine: "non",
-      prix: "200.000fcfa/mois",
-      date: "12/05/2023",
-      etat: "louer",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "600,000 fcfa",
+      permiBatir: "875,00fcfa",
+      grosOeuvre: "12,000,000fcfa",
+      finition: "18,000,000fcfa",
+      prixHorsTerrain: "31,475,000fcfa",
+      surfaceTerrain: "300m²",
+      coutTerrain: "5,400,000fcfa",
+      prix: "31,475,000fcfa/",
+      date: "12/12/2023",
+      etat: "vendre",
     },
     {
-      id: 6,
+      numReference: 6,
       title: "T",
       ville: "Bertoua",
       pays: "Camroun",
@@ -281,17 +381,26 @@ const Villa = () => {
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "300m²",
-      nbreChambre: "5",
-      nbreDouche: "2",
-      parking: "0",
+      surface: "150 m²",
+      nbreChambre: "4",
+      nbreDouche: "3",
+      parking: "2",
       piscine: "non",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "600,000 fcfa",
+      permiBatir: "875,00fcfa",
+      grosOeuvre: "12,000,000fcfa",
+      finition: "18,000,000fcfa",
+      prixHorsTerrain: "31,475,000fcfa",
+      surfaceTerrain: "300m²",
+      coutTerrain: "5,400,000fcfa",
       prix: "9,000,000fcfa",
       date: "12/05/2023",
       etat: "vendre",
     },
     {
-      id: 7,
+      numReference: 7,
       title: "T",
       ville: "Douala",
       pays: "Camroun",
@@ -310,17 +419,26 @@ const Villa = () => {
 
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "400m²",
-      nbreChambre: "5",
-      nbreDouche: "2",
+      surface: "150 m²",
+      nbreChambre: "4",
+      nbreDouche: "3",
       parking: "2",
       piscine: "non",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "600,000 fcfa",
+      permiBatir: "875,00fcfa",
+      grosOeuvre: "12,000,000fcfa",
+      finition: "18,000,000fcfa",
+      prixHorsTerrain: "31,475,000fcfa",
+      surfaceTerrain: "300m²",
+      coutTerrain: "5,400,000fcfa",
       prix: "35,000,000FCFA",
       date: "12/05/2023",
       etat: "vendre",
     },
     {
-      id: 8,
+      numReference: 8,
       title: "T",
       ville: "Yaoundé",
       pays: "Camroun",
@@ -338,17 +456,26 @@ const Villa = () => {
         // ... autres liens d'images
       ],
       pageUrl: "/login",
-      surface: "1000m²",
-      nbreChambre: "6",
-      nbreDouche: "2",
-      parking: "3",
+      surface: "150 m²",
+      nbreChambre: "4",
+      nbreDouche: "3",
+      parking: "2",
       piscine: "non",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "600,000 fcfa",
+      permiBatir: "875,00fcfa",
+      grosOeuvre: "12,000,000fcfa",
+      finition: "18,000,000fcfa",
+      prixHorsTerrain: "31,475,000fcfa",
+      surfaceTerrain: "300m²",
+      coutTerrain: "5,400,000fcfa",
       prix: "500,000fcfa/mois",
       date: "12/05/2023",
       etat: "louer",
     },
     {
-      id: 9,
+      numReference: 9,
       title: "T",
       ville: "Maroua",
       pays: "Camroun",
@@ -366,17 +493,26 @@ const Villa = () => {
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "400m²",
+      surface: "150 m²",
       nbreChambre: "4",
-      nbreDouche: "2",
-      parking: "3",
+      nbreDouche: "3",
+      parking: "2",
       piscine: "non",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "600,000 fcfa",
+      permiBatir: "875,00fcfa",
+      grosOeuvre: "12,000,000fcfa",
+      finition: "18,000,000fcfa",
+      prixHorsTerrain: "31,475,000fcfa",
+      surfaceTerrain: "300m²",
+      coutTerrain: "5,400,000fcfa",
       prix: "600,000,000fcfa",
       date: "12/05/2023",
       etat: "vendre",
     },
     {
-      id: 10,
+      numReference: 10,
       title: "T",
       ville: "Maroua",
       pays: "Camroun",
@@ -391,17 +527,26 @@ const Villa = () => {
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "100.000m²",
-      nbreChambre: "5",
-      nbreDouche: "2",
-      parking: "3",
+      surface: "150 m²",
+      nbreChambre: "4",
+      nbreDouche: "3",
+      parking: "2",
       piscine: "non",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "600,000 fcfa",
+      permiBatir: "875,00fcfa",
+      grosOeuvre: "12,000,000fcfa",
+      finition: "18,000,000fcfa",
+      prixHorsTerrain: "31,475,000fcfa",
+      surfaceTerrain: "300m²",
+      coutTerrain: "5,400,000fcfa",
       prix: "800,000fcfa/mois",
       date: "12/05/2023",
       etat: "louer",
     },
     {
-      id: 11,
+      numReference: 11,
       title: "T",
       ville: "Maroua",
       pays: "Camroun",
@@ -416,11 +561,20 @@ const Villa = () => {
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "100.000m²",
-      nbreChambre: "7",
+      surface: "150 m²",
+      nbreChambre: "4",
       nbreDouche: "3",
-      parking: "3",
+      parking: "2",
       piscine: "non",
+      salon: "1",
+      salleManger: "1",
+      projetArchi: "600,000 fcfa",
+      permiBatir: "875,00fcfa",
+      grosOeuvre: "12,000,000fcfa",
+      finition: "18,000,000fcfa",
+      prixHorsTerrain: "31,475,000fcfa",
+      surfaceTerrain: "300m²",
+      coutTerrain: "5,400,000fcfa",
       prix: "1100000fcfa/mois",
       date: "12/05/2023",
       etat: "louer",
@@ -433,13 +587,18 @@ const Villa = () => {
     const isLocationMatch =
       !selectedLocation ||
       villa.ville.toLowerCase() === selectedLocation.toLowerCase();
-      const isPriceRangeMatch =
+    const isPriceRangeMatch =
       (!selectedPrixMin ||
-        parseFloat(villa.prix.replace(/,/g, ''), 10) >= parseFloat(selectedPrixMin.replace(/,/g, ''), 10)) &&
+        parseFloat(villa.prixHorsTerrain.replace(/,/g, ""), 10) >=
+          parseFloat(selectedPrixMin.replace(/,/g, ""), 10)) &&
       (!selectedPrixMax ||
-        parseFloat(villa.prix.replace(/,/g, ''), 10) <= parseFloat(selectedPrixMax.replace(/,/g, ''), 10));
+        parseFloat(villa.prixHorsTerrain.replace(/,/g, ""), 10) <=
+          parseFloat(selectedPrixMax.replace(/,/g, ""), 10));
     return isTypeMatch && isLocationMatch && isPriceRangeMatch;
   });
+  const paginatedVilla = filteredVilla.slice(startIndex, endIndex);
+  const totalVilla = filteredVilla.length; // utilisez la liste complète ou filtrée selon vos besoins
+const totalPages = Math.ceil(totalVilla / itemsPerPage);
 
   return (
     <>
@@ -533,18 +692,23 @@ const Villa = () => {
               </button>
               {isOpenMin && (
                 <div className="bg-white absolute lg:top-16  top-28 flex-col items-start rounded-lg p-2 w-full overflow-y-auto max-h-52 border-2 z-10">
-                  {prixMinParEtat[etatSelectionne]?.sort((a, b) => parseFloat(a.replace(/,/g, ""), 10) - parseFloat(b.replace(/,/g, ""), 10))
-                  .map((prixmin, i) => (
-                    <div
-                      className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
-                      key={i}
-                      onClick={() => handleSelection(prixmin)}
-                    >
-                      <h3 className="font-semibold mr-44 px-0 text-sm text-Cprimary">
-                        {prixmin}
-                      </h3>
-                    </div>
-                  ))}
+                  {prixMinParEtat[etatSelectionne]
+                    ?.sort(
+                      (a, b) =>
+                        parseFloat(a.replace(/,/g, ""), 10) -
+                        parseFloat(b.replace(/,/g, ""), 10)
+                    )
+                    .map((prixmin, i) => (
+                      <div
+                        className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
+                        key={i}
+                        onClick={() => handleSelection(prixmin)}
+                      >
+                        <h3 className="font-semibold mr-44 px-0 text-sm text-Cprimary">
+                          {prixmin}
+                        </h3>
+                      </div>
+                    ))}
                 </div>
               )}
             </div>
@@ -558,7 +722,7 @@ const Villa = () => {
                 onClick={handleDropdownClickMax}
                 className="bg-Csecondary1 p-0 flex w-full items-center justify-between font-semibold text-base rounded-lg tracking-wider border-4 border-transparent active:border-Cprimary duration-300 active:text-Cprimary text-white"
               >
-                {selectedPrixMax ? selectedPrixMax : "Prix max"}
+                {selectedPrixMax ? selectedPrixMax : "Prix max "}
                 {!isOpenMax ? (
                   <AiOutlineCaretDown className="h-8" />
                 ) : (
@@ -570,9 +734,16 @@ const Villa = () => {
                   {prixMaxParEtat[etatSelectionne]
                     ?.filter(
                       (price) =>
-                      parseFloat(price.replace(/,/g, ""), 10) >
-                      (selectedPrixMin ? parseFloat(selectedPrixMin.replace(/,/g, ""), 10) : 0)
-                    ).sort((a, b) => parseFloat(a.replace(/,/g, ""), 10) - parseFloat(b.replace(/,/g, ""), 10))
+                        parseFloat(price.replace(/,/g, ""), 10) >
+                        (selectedPrixMin
+                          ? parseFloat(selectedPrixMin.replace(/,/g, ""), 10)
+                          : 0)
+                    )
+                    .sort(
+                      (a, b) =>
+                        parseFloat(a.replace(/,/g, ""), 10) -
+                        parseFloat(b.replace(/,/g, ""), 10)
+                    )
                     .map((price, i) => (
                       <div
                         className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
@@ -604,15 +775,15 @@ const Villa = () => {
             <div className="px-16 lg:px-14 max-w-screen-2xl  mx-auto  w-screen py-1 mt-7">
               <div>
                 <div className="grid lg:grid-cols-3 gap-7 mb-20 mt-3 items-center mr-3 ml-16">
-                  {filteredVilla.length === 0 ? (
+                  {paginatedVilla.length === 0 ? (
                     <p className="text-Cred-primary font-semibold text-center text-xl">
                       Aucune villa ne correspond aux critères de recherche
                       sélectionnés.
                     </p>
                   ) : (
-                    filteredVilla.map((villa, index) => {
+                    paginatedVilla.map((villa, index) => {
                       // Créez un numéro de référence alphanumérique en combinant le titre et l'index
-                      const paddedIndex = `00${index + 1}`.slice(-3);
+                      const paddedIndex = `00${villa.numReference}`.slice(-3);
                       const referenceNumber = `${
                         villa.etat === "vendre" ? "VV" : "VL"
                       }-${paddedIndex}`;
@@ -620,7 +791,7 @@ const Villa = () => {
 
                       return (
                         <div
-                          key={villa.id}
+                          key={villa.numReference}
                           className=" md:w-2/3 lg:w-full  2xl:w-full mx-auto bg-Cprimary rounded-2xl shadow-2xl mb-2 hover:scale-95 transition-all duration-300 -ml-28 "
                         >
                           <div className="relative ">
@@ -650,7 +821,7 @@ const Villa = () => {
                                 >
                                   {referenceNumber}
                                 </div>
-                                <h3 className="lg:ml-36 ml-28 italic text-base text-Cprimary bg-white rounded-lg px-1 py-1">
+                                <h3 className="lg:ml-36 ml-16 italic text-base text-Cprimary bg-white rounded-lg px-1 py-1">
                                   A {villa.etat}
                                 </h3>
                               </h3>
@@ -659,15 +830,14 @@ const Villa = () => {
                                   className="mr-2 mt-1"
                                   style={{ color: "white" }}
                                 />
-                                {villa.pays},{villa.ville}-{villa.quartier},
-                                {villa.localisation}
+                                {villa.ville}-{villa.pays}
                               </p>
                               <p className=" px-1 text-base font-serif text-white text-justify  flex ">
                                 <MdPriceCheck
                                   className=" -ml-1 h-8 w-8"
                                   style={{ color: "white" }}
                                 />
-                                {villa.prix}
+                                {villa.prixHorsTerrain}
                               </p>
                               <p className=" px-1 text-base font-serif text-white text-justify mr-2 flex ">
                                 <FaChartArea
@@ -765,18 +935,18 @@ const Villa = () => {
                   >
                     {selectedVilla && (
                       <div className="p-4">
-                        <div className="flex sticky top-1">
-                          <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-20 p-2 px-2">
+                        <div className="flex sticky top-0 bg-white gap-x-3 lg:top-0 xs:-ml-9 xs:gap-0 xs:w">
+                          <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-20 p-2 px-2 xs:ml-7 xs:text-sm xs:h xs:w-16">
                             {referenceNumber}
                           </h3>
-                          <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-24 p-2 px-2 ml-3">
+                          <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-24 p-2 px-2 ml-3 xs:text-sm xs:w-16 xs:h">
                             A {selectedVilla.etat}
                           </h3>
                           <a
                             href={`https://wa.me/237686741680?text=Bonjour%20!%20Je%20suis%20intéressé%20par%20votre%20service,${referenceNumber}`}
                             className=""
                           >
-                            <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-44 px-2 p-2 ml-3 flex ">
+                            <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-44 px-2 p-2 ml-3 flex xs:text-sm xs:w-32">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 height="1em"
@@ -793,20 +963,9 @@ const Villa = () => {
                         <img
                           src={selectedVilla.image}
                           alt={selectedVilla.title}
-                          className="object-cover w-full h-[500px] rounded-md"
+                          className="object-cover w-full h-full rounded-md"
                         />
-                        <p className="text-black">
-                          {selectedVilla.pays} -{selectedVilla.ville}
-                        </p>
-                        <p className="mb-5 font-normal text-texteCouleur text-lg text-justify ">
-                          Notre équipe d'experts en immobilier est composée de
-                          professionnels passionnés qui connaissent le marché
-                          local comme leur poche. Chacun de nos agents est
-                          dévoué à vous aider à atteindre vos objectifs
-                          immobiliers, que vous cherchiez à acheter votre
-                          première maison, à vendre votre propriété existante,
-                          ou à investir dans des opportunités immobilières.
-                        </p>
+
                         <div className="px-4 lg:-ml-20 max-w-screen-2x1 mx-auto my-8 mt-4">
                           <div className="md:w-11/12 mx-auto flex flex-col md:flex-row gap-2">
                             <div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
@@ -894,21 +1053,135 @@ const Villa = () => {
                             </div>
 
                             <div className="md:w-2/3 mx-auto text-center md:text-left ">
-                              <h2 className="text-2xl font-semibold mb-4 text-neutralDGrey md:w-4/5 px-5 ">
-                                À Propos d'EFFICACE
-                              </h2>
                               <p className="md:w-[500px] px-5 mb-5 font-normal text-texteCouleur text-lg text-justify">
-                                Bienvenue chez EFFICACE, votre partenaire de
-                                confiance dans le domaine de l'immobilier depuis
-                                2023. Nous sommes fiers de mettre à votre
-                                disposition notre expertise et notre passion
-                                pour l'immobilier, afin de vous accompagner dans
-                                toutes vos transactions immobilières.
+                                Cette villa {selectedVilla.title} incarne le
+                                summum du luxe moderne et offre une opportunité
+                                unique d'acquérir une propriété exceptionnelle.
+                                Pour plus d'informations ou pour planifier une
+                                visite, veuillez nous contacter via{" "}
+                                <a
+                                  className="text-Cprimary underline italic "
+                                  href={`https://wa.me/237686741680?text=Bonjour%20!%20Je%20suis%20intéressé%20par%20votre%20service,${referenceNumber}`}
+                                >
+                                  {" "}
+                                  +237 686 741 680
+                                </a>
+                                . Vivez le luxe au quotidien dans cette villa
+                                d'exception. <br />
+                                <h1 className="text-2xl text-center font-poppins text-black m-5 font-semibold underline">
+                                  Caractéristiques Principales :
+                                </h1>
+                                <div className=" px-8">
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    {selectedVilla.salon}
+                                    <span className=" text-Cprimary italic m-2">
+                                      Salon
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    {selectedVilla.salleManger}
+                                    <span className=" text-Cprimary italic m-2">
+                                      Salle a manger
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    {selectedVilla.nbreChambre}
+                                    <span className=" text-Cprimary italic m-2">
+                                      Chambres
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    {selectedVilla.parking}
+                                    <span className=" text-Cprimary italic m-2">
+                                      Parking
+                                    </span>{" "}
+                                  </h2>
+
+                                  <h2 className=" text-Csecondary1 font-semibold ">
+                                    {selectedVilla.nbreDouche}
+                                    <span className=" text-Cprimary italic m-2">
+                                      Salle d'eau
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Piscine :
+                                    <span className=" text-Cprimary italic m-1"></span>{" "}
+                                    {selectedVilla.piscine}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Surface bati :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedVilla.surface}
+                                    </span>{" "}
+                                  </h2>
+
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Terrain :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedVilla.surfaceTerrain}
+                                    </span>{" "}
+                                  </h2>
+                                </div>
+                                <div className="px-8">
+                                  <h1 className="text-2xl text-center font-poppins text-black m-5 font-semibold underline">
+                                    Détails Financiers :
+                                  </h1>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Cout du terrain :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedVilla.coutTerrain}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Projets architecturaux :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedVilla.projetArchi}
+                                    </span>{" "}
+                                  </h2>
+
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Communes et permis de batir:
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedVilla.permiBatir}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Gros oeuvre :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedVilla.grosOeuvre}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Finition :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedVilla.finition}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-bold">
+                                    Cout total de realisation hors terrain :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedVilla.prixHorsTerrain}
+                                    </span>{" "}
+                                  </h2>
+                                </div>
                               </p>
 
-                              <button className="btn-primary px-4 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4">
-                                En savoir plus
-                              </button>
+                              <div className="  px-14">
+                                <a href="/login">
+                                  {" "}
+                                  <button className="btn-primary xs:w-full w-24 py-2 bg-Cprimary text-white rounded hover:bg-Csecondary1  transition-all duration-300 hover:-translate-y-4">
+                                    Acheter
+                                  </button>
+                                </a>
+                                <a
+                                  href={`https://wa.me/237686741680?text=Bienvenue chez EFFICACE S.A, votre partenaire immobilier de confiance. Nous sommes ravis de vous accompagner dans votre quête d'informations sur cette villa ${selectedVilla.title} moderne exceptionnelle,${referenceNumber}. Nous vous remercions de choisir EFFICACE S.A comme votre partenaire immobilier. Notre équipe vous contactera dans les plus brefs délais pour vous fournir toutes les informations nécessaires et pour organiser une rencontre si nécessaire .`}
+                                >
+                                  {" "}
+                                  <button className="btn-primary xs:w-full w-36 py-2 bg-Cprimary text-white rounded hover:bg-Csecondary1 transition-all duration-300 hover:-translate-y-4 ml-14 xs:m-8  xs:-ml-1">
+                                    En savoir plus
+                                  </button>
+                                </a>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -987,8 +1260,28 @@ const Villa = () => {
             </div>
           </div>
         </div>
-
-
+        <div className="mt-16 px-5">
+          <ReactPaginate
+            breakLabel={<span className="mr-4">...</span>}
+            nextLabel={
+              <span className="w-10 h-10 flex items-center justify-center bg-gray-300 rounded-md ">
+                <BsChevronBarRight />
+              </span>
+            }
+            // onPageChange={1}
+            onPageChange={handlePageChange}
+            pageRangeDisplayed={5}
+            pageCount={totalPages}
+            previousLabel={
+              <span className="w-10 h-10 flex items-center justify-center bg-gray-300 rounded-md mr-2">
+                <BsChevronBarLeft />
+              </span>
+            }
+            containerClassName="flex items-center justify-center mt-8 mb-6"
+            pageClassName="block border- border-solid border-Cprimary hover:bg-Cprimary w-10 h-10 flex items-center justify-center rounded-md mr-2"
+            activeClassName="bg-gray-400 text-white"
+          />
+        </div>
         {/* <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto bg-neutralSilver w-screen py-1 mt-0">
           <div className="grid lg:grid-cols-3 gap-7 mb-20 mt-3 items-center mr-3 ml-2 ">
             {Villa.map((villa, index) => {

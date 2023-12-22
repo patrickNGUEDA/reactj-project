@@ -2,17 +2,12 @@ import React, { useState, Fragment } from "react";
 import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
 import Modal from "react-modal";
 import ModalVilla from "../modals/ModalVilla";
-import {
-  FaMapMarkerAlt,
-  FaBed,
-  
-  FaCar,
-  FaChartArea,
-} from "react-icons/fa";
+import { FaMapMarkerAlt, FaBed, FaCar, FaChartArea } from "react-icons/fa";
 
 import { MdPriceCheck, MdApartment } from "react-icons/md";
 import { RiBuilding4Fill } from "react-icons/ri";
-
+import ReactPaginate from "react-paginate";
+import { BsChevronBarLeft, BsChevronBarRight } from "react-icons/bs";
 
 const Immeuble = () => {
   const [isOpenMin, setIsOpenMin] = useState(false);
@@ -26,6 +21,11 @@ const Immeuble = () => {
   const [selectedImmeuble, setSelectedImmeuble] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [referenceNumber, setReferenceNumber] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 5; // Par exemple, 9 éléments par page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
   // Liste des prix min pour chaque état
   const prixMinParEtat = {
@@ -34,11 +34,11 @@ const Immeuble = () => {
       "5,000",
       "10,000",
       "15,000",
-      "20,000" ,
+      "20,000",
       "25,000",
       "30,000",
       "40,000",
-      "50,000" ,
+      "50,000",
       "60,000",
       "70,000",
       "80,000",
@@ -51,7 +51,7 @@ const Immeuble = () => {
       "8,000,000",
       "10,000,000",
       "700,000,000",
-      "35,000,000,000"/* ... autres valeurs pour A vendre */,
+      "35,000,000,000" /* ... autres valeurs pour A vendre */,
     ],
     louer: [
       "10,000",
@@ -64,7 +64,7 @@ const Immeuble = () => {
       "700,000",
       "9,000,000",
       "800,000,000",
-      "10,000,000,000"/* ... autres valeurs pour A louer */,
+      "10,000,000,000" /* ... autres valeurs pour A louer */,
     ],
   };
   // Liste des prix max pour chaque état
@@ -74,7 +74,7 @@ const Immeuble = () => {
       "25,000",
       "30,000",
       "40,000",
-      "50,000" ,
+      "50,000",
       "60,000",
       "70,000",
       "80,000",
@@ -90,7 +90,7 @@ const Immeuble = () => {
       "250,000,000",
       "75,000,000",
       "400,000,000",
-      "400,000,000,000"/* ... autres valeurs pour A vendre */,
+      "400,000,000,000" /* ... autres valeurs pour A vendre */,
     ],
     louer: [
       "50,000",
@@ -106,7 +106,6 @@ const Immeuble = () => {
       "15,000,000000" /* ... autres valeurs pour A louer */,
     ],
   };
-
 
   const handleImmeubleClick = (Immeuble) => {
     const paddedIndex = `00${filteredImmeuble.indexOf(Immeuble) + 1}`.slice(-3);
@@ -142,6 +141,11 @@ const Immeuble = () => {
       );
     }
   };
+
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected + 1);
+  };
+
   const locations = ["Douala", "Yaoundé", "Bafoussam", "Maroua", "Bertoua"];
   // Fonction pour gérer la sélection d'un état
   const handlePropertyTypeChange = (etat) => {
@@ -189,134 +193,193 @@ const Immeuble = () => {
   };
   const Immeuble = [
     {
-      id: 1,
-      title: "T",
+      numReference: 1,
+      title: "Immeuble",
       ville: "Douala",
       pays: "Camroun",
       quartier: "Mbangue",
       localisation: "derriere le college NAl",
       description: "",
-      image: "/src/assets/exploration/terrain.jpg ",
+      image: "/src/assets/immeubles/im1-1.jpg ",
       images: [
-        "/src/assets/galerieTerrain/terrain1.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
+        "/src/assets/immeubles/im1-3.jpg",
+        "/src/assets/immeubles/im1-4.jpg",
+        "/src/assets/immeubles/im1-2.jpg",
         // ... autres liens d'images
+
+        ,
       ],
       alt: "image terrain",
       pageUrl: "/login",
-      surface: "50.000m²",
-      nbreChambre: "5",
-      nbreTotalAppart:"12",
-      niveauImm:"R+2",
-      nbreStudio:"",
-      terrasse:"",
+      surfaceTerrain: "500 m²",
+      surperficieBati: "930 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "340m²",
+      surperficieRDC: "340m²",
+      nbreChambre: "",
+      nbreTotalAppart: "07 (6F3 ET 1F4)",
+      niveauImm: "",
+      nbreStudio: "",
+      terrasse: "",
       nbreDouche: "2",
-      parking: "3",
+      parking: "8",
       piscine: "non",
-      prix: "200,000fcfa/mois",
+      projetArchi: "3,500,000fcfa",
+      permiBatir: "3,025,000fcfa",
+      grosOeuvre: "91,850,000fcfa",
+      finition: "120,900,000fcfa",
+      prixHorsTerrain: "219,275,000fcfa",
+      coutTerrain: "10,000,000fcfa",
+      valeurActualisationImmo: "7,5%",
+      locationAnneulle: "16,740,000 fcfa soit7,63%",
+      croissanceAnulleInvestissement: "15,13%",
+      retourInvestissement: "7ans",
+      prix: "219,275,000fcfa",
       date: "12/05/2023",
-      etat: "louer",
+      etat: "vendre",
     },
     {
-      id: 2,
-      title: "Ter",
+      numReference: 2,
+      title: "Immeuble R+3",
       ville: "Yaoundé",
       pays: "Camroun",
       quartier: "Etoug-Ebe",
       localisation: "derriere le college NAl",
       description: "",
-      image: "/src/assets/exploration/villa.jpg",
+      image: "/src/assets/immeubles/im2-3.jpg",
       images: [
-        "/src/assets/galerieTerrain/terrain6.jpg",
-        "/src/assets/galerieTerrain/terrain7.jpg",
-        "/src/assets/galerieTerrain/terrain8.jpg",
-        "/src/assets/galerieTerrain/terrain9.jpg",
-        "/src/assets/galerieTerrain/terrain10.jpg",
+        "/src/assets/immeubles/im2-2.jpg",
+        "/src/assets/immeubles/im2-5.jpg",
+        "/src/assets/immeubles/im2-1.jpg",
+        "/src/assets/immeubles/im2-4.jpg",
+
         // ... autres liens d'images
       ],
       alt: "image immeuble",
       pageUrl: "/login",
-      surface: "400m²",
-      nbreChambre: "5",
-      nbreTotalAppart:"11",
-      niveauImm:"R+4",
-      nbreStudio:"",
-      terrasse:"",
-      nbreDouche: "2",
-      parking: "3",
+      surfaceTerrain: "500 m²",
+      surperficieBati: "1270 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "340m²",
+      surperficieRDC: "340m²",
+      nbreChambre: "",
+      nbreTotalAppart: "11 (10F3 et 1F3",
+      niveauImm: "",
+      nbreStudio: "",
+      terrasse: "",
+      nbreDouche: "",
+      parking: "8",
       piscine: "non",
+      projetArchi: "4,000,000 fcfa",
+      permiBatir: "3,875,000fcfa",
+      grosOeuvre: "124,150,000fcfa",
+      finition: "165,100,000fcfa",
+      prixHorsTerrain: "297,125,000fcfa",
+      coutTerrain: "10,000,000fcfa",
+      valeurActualisationImmo: "7,5%",
+      locationAnneulle: "22,860,000 fcfa soit 7,44%",
+      croissanceAnulleInvestissement: "14,94%",
+      retourInvestissement: "7ans",
       prix: "150,000,000fcfa",
       date: "12/05/2023",
       etat: "vendre",
     },
     {
-      id: 3,
-      title: "T",
+      numReference: 3,
+      title: "Immeuble",
       ville: "Yaoundé",
       pays: "Camroun",
       quartier: "Mbangue",
       localisation: "derriere le college NAl",
       description: "",
-      image: "/src/assets/exploration/immeuble.jpg",
+      image: "/src/assets/immeubles/im3-5.jpg",
       images: [
-        "/src/assets/galerieTerrain/terrain11.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
+        "/src/assets/immeubles/im3-1.jpg",
+        "/src/assets/immeubles/im3-2.jpg",
+        "/src/assets/immeubles/im3-3.jpg",
+        "/src/assets/immeubles/im3-4.jpg",
+        "/src/assets/immeubles/im3-6.jpg",
         // ... autres liens d'images
       ],
       alt: "image immeuble",
       pageUrl: "/login",
-      surface: "500m²",
-      nbreChambre: "4",
-      nbreTotalAppart:"1",
-      niveauImm:"R+1",
-      nbreStudio:"",
-      terrasse:"",
-      nbreDouche: "2",
-      parking: "3",
+      surfaceTerrain: "700 m²",
+      surperficieBati: "2275 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "435m²",
+      surperficieRDC: "460m²",
+      nbreChambre: "",
+      nbreTotalAppart: "17 F3",
+      niveauImm: "",
+      nbreStudio: "",
+      terrasse: "",
+      nbreDouche: "",
+      parking: "13",
       piscine: "non",
-      prix: "350,000fcfa/mois",
+      projetArchi: "6,825,000 fcfa",
+      permiBatir: "6,687,500fcfa",
+      grosOeuvre: "250,250,000fcfa",
+      finition: "341,250,000fcfa",
+      prixHorsTerrain: "605,012,500fcfa",
+      coutTerrain: "17,500,000fcfa",
+      valeurActualisationImmo: "6%",
+      locationAnneulle: "107,100,000 fcfa soit 17,20%",
+      croissanceAnulleInvestissement: "23,20%",
+      retourInvestissement: "5ans",
+      prix: "605,012,500fcfa",
       date: "12/05/2023",
-      etat: "louer",
+      etat: "vendre",
     },
     {
-      id: 4,
-      title: "T",
+      numReference: 4,
+      title: "immeuble R+3",
       ville: "Yaoundé",
       pays: "Camroun",
       quartier: "Mvog-ada",
       localisation: "derriere le college NAl",
       description: "",
-      image: "/src/assets/exploration/appartement.jpg",
+      image: "/src/assets/immeubles/im4-5.png",
       images: [
-        "/src/assets/galerieTerrain/terrain1.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
+        "/src/assets/immeubles/im4-1.png",
+        "/src/assets/immeubles/im4-2.png",
+        "/src/assets/immeubles/im4-3.png",
+        "/src/assets/immeubles/im4-4.png",
+        "/src/assets/immeubles/im4-6.png",
+        "/src/assets/immeubles/im4-7.png",
+        "/src/assets/immeubles/im4-8.png",
+        "/src/assets/immeubles/im4-9.png",
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "400m²",
-      nbreChambre: "3",
-      nbreTotalAppart:"12",
-      niveauImm:"R+2",
-      nbreStudio:"",
-      terrasse:"",
-      nbreDouche: "2",
-      parking: "3",
+      surfaceTerrain: "250 m²",
+      surperficieBati: "655 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "165,50m²",
+      surperficieRDC: "158,50m²",
+      nbreChambre: "",
+      nbreTotalAppart: " 7 F3",
+      niveauImm: "",
+      nbreStudio: "",
+      terrasse: "",
+      nbreDouche: "",
+      parking: "4",
       piscine: "non",
+      projetArchi: " fcfa",
+      permiBatir: "fcfa",
+      grosOeuvre: "fcfa",
+      finition: "fcfa",
+      prixHorsTerrain: "149,174,000fcfa",
+      coutTerrain: "4,600,000fcfa",
+      valeurActualisationImmo: "6%",
+      locationAnneulle: "10,080,000 fcfa soit 7%",
+      croissanceAnulleInvestissement: "13%",
+      retourInvestissement: "8ans",
       prix: "70,000,000fcfa",
       date: "12/05/2023",
       etat: "vendre",
     },
     {
-      id: 5,
+      numReference: 5,
       title: "T",
       ville: "Bafoussam",
       pays: "Camroun",
@@ -334,21 +397,30 @@ const Immeuble = () => {
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "1000m²",
-      nbreChambre: "8",
-      nbreTotalAppart:"12",
-      niveauImm:"R+4",
-      nbreStudio:"",
-      terrasse:"",
+      surfaceTerrain: "500 m²",
+      surperficieBati: "930 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "340m²",
+      surperficieRDC: "340m²",
+      nbreChambre: "5",
+      nbreTotalAppart: "11",
+      niveauImm: "R+4",
+      nbreStudio: "",
+      terrasse: "",
       nbreDouche: "2",
       parking: "3",
       piscine: "non",
-      prix: "200,000fcfa/mois",
+      projetArchi: "500,000 fcfa",
+      permiBatir: "810,000fcfa",
+      grosOeuvre: "10,970,000fcfa",
+      finition: "15,900,000fcfa",
+      prixHorsTerrain: "28,180,000fcfa",
+      coutTerrain: "4,600,000fcfa",
       date: "12/05/2023",
       etat: "louer",
     },
     {
-      id: 6,
+      numReference: 6,
       title: "T",
       ville: "Bertoua",
       pays: "Camroun",
@@ -367,21 +439,31 @@ const Immeuble = () => {
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "300m²",
-      nbreChambre: "8",
-      nbreTotalAppart:"4",
-      niveauImm:"R+8",
-      nbreStudio:"",
-      terrasse:"",
+      surfaceTerrain: "500 m²",
+      surperficieBati: "930 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "340m²",
+      surperficieRDC: "340m²",
+      nbreChambre: "5",
+      nbreTotalAppart: "11",
+      niveauImm: "R+4",
+      nbreStudio: "",
+      terrasse: "",
       nbreDouche: "2",
-      parking: "0",
+      parking: "3",
       piscine: "non",
+      projetArchi: "500,000 fcfa",
+      permiBatir: "810,000fcfa",
+      grosOeuvre: "10,970,000fcfa",
+      finition: "15,900,000fcfa",
+      prixHorsTerrain: "28,180,000fcfa",
+      coutTerrain: "4,600,000fcfa",
       prix: "9,000,000fcfa",
       date: "12/05/2023",
       etat: "vendre",
     },
     {
-      id: 7,
+      numReference: 7,
       title: "T",
       ville: "Douala",
       pays: "Camroun",
@@ -400,21 +482,31 @@ const Immeuble = () => {
 
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "400m²",
+      surfaceTerrain: "500 m²",
+      surperficieBati: "930 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "340m²",
+      surperficieRDC: "340m²",
       nbreChambre: "5",
-      nbreTotalAppart:"9",
-      niveauImm:"R+4",
-      nbreStudio:"",
-      terrasse:"",
+      nbreTotalAppart: "11",
+      niveauImm: "R+4",
+      nbreStudio: "",
+      terrasse: "",
       nbreDouche: "2",
-      parking: "2",
+      parking: "3",
       piscine: "non",
+      projetArchi: "500,000 fcfa",
+      permiBatir: "810,000fcfa",
+      grosOeuvre: "10,970,000fcfa",
+      finition: "15,900,000fcfa",
+      prixHorsTerrain: "28,180,000fcfa",
+      coutTerrain: "4,600,000fcfa",
       prix: "35,000,000FCFA",
       date: "12/05/2023",
       etat: "vendre",
     },
     {
-      id: 8,
+      numReference: 8,
       title: "T",
       ville: "Yaoundé",
       pays: "Camroun",
@@ -432,21 +524,31 @@ const Immeuble = () => {
         // ... autres liens d'images
       ],
       pageUrl: "/login",
-      surface: "1000m²",
-      nbreChambre: "4",
-      nbreTotalAppart:"5",
-      niveauImm:"R+3",
-      nbreStudio:"",
-      terrasse:"",
+      surfaceTerrain: "500 m²",
+      surperficieBati: "930 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "340m²",
+      surperficieRDC: "340m²",
+      nbreChambre: "5",
+      nbreTotalAppart: "11",
+      niveauImm: "R+4",
+      nbreStudio: "",
+      terrasse: "",
       nbreDouche: "2",
       parking: "3",
       piscine: "non",
+      projetArchi: "500,000 fcfa",
+      permiBatir: "810,000fcfa",
+      grosOeuvre: "10,970,000fcfa",
+      finition: "15,900,000fcfa",
+      prixHorsTerrain: "28,180,000fcfa",
+      coutTerrain: "4,600,000fcfa",
       prix: "500,000fcfa/mois",
       date: "12/05/2023",
       etat: "louer",
     },
     {
-      id: 9,
+      numReference: 9,
       title: "T",
       ville: "Maroua",
       pays: "Camroun",
@@ -464,21 +566,31 @@ const Immeuble = () => {
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "400m²",
-      nbreChambre: "4",
-      nbreTotalAppart:"8",
-      niveauImm:"R+4",
-      nbreStudio:"",
-      terrasse:"",
+      surfaceTerrain: "500 m²",
+      surperficieBati: "930 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "340m²",
+      surperficieRDC: "340m²",
+      nbreChambre: "5",
+      nbreTotalAppart: "11",
+      niveauImm: "R+4",
+      nbreStudio: "",
+      terrasse: "",
       nbreDouche: "2",
       parking: "3",
       piscine: "non",
+      projetArchi: "500,000 fcfa",
+      permiBatir: "810,000fcfa",
+      grosOeuvre: "10,970,000fcfa",
+      finition: "15,900,000fcfa",
+      prixHorsTerrain: "28,180,000fcfa",
+      coutTerrain: "4,600,000fcfa",
       prix: "600,000,000fcfa",
       date: "12/05/2023",
       etat: "vendre",
     },
     {
-      id: 10,
+      numReference: 10,
       title: "T",
       ville: "Maroua",
       pays: "Camroun",
@@ -493,21 +605,31 @@ const Immeuble = () => {
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "100.000m²",
-      nbreChambre: "7",
-      nbreTotalAppart:"12",
-      niveauImm:"R+14",
-      nbreStudio:"",
-      terrasse:"",
+      surfaceTerrain: "500 m²",
+      surperficieBati: "930 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "340m²",
+      surperficieRDC: "340m²",
+      nbreChambre: "5",
+      nbreTotalAppart: "11",
+      niveauImm: "R+4",
+      nbreStudio: "",
+      terrasse: "",
       nbreDouche: "2",
       parking: "3",
       piscine: "non",
+      projetArchi: "500,000 fcfa",
+      permiBatir: "810,000fcfa",
+      grosOeuvre: "10,970,000fcfa",
+      finition: "15,900,000fcfa",
+      prixHorsTerrain: "28,180,000fcfa",
+      coutTerrain: "4,600,000fcfa",
       prix: "800,000fcfa/mois",
       date: "12/05/2023",
       etat: "louer",
     },
     {
-      id: 11,
+      numReference: 11,
       title: "T",
       ville: "Maroua",
       pays: "Camroun",
@@ -522,15 +644,25 @@ const Immeuble = () => {
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      surface: "100.000m²",
-      nbreChambre: "7",
-      nbreTotalAppart:"24",
-      niveauImm:"R+17",
-      nbreStudio:"",
-      terrasse:"",
-      nbreDouche: "3",
+      surfaceTerrain: "500 m²",
+      surperficieBati: "930 m²",
+      surperficieRDJ: "non",
+      surperficieR1: "340m²",
+      surperficieRDC: "340m²",
+      nbreChambre: "5",
+      nbreTotalAppart: "11",
+      niveauImm: "R+4",
+      nbreStudio: "",
+      terrasse: "",
+      nbreDouche: "2",
       parking: "3",
       piscine: "non",
+      projetArchi: "500,000 fcfa",
+      permiBatir: "810,000fcfa",
+      grosOeuvre: "10,970,000fcfa",
+      finition: "15,900,000fcfa",
+      prixHorsTerrain: "28,180,000fcfa",
+      coutTerrain: "4,600,000fcfa",
       prix: "300,000fcfa/mois",
       date: "12/05/2023",
       etat: "louer",
@@ -543,18 +675,22 @@ const Immeuble = () => {
     const isLocationMatch =
       !selectedLocation ||
       immeuble.ville.toLowerCase() === selectedLocation.toLowerCase();
-      const isPriceRangeMatch =
+    const isPriceRangeMatch =
       (!selectedPrixMin ||
-        parseFloat(immeuble.prix.replace(/,/g, ''), 10) >= parseFloat(selectedPrixMin.replace(/,/g, ''), 10)) &&
+        parseFloat(immeuble.prixHorsTerrain.replace(/,/g, ""), 10) >=
+          parseFloat(selectedPrixMin.replace(/,/g, ""), 10)) &&
       (!selectedPrixMax ||
-        parseFloat(immeuble.prix.replace(/,/g, ''), 10) <= parseFloat(selectedPrixMax.replace(/,/g, ''), 10));
+        parseFloat(immeuble.prixHorsTerrain.replace(/,/g, ""), 10) <=
+          parseFloat(selectedPrixMax.replace(/,/g, ""), 10));
 
     return isTypeMatch && isLocationMatch && isPriceRangeMatch;
   });
+  const paginatedImmeubles = filteredImmeuble.slice(startIndex, endIndex);
+  const totalImmeubles = filteredImmeuble.length; // utilisez la liste complète ou filtrée selon vos besoins
+  const totalPages = Math.ceil(totalImmeubles / itemsPerPage);
 
-  
-    return (
-      <>
+  return (
+    <>
       <Fragment>
         <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto bg-neutralSilver lg:py-4 py-28 mt-20 w-screen rounded-md">
           <div className="flex flex-col md:flex-row justify-between items-center gap-1 mt-4">
@@ -645,17 +781,23 @@ const Immeuble = () => {
               </button>
               {isOpenMin && (
                 <div className="bg-white absolute lg:top-16  top-28 flex-col items-start rounded-lg p-2 w-full overflow-y-auto max-h-52 border-2 z-10">
-                  {prixMinParEtat[etatSelectionne]?.sort((a, b) => parseFloat(a.replace(/,/g, ""), 10) - parseFloat(b.replace(/,/g, ""), 10)).map((prixmin, i) => (
-                    <div
-                      className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
-                      key={i}
-                      onClick={() => handleSelection(prixmin)}
-                    >
-                      <h3 className="font-semibold mr-44 px-0 text-sm text-Cprimary">
-                        {prixmin}
-                      </h3>
-                    </div>
-                  ))}
+                  {prixMinParEtat[etatSelectionne]
+                    ?.sort(
+                      (a, b) =>
+                        parseFloat(a.replace(/,/g, ""), 10) -
+                        parseFloat(b.replace(/,/g, ""), 10)
+                    )
+                    .map((prixmin, i) => (
+                      <div
+                        className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
+                        key={i}
+                        onClick={() => handleSelection(prixmin)}
+                      >
+                        <h3 className="font-semibold mr-44 px-0 text-sm text-Cprimary">
+                          {prixmin}
+                        </h3>
+                      </div>
+                    ))}
                 </div>
               )}
             </div>
@@ -681,9 +823,16 @@ const Immeuble = () => {
                   {prixMaxParEtat[etatSelectionne]
                     ?.filter(
                       (price) =>
-                      parseFloat(price.replace(/,/g, ""), 10) >
-                      (selectedPrixMin ? parseFloat(selectedPrixMin.replace(/,/g, ""), 10) : 0)
-                    ).sort((a, b) => parseFloat(a.replace(/,/g, ""), 10) - parseFloat(b.replace(/,/g, ""), 10))
+                        parseFloat(price.replace(/,/g, ""), 10) >
+                        (selectedPrixMin
+                          ? parseFloat(selectedPrixMin.replace(/,/g, ""), 10)
+                          : 0)
+                    )
+                    .sort(
+                      (a, b) =>
+                        parseFloat(a.replace(/,/g, ""), 10) -
+                        parseFloat(b.replace(/,/g, ""), 10)
+                    )
                     .map((price, i) => (
                       <div
                         className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
@@ -715,15 +864,17 @@ const Immeuble = () => {
             <div className="px-16 lg:px-14 max-w-screen-2xl  mx-auto  w-screen py-1 mt-7">
               <div>
                 <div className="grid lg:grid-cols-3 gap-7 mb-20 mt-3 items-center mr-3 ml-16">
-                  {filteredImmeuble.length === 0 ? (
+                  {paginatedImmeubles.length === 0 ? (
                     <p className="text-Cred-primary font-semibold text-center text-xl">
                       Aucune immeuble ne correspond aux critères de recherche
                       sélectionnés.
                     </p>
                   ) : (
-                    filteredImmeuble.map((immeuble, index) => {
+                    paginatedImmeubles.map((immeuble, index) => {
                       // Créez un numéro de référence alphanumérique en combinant le titre et l'index
-                      const paddedIndex = `00${index + 1}`.slice(-3);
+                      const paddedIndex = `00${immeuble.numReference}`.slice(
+                        -3
+                      );
                       const referenceNumber = `${
                         immeuble.etat === "vendre" ? "IV" : "IL"
                       }-${paddedIndex}`;
@@ -731,7 +882,7 @@ const Immeuble = () => {
 
                       return (
                         <div
-                          key={immeuble.id}
+                          key={immeuble.numReference}
                           className=" md:w-2/3 lg:w-full  2xl:w-full mx-auto bg-Cprimary rounded-2xl shadow-2xl mb-2 hover:scale-95 transition-all duration-300 -ml-28 "
                         >
                           <div className="relative ">
@@ -770,22 +921,21 @@ const Immeuble = () => {
                                   className="mr-2 mt-1"
                                   style={{ color: "white" }}
                                 />
-                                {immeuble.pays},{immeuble.ville}-{immeuble.quartier},
-                                {immeuble.localisation}
+                                {immeuble.ville}-{immeuble.pays}
                               </p>
                               <p className=" px-1 text-base font-serif text-white text-justify  flex ">
                                 <MdPriceCheck
                                   className=" -ml-1 h-8 w-8"
                                   style={{ color: "white" }}
                                 />
-                                {immeuble.prix}
+                                {immeuble.prixHorsTerrain}
                               </p>
                               <p className=" px-1 text-base font-serif text-white text-justify mr-2 flex ">
                                 <FaChartArea
                                   className="mr-2 ml-1 mt-1 "
                                   style={{ color: "white " }}
                                 />
-                                {immeuble.surface}
+                                {immeuble.surfaceTerrain}
                               </p>
 
                               <div className="featured-property-box-icons justify-between flex m-2 p-2">
@@ -797,7 +947,7 @@ const Immeuble = () => {
                                       title={`Immeuble de niveaux:${immeuble.niveauImm}`}
                                       className=""
                                     >
-                                      <RiBuilding4Fill  />
+                                      <RiBuilding4Fill />
                                     </a>
                                   </div>
                                   <p className="text-white px-2">
@@ -861,8 +1011,6 @@ const Immeuble = () => {
                                  </div>
                                  <p className="text-white px-2">{villa.surface}</p>
                                 </div> */}
-
-                               
                               </div>
                             </div>
                           </div>
@@ -878,7 +1026,7 @@ const Immeuble = () => {
                   >
                     {selectedImmeuble && (
                       <div className="p-4">
-                        <div className="flex sticky top-1">
+                        <div className="flex sticky top-3 bg-white gap-x-3 lg:top-0">
                           <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-20 p-2 px-2">
                             {referenceNumber}
                           </h3>
@@ -906,20 +1054,9 @@ const Immeuble = () => {
                         <img
                           src={selectedImmeuble.image}
                           alt={selectedImmeuble.title}
-                          className="object-cover w-full h-[500px] rounded-md"
+                          className="object-cover w-full h-full rounded-md"
                         />
-                        <p className="text-black">
-                          {selectedImmeuble.pays} -{selectedImmeuble.ville}
-                        </p>
-                        <p className="mb-5 font-normal text-texteCouleur text-lg text-justify ">
-                          Notre équipe d'experts en immobilier est composée de
-                          professionnels passionnés qui connaissent le marché
-                          local comme leur poche. Chacun de nos agents est
-                          dévoué à vous aider à atteindre vos objectifs
-                          immobiliers, que vous cherchiez à acheter votre
-                          première maison, à vendre votre propriété existante,
-                          ou à investir dans des opportunités immobilières.
-                        </p>
+
                         <div className="px-4 lg:-ml-20 max-w-screen-2x1 mx-auto my-8 mt-4">
                           <div className="md:w-11/12 mx-auto flex flex-col md:flex-row gap-2">
                             <div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
@@ -1011,21 +1148,187 @@ const Immeuble = () => {
                             </div>
 
                             <div className="md:w-2/3 mx-auto text-center md:text-left ">
-                              <h2 className="text-2xl font-semibold mb-4 text-neutralDGrey md:w-4/5 px-5 ">
-                                À Propos d'EFFICACE
-                              </h2>
                               <p className="md:w-[500px] px-5 mb-5 font-normal text-texteCouleur text-lg text-justify">
-                                Bienvenue chez EFFICACE, votre partenaire de
-                                confiance dans le domaine de l'immobilier depuis
-                                2023. Nous sommes fiers de mettre à votre
-                                disposition notre expertise et notre passion
-                                pour l'immobilier, afin de vous accompagner dans
-                                toutes vos transactions immobilières.
+                                Cette {selectedImmeuble.title} incarne le summum
+                                du luxe moderne et offre une opportunité unique
+                                d'acquérir une propriété exceptionnelle. Pour
+                                plus d'informations ou pour planifier une
+                                visite, veuillez nous contacter via{" "}
+                                <a
+                                  className="text-Cprimary underline italic "
+                                  href={`https://wa.me/237686741680?text=Bonjour%20!%20Je%20suis%20intéressé%20par%20votre%20service,${referenceNumber}`}
+                                >
+                                  {" "}
+                                  +237 686 741 680
+                                </a>
+                                . Vivez le luxe au quotidien dans cette villa
+                                d'exception. <br />
+                                <h1 className="text-2xl text-center font-poppins text-black m-5 font-semibold underline">
+                                  Caractéristiques Principales :
+                                </h1>
+                                <div className=" px-8">
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    {selectedImmeuble.salon}
+                                    <span className=" text-Cprimary italic m-2">
+                                      Salon
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    {selectedImmeuble.salleManger}
+                                    <span className=" text-Cprimary italic m-2">
+                                      Salle a manger
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    {selectedImmeuble.nbreChambre}
+                                    <span className=" text-Cprimary italic m-2">
+                                      Chambres
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    {selectedImmeuble.parking}
+                                    <span className=" text-Cprimary italic m-2">
+                                      Parking
+                                    </span>{" "}
+                                  </h2>
+
+                                  <h2 className=" text-Csecondary1 font-semibold ">
+                                    {selectedImmeuble.nbreDouche}
+                                    <span className=" text-Cprimary italic m-2">
+                                      Salle d'eau
+                                    </span>{" "}
+                                  </h2>
+
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    R+ :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.surperficieR1}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Piscine :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.piscine}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Superficie RDC :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.surperficieRDC}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Superficie RDJ :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.surperficieRDJ}
+                                    </span>{" "}
+                                  </h2>
+
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Surface bati :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.surperficieBati}
+                                    </span>{" "}
+                                  </h2>
+
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Terrain :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.surfaceTerrain}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Nombre d'appartement :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.nbreTotalAppart}
+                                    </span>{" "}
+                                  </h2>
+                                </div>
+                                <div className="px-8">
+                                  <h1 className="text-2xl text-center font-poppins text-black m-5 font-semibold underline">
+                                    Information d'investissement :
+                                  </h1>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Valeur d'actualisation immobilières :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.valeurActualisationImmo}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Location annuelle :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.locationAnneulle}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Croissance annulle d'investissement :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {
+                                        selectedImmeuble.croissanceAnulleInvestissement
+                                      }
+                                    </span>{" "}
+                                  </h2>
+                                </div>
+                                <div className="px-8">
+                                  <h1 className="text-2xl text-center font-poppins text-black m-5 font-semibold underline">
+                                    Détails Financiers :
+                                  </h1>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Cout du terrain :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.coutTerrain}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Projets architecturaux :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.projetArchi}
+                                    </span>{" "}
+                                  </h2>
+
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Communes et permis de batir:
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.permiBatir}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Gros oeuvre :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.grosOeuvre}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-semibold">
+                                    Finition :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.finition}
+                                    </span>{" "}
+                                  </h2>
+                                  <h2 className=" text-Csecondary1 font-bold">
+                                    Cout total de realisation hors terrain :
+                                    <span className=" text-Cprimary italic m-2">
+                                      {selectedImmeuble.prixHorsTerrain}
+                                    </span>{" "}
+                                  </h2>
+                                </div>
                               </p>
 
-                              <button className="btn-primary px-4 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4">
-                                En savoir plus
-                              </button>
+                              <div className="  px-14">
+                                <a href="/login">
+                                  {" "}
+                                  <button className="btn-primary xs:w-full w-24 py-2 bg-Cprimary text-white rounded hover:bg-Csecondary1  transition-all duration-300 hover:-translate-y-4">
+                                    Acheter
+                                  </button>
+                                </a>
+                                <a
+                                  href={`https://wa.me/237686741680?text=Bienvenue chez EFFICACE S.A, votre partenaire immobilier de confiance. Nous sommes ravis de vous accompagner dans votre quête d'informations sur cette villa ${selectedImmeuble.title} moderne exceptionnelle,${referenceNumber}. Nous vous remercions de choisir EFFICACE S.A comme votre partenaire immobilier. Notre équipe vous contactera dans les plus brefs délais pour vous fournir toutes les informations nécessaires et pour organiser une rencontre si nécessaire .`}
+                                >
+                                  {" "}
+                                  <button className="btn-primary xs:w-full w-36 py-2 bg-Cprimary text-white rounded hover:bg-Csecondary1 transition-all duration-300 hover:-translate-y-4 ml-14 xs:m-8  xs:-ml-1">
+                                    En savoir plus
+                                  </button>
+                                </a>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1067,7 +1370,10 @@ const Immeuble = () => {
                   <a className="block p-1 hover:text-Csecondary1" href="/!#">
                     Appartements
                   </a>
-                  <a className="block p-1 hover:text-Csecondary1" href="/immeuble">
+                  <a
+                    className="block p-1 hover:text-Csecondary1"
+                    href="/immeuble"
+                  >
                     Immeubles
                   </a>
                   <a
@@ -1102,10 +1408,42 @@ const Immeuble = () => {
           </div>
         </div>
 
+        <div className="mt-16 px-5">
+          <ReactPaginate
+            breakLabel={<span className="mr-4">...</span>}
+            nextLabel={
+              <span className="w-10 h-10 flex items-center justify-center bg-gray-300 rounded-md ">
+                <BsChevronBarRight />
+              </span>
+            }
+            // onPageChange={1}
+            onPageChange={handlePageChange}
+            pageRangeDisplayed={5}
+            pageCount={totalPages}
+            previousLabel={
+              <span className="w-10 h-10 flex items-center justify-center bg-gray-300 rounded-md mr-2">
+                <BsChevronBarLeft />
+              </span>
+            }
+            containerClassName="flex items-center justify-center mt-8 mb-6"
+            pageClassName="block border- border-solid border-Cprimary hover:bg-Cprimary w-10 h-10 flex items-center justify-center rounded-md mr-2"
+            activeClassName="bg-gray-400 text-white"
+          />
+        </div>
+        {/* <div className="relative h-screen">
+    
+      <div className="absolute left-0 top-0 h-full w-1/2 p-4 overflow-y-auto bg-gray-200">
+        Contenu à gauche (défilant)
+      </div>
+
       
+      <div className="fixed right-0 top-0 h-full w-1/2 p-4 bg-blue-200">
+        Contenu à droite (fixe)
+      </div>
+    </div> */}
       </Fragment>
     </>
-    );
+  );
 };
 
 export default Immeuble;

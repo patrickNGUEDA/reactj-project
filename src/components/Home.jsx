@@ -10,9 +10,13 @@ import Magasin from "../assets/exploration/magasin.jpg";
 import Studio from "../assets/exploration/studio.jpg";
 import Terrain from "../assets/exploration/terrain.jpg";
 import Villa from "../assets/exploration/villa.jpg";
-import banner2 from "../assets/banner2.jpg";
+import Carousel1 from "../assets/acceuil/imgCarousel1.jpg";
+import Carousel2 from "../assets/acceuil/imgCarousel2.png";
+import Carousel3 from "../assets/acceuil/imgCarousel3.png";
+import Carousel4 from "../assets/acceuil/imgCarousel4.png";
+
 import Accampagnement from "../assets/accompagnement/accompagnement2.jpg";
-import banner4 from "../assets/banner4.jpg";
+
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import SearchForm from "./SousMenu/SearchForm";
@@ -47,8 +51,8 @@ const Home = () => {
       id: 1,
       title: "Terrains",
       descriptin:
-        "  Ils sont des parcelles de terrain non développées, offrant aux acheteurs la possibilité de construire leur maison ou leur entreprise sur mesure.",
-      image: "/src/assets/exploration/terrain.jpg ",
+        " C'est sont des parcelles de terre qui peuvent être utilisée à diverses fins, telles que la construction de bâtiments, l'agriculture ...",
+      image: "/src/assets/acceuil/terrain.jpg ",
       alt: "image terrain",
       pageUrl: "/terrain",
     },
@@ -57,7 +61,7 @@ const Home = () => {
       title: "Villa",
       descriptin:
         "Elles sont des propriétés de luxe offrant un espace de vie spacieux et des équipements haut de gamme.",
-      image: "/src/assets/exploration/villa.jpg",
+      image: "/src/assets/acceuil/villa.jpg",
       alt: "image villa",
       pageUrl: "/villa",
     },
@@ -66,7 +70,7 @@ const Home = () => {
       title: "Immeubles",
       descriptin:
         "Ils sont des propriétés résidentielles ou commerciales comprenant plusieurs unités. Ils sont un excellent investissement pour les propriétaires cherchant à générer des revenus locatifs.",
-      image: "/src/assets/exploration/immeuble.jpg",
+      image: "/src/assets/acceuil/immeuble.jpg",
       alt: "image immeuble",
       pageUrl: "/immeuble",
     },
@@ -74,8 +78,8 @@ const Home = () => {
       id: 4,
       title: "Appartements",
       descriptin:
-        "Ils offrent un espace de vie pratique et confortable pour les individus et les familles.",
-      image: "/src/assets/exploration/appartement.jpg",
+        "C'est sont des unités de logement au sein d'un immeuble. Ils offrent un espace de vie pratique et confortable pour les individus et les familles.",
+      image: "/src/assets/acceuil/appartement.png",
       alt: "image appatement",
       pageUrl: "/immeuble",
     },
@@ -83,8 +87,8 @@ const Home = () => {
       id: 5,
       title: "Magasins",
       descriptin:
-        "Ils sont des espaces commerciaux destinés à la vente au détail. Ils varient en taille et en emplacement, offrant aux commerçants un lieu idéal pour établir leur entreprise.",
-      image: "/src/assets/exploration/magasin.jpg",
+        "C'est sont des espaces commerciaux destinés à la vente au détail. Ils varient en taille et en emplacement, offrant aux commerçants un lieu idéal pour établir leur entreprise.",
+      image: "/src/assets/acceuil/magasin.jpg",
       alt: "immage magasin",
       pageUrl: "#",
     },
@@ -92,8 +96,8 @@ const Home = () => {
       id: 6,
       title: "Hotel",
       descriptin:
-        "Ils sont conçus pour offrir un séjour confortable et pratique aux clients, que ce soit pour les voyages d'affaires ou de loisirs.",
-      image: "/src/assets/exploration/studio.jpg",
+        "C'est sont des établissements qui proposent des chambres d'hébergement temporaire aux clients.",
+      image: "/src/assets/acceuil/hotel.png",
       alt: "immage hotel",
       pageUrl: "#",
     },
@@ -102,7 +106,7 @@ const Home = () => {
       title: "Bureaux",
       descriptin:
         "Ils offrent un environnement professionnel pour le travail, avec différentes configurations allant des espaces de travail partagés aux bureaux privés.",
-      image: "/src/assets/exploration/bureau.jpg",
+      image: "/src/assets/acceuil/bureau.jpg",
       alt: "image bureau",
       pageUrl: "#",
     },
@@ -110,28 +114,29 @@ const Home = () => {
       id: 8,
       title: "Projets architecturaux ",
       descriptin:
-        "Projets Architecturaux : C'est sont des plans et des conceptions pour de futurs bâtiments et structures.",
-      image: "/src/assets/exploration/duplex.jpg",
+        "Font référence à la conception et à la planification d'un bâtiment ou d'une structure. Cela englobe la vision créative de l'architecte, les plans, les dessins et toutes les spécifications nécessaires à la construction.",
+      image: "/src/assets/acceuil/projetArchi.png",
       alt: "imge projet archi",
       pageUrl: "#",
     },
   ];
 
   const slides = [
-    { imgSrc: banner2, label: "Slide 1" },
-    { imgSrc: banner2, label: "Slide 2" },
-    { imgSrc: banner2, label: "Slide 3" },
-    { imgSrc: banner2, label: "Slide 3" },
+    { imgSrc: Carousel1, label: "Slide 1" },
+    { imgSrc: Carousel2, label: "Slide 2" },
+    { imgSrc: Carousel3, label: "Slide 3" },
+    { imgSrc: Carousel4, label: "Slide 4" },
   ];
 
   return (
     <div className=" h-full  ">
-      <div className="px-0 lg:px-0 py-20  relative">
-        <div className="absolute inset-0 z-10 flex justify-center items-center ">
+      <div className="px-0 lg:px-0 py-14  relative ">
+        <div className="absolute inset-0 z-10 flex justify-center items-center -mt-44 ">
           <SearchForm />
         </div>
+        <div className="lg:w-full h-full flex items-center justify-cente w-auto">
         <Carousel
-          className="custom-carousel custom-carousel-image"
+          className="custom-carousel custom-carousel-image  "
           showStatus={false}
           showThumbs={false}
           centerMode
@@ -143,38 +148,40 @@ const Home = () => {
           stopOnHover={true}
         >
           {slides.map((slide, index) => (
-            <div key={index}>
+            <div key={index} className=" lg:w-full w-[700px]">
               <img src={slide.imgSrc} alt={slide.label} />
             </div>
           ))}
         </Carousel>
+        </div>
+        
       </div>
       <div className="text-center md:-end-1/2 mx-auto">
-        <h2 className="text-4xl font-semibold mb-4 text-Csecondary1 -mt-12">
+        <h2 className="text-2xl font-semibold mb-4 text-Csecondary1 lg:mt-0 -mt-14 uppercase">
           Explorez le monde immobilier
         </h2>
       </div>
-      <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto bg-neutralSilver w-screen py-1 mt-0">
-        <div className="grid lg:grid-cols-4 gap-x-3 mb-20 mt-3 ">
+      <div className="px-1 lg:px-8 max-w-screen-2x1 mx-auto bg-neutralSilver w-screen py-1 mt-0">
+        <div className="grid lg:grid-cols-4 gap-x-3 md:gap-10 mb-20 mt-3  lg:ml-5 ">
           {explorez.map((explorez) => (
             <div
               key={explorez.id}
               className="w-full md:w-2/3 lg:w-full h-full mx-auto rounded-2xl  hover:scale-95 transition-all duration-300"
             >
-              <a href={explorez.pageUrl}>
-                <div className="relative w-60 h-60 ml-4 lg:left-1 left-10 ">
+              <a href={explorez.pageUrl} className="">
+                <div className="relative w-60 h-60 xl:ml-28  left-10 ml-6 xs:w-52 xs:h-52  items-stretch  ">
                   <img
                     src={explorez.image}
                     alt="Mes biens immobiliers"
-                    className="bg-Csecondary1 absolute top-0 left-0 h-full w-full object-cover z-0 rounded-full shadow-2xl mb-20 border border-Csecondary1 brightness-125"
+                    className="bg-Csecondary1 absolute top-0 left-0 h-full w-full object-cover z-0 rounded-full shadow-2xl mb-20 border border-Csecondary1 brightness-125 md:-ml-32 "
                   />
                 </div>
               </a>
-              <div className="flex flex-col items-center justify-center px-2 pb-3">
-                <h3 className="my-3 text-2xl font-poppins font-semibold text-Csecondary mr-10">
-                  {explorez.title}
+              <div className="flex flex-col items-center justify-center  pb-3">
+                <h3 className="my-3 text-2xl font-poppins font-semibold text-Csecondary mr-0 lg:mr-14">
+                {explorez.title}
                 </h3>
-                <p className="text-center text-base font-serif text-texteCouleur -ml-2">
+                <p className="text-center text-base font-serif text-texteCouleur lg:-ml -ml-2">
                   {explorez.descriptin}
                 </p>
                 {/* <p color= 'secondary1' className='font-secondary mb-10 lg:mb-0'>Commandez</p> */}

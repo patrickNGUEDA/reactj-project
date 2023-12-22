@@ -10,6 +10,8 @@ import Login from './components/Login';
 import MyFooter from './components/MyFooter';
 import Proposer from './components/Proposer';
 import Aide from './components/Aide';
+import Pagination from './components/Pagination';
+
 
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -19,15 +21,18 @@ import Immeuble from './components/residentiels/Immeuble';
 import EspaceCommerciale from './components/commerciaux/EspaceCommerciale';
 import Studio from './components/residentiels/Studio';
 
+import { useState } from 'react';
+
+
 function App() {
-  
   return (
   <>
 
 <BrowserRouter>
     <Navbar/>
       <Routes>
-        <Route path="accueil" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/accueil" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/produits" element={<Proposer />} />
@@ -41,7 +46,9 @@ function App() {
         <Route path="/duplex" element={<Duplex/>} />  
         <Route path="/immeuble" element={<Immeuble/>} />  
         <Route path="/espaceCommerciale" element={<EspaceCommerciale/>} />  
-        <Route path="/studio" element={<Studio/>} />  
+        <Route path="/studio" element={<Studio/>} />
+        <Route path="/pagination" element={<Pagination/>} /> 
+       
       </Routes>
     <MyFooter/>
 </BrowserRouter>

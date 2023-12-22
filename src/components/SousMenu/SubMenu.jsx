@@ -28,6 +28,8 @@ const SubMenuInvestir =()=>{
                 <a className="block p-2 hover:text-Csecondary1" href="/service7">Loisiers</a>
                 <a className="block p-2 hover:text-Csecondary1" href="/service8">Centres médicals</a>
                 <a className="block p-2 hover:text-Csecondary1" href="/service9">Hotels</a>
+                <a className="block p-2 hover:text-Csecondary1" href="/service9">Industriels</a>
+                
 
             </div>
         </div>
@@ -40,9 +42,10 @@ const SubMenuAide =()=>{
         
         <div className="dropdown-menu md:text-left">
             <div className="divide-y divide-gray-400  text-texteCouleur font-lato">
-                <a className="block p-2 hover:text-Csecondary1" href="/service1">Copropriétés</a>
+                <a className="block p-2 hover:text-Csecondary1" href="/services">Copropriétés</a>
                 <a className="block p-2 hover:text-Csecondary1" href="/service2">Crash funding</a>
                 <a className="block p-2 hover:text-Csecondary1" href="/service3">Achats</a>
+                <a className="block p-2 hover:text-Csecondary1" href="/pagination">Pagination</a>
             </div>
         </div>
     );

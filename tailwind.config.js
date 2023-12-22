@@ -808,11 +808,16 @@ export default {
       150: '1.5',
     },
     screens: {
+      
       sm: '640px',
       md: '768px',
       lg: '1024px',
       xl: '1280px',
       '2xl': '1536px',
+      
+      'xs': {'min': '250px', 'max': '475px'},
+     
+      
     },
     scrollMargin: ({ theme }) => ({
       ...theme('spacing'),

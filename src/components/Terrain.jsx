@@ -5,15 +5,11 @@ import ModalTerrain from "./modals/ModalTerrain";
 import ModalCarousel from "./modals/modalCarousel";
 import aboutImage from "../assets/banner3.jpg";
 import Modal from "react-modal";
-import {
-  FaMapMarkerAlt,
- 
-  FaChartArea,
-  FaRegCalendarAlt,
-} from "react-icons/fa";
+import { FaMapMarkerAlt, FaChartArea, FaRegCalendarAlt } from "react-icons/fa";
 
-import { MdPriceCheck,  } from "react-icons/md";
-
+import { MdPriceCheck, MdOutlineTitle } from "react-icons/md";
+import ReactPaginate from "react-paginate";
+import { BsChevronBarLeft, BsChevronBarRight } from "react-icons/bs";
 
 const Terrain = () => {
   const [isOpenMin, setIsOpenMin] = useState(false);
@@ -27,6 +23,15 @@ const Terrain = () => {
   const [referenceNumber, setReferenceNumber] = useState("");
   const [etatSelectionne, setEtatSelectionne] = useState("");
   const [showMessage, setShowMessage] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 5; // Par exemple, 9 éléments par page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected + 1);
+  };
 
   const handleTerrainClick = (Terrain) => {
     const paddedIndex = `00${filteredTerrains.indexOf(Terrain) + 1}`.slice(-3);
@@ -39,89 +44,107 @@ const Terrain = () => {
     setShowModal(true);
   };
 
- // Fonction pour gérer la sélection de l'emplacement
- const handleLocationSelection = (location) => {
-  setSelectedLocation(location);
-  setIsOpenLocation(false);
-};
-// Fonction pour gérer la sélection du prix min
-const handleSelection = (prixmin) => {
-  setSelectedPrixMin(prixmin);
-  setIsOpenMin(false);
-};
+  // Fonction pour gérer la sélection de l'emplacement
+  const handleLocationSelection = (location) => {
+    setSelectedLocation(location);
+    setIsOpenLocation(false);
+  };
+  // Fonction pour gérer la sélection du prix min
+  const handleSelection = (prixmin) => {
+    setSelectedPrixMin(prixmin);
+    setIsOpenMin(false);
+  };
 
-// Fonction pour gérer la sélection du prix max
-const handlePriceSelection = (pricemax) => {
-  setSelectedPrixMax(pricemax);
-  setIsOpenMax(false);
-};
+  // Fonction pour gérer la sélection du prix max
+  const handlePriceSelection = (pricemax) => {
+    setSelectedPrixMax(pricemax);
+    setIsOpenMax(false);
+  };
 
-const handleDropdownClickMin = () => {
-  if (!etatSelectionne) {
-    // Set the state to show the message
-    setShowMessage(true);
-    return;
-  }
-  setIsOpenMin((prev) => !prev);
-};
+  const handleDropdownClickMin = () => {
+    if (!etatSelectionne) {
+      // Set the state to show the message
+      setShowMessage(true);
+      return;
+    }
+    setIsOpenMin((prev) => !prev);
+  };
 
-const handleDropdownClickMax = () => {
-  if (!etatSelectionne) {
-    // Set the state to show the message
-    setShowMessage(true);
-    return;
-  }
-  setIsOpenMax((prev) => !prev);
-};
+  const handleDropdownClickMax = () => {
+    if (!etatSelectionne) {
+      // Set the state to show the message
+      setShowMessage(true);
+      return;
+    }
+    setIsOpenMax((prev) => !prev);
+  };
 
-
-    // Liste des prix min pour chaque état
-    const prixMinParEtat = {
-      vendre: [
-        "3,000",
-        "5,000",
-        "10,000",
-        "15,000",
-        "20,000",
-        "300,000",
-        "1,000,000",
-        "200,000,000,000"/* ... autres valeurs pour A vendre */,
-      ],
-      louer: [
-        "10,000",
-        "15,000",
-        "20,000",
-        "25,000",
-        "30,000" ,
-        "20,000,000,000,"/* ... autres valeurs pour A louer */,
-      ],
-    };
-    // Liste des prix max pour chaque état
-    const prixMaxParEtat = {
-      vendre: [
-        "15,000",
-        "25,000",
-        "30,000",
-        "40,000",
-        "50,000" ,
-        "60,000",
-        "70,000",
-        "80,000",
-        "90,000",
-        "100,000",
-        "500,000,000,000"/* ... autres valeurs pour A vendre */,
-      ],
-      louer: [
-        "50,000",
-        "60,000",
-        "70,000",
-        "80,000",
-        "90,000",
-        "100,000" /* ... autres valeurs pour A louer */,
-      ],
-    };
-  
-
+  // Liste des prix min pour chaque état
+  const prixMinParEtat = {
+    vendre: [
+      "3,000",
+      "5,000",
+      "10,000",
+      "15,000",
+      "20,000",
+      "35,000",
+      "50,000",
+      "80,000",
+      "100,000",
+      "130,000",
+      "180,000",
+      "200,000",
+      "250,000",
+      "300,000",
+      "350,000",
+      "400,000",
+      "450,000",
+      "500,000" /* ... autres valeurs pour A vendre */,
+      ,
+    ],
+    louer: [
+      "10,000",
+      "15,000",
+      "20,000",
+      "25,000",
+      "30,000",
+      "20,000,000,000," /* ... autres valeurs pour A louer */,
+    ],
+  };
+  // Liste des prix max pour chaque état
+  const prixMaxParEtat = {
+    vendre: [
+      "15,000",
+      "25,000",
+      "30,000",
+      "40,000",
+      "50,000",
+      "60,000",
+      "70,000",
+      "80,000",
+      "90,000",
+      "100,000",
+      "130,000",
+      "180,000",
+      "200,000",
+      "250,000",
+      "300,000",
+      "350,000",
+      "400,000",
+      "450,000",
+      "500,000",
+      "550,000" /* ... autres valeurs pour A vendre */,
+      ,
+    ],
+    louer: [
+      "50,000",
+      "60,000",
+      "70,000",
+      "80,000",
+      "90,000",
+      "100,000" /* ... autres valeurs pour A louer */,
+    ],
+  };
 
   const locations = ["Douala", "Yaoundé", "Bafoussam", "Maroua", "Bertoua"];
 
@@ -169,150 +192,213 @@ const handleDropdownClickMax = () => {
   };
   const Terrains = [
     {
-      id: 1,
+      numReference: 1,
       title: "T",
       ville: "Douala",
       pays: "Camroun",
-      quartier: "Mbangue",
-      descriptin: "derriere le college NAl",
-      image: "/src/assets/exploration/terrain.jpg ",
+      quartier: "Japoma Bakoko",
+      descriptin:
+        "zone à densité minime avec un haut taux de maison en construction. Le terrain est approximativement situé à 744m de la route principale et à moins d'un km du stade de JAPOMA",
+      dossierTechnique: "Disponible",
+      titreFoncier: " N° 20 458",
+      certificatPropriete: "Non disponible",
+      relief: "Relativement plat (0,0% a 5,0%)",
+      morcelable: "oui",
+      coordonneesGeographiques: "4°00’44.5’’N 9°49’45.6’’E",
+      image: "/src/assets/terrain/JAPOMABAKOKOTF20458/carte Japoma bakoko.jpg ",
       images: [
-        "/src/assets/galerieTerrain/terrain1.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
+        "/src/assets/terrain/JAPOMABAKOKOTF20458/terrainJapoma7.jpg",
+        "/src/assets/terrain/JAPOMABAKOKOTF20458/terrainJapoma8.jpg",
+        "/src/assets/terrain/JAPOMABAKOKOTF20458/terrainJapoma9.jpg",
+        "/src/assets/terrain/JAPOMABAKOKOTF20458/terrainJapoma2.jpg",
+
+        "/src/assets/terrain/JAPOMABAKOKOTF20458/terrainJapoma13.jpg",
+
         // ... autres liens d'images
       ],
       alt: "image terrain",
       pageUrl: "/login",
-      dimension: "50,000m²",
-      prix: "10.000fcfa/m²",
+      dimension: "1000 m²",
+      prix: "50,000fcfa/m²",
       date: "12/05/2023",
-      etat: "louer",
+      vueSatelitte:
+        "https://www.google.com/maps/place/4%C2%B000'44.5%22N+9%C2%B049'45.6%22E/@4.0184,9.8255782,2916m/data=!3m1!1e3!4m4!3m3!8m2!3d4.0123611!4d9.8293333?entry=ttu",
+      etat: "vendre",
     },
     {
-      id: 2,
+      numReference: 2,
       title: "Ter",
-      ville: "Yaoundé",
+      ville: "Douala",
       pays: "Camroun",
-      quartier: "Etoug-Ebe",
-      descriptin: "derriere le college NAL",
-      image: "/src/assets/exploration/villa.jpg",
+      quartier: "Makepe",
+      descriptin:
+        " zone urbaine à forte densité à multiple fonctions à la fois commercial et logement proche du centre de loisirs parcours Vita, situé à 310m du parcours Vita.",
+      dossierTechnique: "non",
+      titreFoncier: " N° 11 872",
+      certificatPropriete: "N° 005734",
+      relief: "Relativement plat (0,0% a 5,0%)",
+      morcelable: "non",
+      coordonneesGeographiques: "4°05’04.7’’N 9°44’49.7’’E",
+      image: "/src/assets/terrain/Makepe/makepe.jpg",
       images: [
-        "/src/assets/galerieTerrain/terrain6.jpg",
-        "/src/assets/galerieTerrain/terrain7.jpg",
-        "/src/assets/galerieTerrain/terrain8.jpg",
-        "/src/assets/galerieTerrain/terrain9.jpg",
-        "/src/assets/galerieTerrain/terrain10.jpg",
+        "/src/assets/terrain/Makepe/terrainMakepe1.jpg",
+        "/src/assets/terrain/Makepe/terrainMakepe2.jpg",
+        "/src/assets/terrain/Makepe/terrainMakepe3.jpg",
+        "/src/assets/terrain/Makepe/terrainMakepe4.jpg",
+        "/src/assets/terrain/Makepe/terrainMakepe5.jpg",
+        "/src/assets/terrain/Makepe/terrainMakepe6.jpg",
         // ... autres liens d'images
       ],
       alt: "image villa",
       pageUrl: "/login",
-      dimension: "400m²",
-      prix: "20,000fcfa/m²",
+      dimension: "1 112 m²",
+      prix: "165,000 fcfa/m²",
       date: "12/05/2023",
+      vueSatelitte: "",
       etat: "vendre",
     },
     {
-      id: 3,
+      numReference: 3,
       title: "T",
       ville: "Douala",
       pays: "Camroun",
-      quartier: "Mbangue",
-      descriptin: "derriere le college NAL",
-      image: "/src/assets/exploration/immeuble.jpg",
+      quartier: "Bwang Bakoko",
+      descriptin:
+        "zone à densité minime avec un faible taux de maison en construction. Le terrain est à approximativement 1,5km de la route principal ",
+      dossierTechnique: "Disponible",
+      titreFoncier: "N° 40 700",
+      certificatPropriete: "003086",
+      relief: "Relativement plat (0,0% a 5,0%)",
+      morcelable: "oui",
+      coordonneesGeographiques: "3°59’10.8’’N 9°49’34.3’’E",
+      image: "/src/assets/terrain/BWANGBAKOKOTF40700/carteBawang bakoko.jpg",
       images: [
-        "/src/assets/galerieTerrain/terrain11.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
+        "/src/assets/terrain/BWANGBAKOKOTF40700/terrainBwang1.jpg",
+        "/src/assets/terrain/BWANGBAKOKOTF40700/terrainBwang2.jpg",
+
+        "/src/assets/terrain/BWANGBAKOKOTF40700/terrainBwang4.jpg",
+        "/src/assets/terrain/BWANGBAKOKOTF40700/terrainBwang5.jpg",
+        "/src/assets/terrain/BWANGBAKOKOTF40700/terrainBwang6.jpg",
+        "/src/assets/terrain/BWANGBAKOKOTF40700/terrainBwang7.jpg",
+
         // ... autres liens d'images
       ],
-      alt: "image immeuble",
+      alt: "img terrain",
       pageUrl: "/login",
-      dimension: "500m²",
+      dimension: "2 741m²",
       prix: "35,000fcfa/m²",
       date: "12/05/2023",
+      vueSatelitte: "",
       etat: "vendre",
     },
     {
-      id: 4,
+      numReference: 4,
       title: "T",
-      ville: "Yaoundé",
+      ville: "Doula",
       pays: "Camroun",
-      quartier: "Mvog-ada",
-      descriptin: "derriere le college NAL",
-      image: "/src/assets/exploration/appartement.jpg",
+      quartier: "Mbanga Bakoko",
+      descriptin:
+        "zone à densité moyenne avec un haut taux de maison en construction. Le terrain est à approximativement 688m de la route principale",
+      dossierTechnique: "Disponible",
+      titreFoncier: "N° 645",
+      certificatPropriete: "006667",
+      relief: "Relativement plat (5,0% a 10,0%)",
+      morcelable: "non",
+      coordonneesGeographiques: "4°00’44.7’’N 9°48’26.5’’E",
+      image: "/src/assets/terrain/MBANGABAKOKOTF645/carte MBANGA bakoko.jpg",
       images: [
-        "/src/assets/galerieTerrain/terrain1.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
+        "/src/assets/terrain/MBANGABAKOKOTF645/terrainMbanga1.png",
+        "/src/assets/terrain/MBANGABAKOKOTF645/terrainMbanga2.jpg",
+        "/src/assets/terrain/MBANGABAKOKOTF645/terrainMbanga3.jpg",
+        "/src/assets/terrain/MBANGABAKOKOTF645/terrainMbanga4.jpg",
+        "/src/assets/terrain/MBANGABAKOKOTF645/terrainMbanga5.jpg",
+        "/src/assets/terrain/MBANGABAKOKOTF645/terrainMbanga6.jpg",
+        "/src/assets/terrain/MBANGABAKOKOTF645/terrainMbanga7.jpg",
+        "/src/assets/terrain/MBANGABAKOKOTF645/terrainMbanga8.jpg",
+        "/src/assets/terrain/MBANGABAKOKOTF645/terrainMbanga9.png",
         // ... autres liens d'images
       ],
       alt: "image appatement",
       pageUrl: "/login",
-      dimension: "400m²",
-      prix: "20,000fcfa/m²",
+      dimension: "460 m²",
+      prix: "40,000fcfa/m²",
       date: "12/05/2023",
+      vueSatelitte: "",
       etat: "vendre",
     },
     {
-      id: 5,
-      title: "T",
-      ville: "Bafoussam",
-      pays: "Camroun",
-      quartier: "Tamdja",
-      descriptin: "derriere le college NAL",
-      image: "/src/assets/exploration/appartement.jpg",
-      images: [
-        "/src/assets/galerieTerrain/terrain1.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
-        // ... autres liens d'images
-      ],
-      alt: "image appatement",
-      pageUrl: "/login",
-      dimension: "1000m²",
-      prix: "20,000fcfa/m²",
-      date: "12/05/2023",
-      etat: "louer",
-    },
-    {
-      id: 6,
-      title: "T",
-      ville: "Bertoua",
-      pays: "Camroun",
-      quartier: "Itali",
-      descriptin: "derriere le college NAL",
-      image: "/src/assets/exploration/appartement.jpg",
-      images: [
-        "/src/assets/galerieTerrain/terrain1.jpg",
-        "/src/assets/galerieTerrain/terrain2.jpg",
-        "/src/assets/galerieTerrain/terrain3.jpg",
-        "/src/assets/galerieTerrain/terrain4.jpg",
-        "/src/assets/galerieTerrain/terrain5.jpg",
-        // ... autres liens d'images
-      ],
-      alt: "image appatement",
-      pageUrl: "/login",
-      dimension: "300m²",
-      prix: "7,000fcfa/m²",
-      date: "12/05/2023",
-      etat: "vendre",
-    },
-    {
-      id: 7,
+      numReference: 5,
       title: "T",
       ville: "Douala",
       pays: "Camroun",
+      quartier: "Ngoma",
+      descriptin:
+        "Situé a 3 Km du carrefour Logbessou, cette zone et en plein croissance. Plussieurs projets immobiliers en developpement autour dudit terrain",
+      dossierTechnique: "Disponible",
+      titreFoncier: "N° 11 872",
+      certificatPropriete: "",
+      relief: "Relativement plat (05% a 10%)",
+      morcelable: "oui",
+      coordonneesGeographiques: "4°6’28.21’’N 9°46’58.35’’E",
+      image: "/src/assets/terrain/ngoma/ngoma.jpg",
+      images: [
+        "/src/assets/terrain/ngoma/terrainNgoma1.jpg",
+        "/src/assets/terrain/ngoma/terrainNgoma2.jpg",
+        "/src/assets/terrain/ngoma/terrainNgoma3.jpg",
+        "/src/assets/terrain/ngoma/terrainNgoma6.jpg",
+        "/src/assets/terrain/ngoma/terrainNgoma4.jpg",
+        "/src/assets/terrain/ngoma/terrainNgoma5.jpg",
+        // ... autres liens d'images
+      ],
+      alt: "img terrain",
+      pageUrl: "/login",
+      dimension: "40.000m²",
+      prix: "20,000fcfa/m²",
+      date: "12/05/2023",
+      vueSatelitte: "",
+      etat: "vendre",
+    },
+    {
+      numReference: 6,
+      title: "T",
+      ville: "Douala",
+      pays: "Camroun",
+      quartier: "PK27 Entrée Guinness",
+      descriptin:
+        "Le terain est approximativement a 6 Km de la route provinciale 14. Cette zon a dansité faible et l'activité pronner est l'agriculture et l'elevage. ",
+      dossierTechnique: "Disponible",
+      titreFoncier: "N° 2671",
+      certificatPropriete: "",
+      relief: "légerement plat (5,0% a 10,0%)",
+      morcelable: "oui",
+      coordonneesGeographiques: "4°12’40.6’’N 9°50’31.0’’E",
+      image: "/src/assets/terrain/PK27entréeGuinness/carte pk27.jpg",
+      images: [
+        "/src/assets/terrain/PK27entréeGuinness/terrainPk27.PNG",
+
+        // ... autres liens d'images
+      ],
+      alt: "image appatement",
+      pageUrl: "/login",
+      dimension: "11,30Ha",
+      prix: "3,500fcfa/m²",
+      date: "12/05/2023",
+      vueSatelitte: "",
+      etat: "vendre",
+    },
+    {
+      numReference: 7,
+      title: "T",
+      ville: "Yaounde",
+      pays: "Camroun",
       quartier: "Mbangue",
       descriptin: "derriere le college NAL",
+      dossierTechnique: "Disponible",
+      titreFoncier: "N° 40 700",
+      certificatPropriete: "003086",
+      relief: "Relativement plat (0,0% a 5,0%)",
+      morcelable: "oui",
+      coordonneesGeographiques: "3°59’10.8’’N 9°49’34.3’’E",
       image: "/src/assets/exploration/appartement.jpg",
       images: [
         "/src/assets/galerieTerrain/terrain1.jpg",
@@ -328,15 +414,22 @@ const handleDropdownClickMax = () => {
       dimension: "400m²",
       prix: "10,000FCFA/m²",
       date: "12/05/2023",
+      vueSatelitte: "",
       etat: "vendre",
     },
     {
-      id: 8,
+      numReference: 8,
       ville: "T",
       lieu: "Yaoundé",
       pays: "Camroun",
       quartier: "Bastos",
       descriptin: "derriere le college NAL",
+      dossierTechnique: "Disponible",
+      titreFoncier: "N° 40 700",
+      certificatPropriete: "003086",
+      relief: "Relativement plat (0,0% a 5,0%)",
+      morcelable: "oui",
+      coordonneesGeographiques: "3°59’10.8’’N 9°49’34.3’’E",
       image: "/src/assets/exploration/appartement.jpg",
       alt: "image appatement",
       images: [
@@ -351,15 +444,22 @@ const handleDropdownClickMax = () => {
       dimension: "1000m²",
       prix: "100,000fcfa/m²",
       date: "12/05/2023",
+      vueSatelitte: "",
       etat: "louer",
     },
     {
-      id: 9,
+      numReference: 9,
       title: "T",
       ville: "Maroua",
       pays: "Camroun",
       quartier: "Pitoaré",
       descriptin: "derriere le college NAL",
+      dossierTechnique: "Disponible",
+      titreFoncier: "N° 40 700",
+      certificatPropriete: "003086",
+      relief: "Relativement plat (0,0% a 5,0%)",
+      morcelable: "oui",
+      coordonneesGeographiques: "3°59’10.8’’N 9°49’34.3’’E",
       image: "/src/assets/exploration/appartement.jpg",
       images: [
         "/src/assets/galerieTerrain/terrain1.jpg",
@@ -374,15 +474,22 @@ const handleDropdownClickMax = () => {
       dimension: "400m²",
       prix: "8,000fcfa/m²",
       date: "12/05/2023",
+      vueSatelitte: "",
       etat: "vendre",
     },
     {
-      id: 10,
+      numReference: 10,
       title: "T",
       ville: "Maroua",
       pays: "Camroun",
       quartier: "Mbangue",
       descriptin: "derriere le college NAL",
+      dossierTechnique: "Disponible",
+      titreFoncier: "N° 40 700",
+      certificatPropriete: "003086",
+      relief: "Relativement plat (0,0% a 5,0%)",
+      morcelable: "oui",
+      coordonneesGeographiques: "3°59’10.8’’N 9°49’34.3’’E",
       image: "/src/assets/exploration/appartement.jpg",
       images: [
         "/src/assets/galerieTerrain/terrain1.jpg",
@@ -396,15 +503,22 @@ const handleDropdownClickMax = () => {
       dimension: "100.000m²",
       prix: "150,000fcfa/m²",
       date: "12/05/2023",
+      vueSatelitte: "",
       etat: "louer",
     },
     {
-      id: 10,
+      numReference: 11,
       title: "T",
       ville: "Maroua",
       pays: "Camroun",
       quartier: "Domayo",
       descriptin: "Deux voix, derriere le foyer des jeunes",
+      dossierTechnique: "Disponible",
+      titreFoncier: "N° 40 700",
+      certificatPropriete: "003086",
+      relief: "Relativement plat (0,0% a 5,0%)",
+      morcelable: "oui",
+      coordonneesGeographiques: "3°59’10.8’’N 9°49’34.3’’E",
       image: "/src/assets/exploration/appartement.jpg",
       images: [
         "/src/assets/galerieTerrain/terrain11.jpg",
@@ -419,33 +533,40 @@ const handleDropdownClickMax = () => {
       dimension: "100.000m²",
       prix: "120,000fcfa/m²",
       date: "12/05/2023",
+      vueSatelitte: "",
       etat: "louer",
     },
   ];
   const handlePropertyTypeChange = (etat) => {
     setEtatSelectionne(etat);
     setShowMessage(false);
+
     // Réinitialisez les prix sélectionnés lorsque l'état change
     setSelectedPrixMin(null);
     setSelectedPrixMax(null);
   };
   const filteredTerrains = Terrains.filter((Terrain) => {
     const isTypeMatch =
-      !etatSelectionne  ||
-      Terrain.etat.toLowerCase() === etatSelectionne .toLowerCase();
+      !etatSelectionne ||
+      Terrain.etat.toLowerCase() === etatSelectionne.toLowerCase();
 
     const isLocationMatch =
       !selectedLocation ||
       Terrain.ville.toLowerCase() === selectedLocation.toLowerCase();
 
-      const isPriceRangeMatch =
+    const isPriceRangeMatch =
       (!selectedPrixMin ||
-        parseFloat(Terrain.prix.replace(/,/g, ''), 10) >= parseFloat(selectedPrixMin.replace(/,/g, ''), 10)) &&
+        parseFloat(Terrain.prix.replace(/,/g, ""), 10) >=
+          parseFloat(selectedPrixMin.replace(/,/g, ""), 10)) &&
       (!selectedPrixMax ||
-        parseFloat(Terrain.prix.replace(/,/g, ''), 10) <= parseFloat(selectedPrixMax.replace(/,/g, ''), 10));
+        parseFloat(Terrain.prix.replace(/,/g, ""), 10) <=
+          parseFloat(selectedPrixMax.replace(/,/g, ""), 10));
 
     return isTypeMatch && isLocationMatch && isPriceRangeMatch;
   });
+  const paginatedTerrains = filteredTerrains.slice(startIndex, endIndex);
+  const totalTerrains = filteredTerrains.length; // utilisez la liste complète ou filtrée selon vos besoins
+const totalPages = Math.ceil(totalTerrains / itemsPerPage);
 
   return (
     <>
@@ -564,17 +685,23 @@ const handleDropdownClickMax = () => {
                   </button>
                   {isOpenMin && (
                     <div className="bg-white absolute top-10 flex-col items-start rounded-lg p-2 w-full overflow-y-auto max-h-52 border-2 z-10">
-                      {prixMinParEtat[etatSelectionne]?.sort((a, b) => parseFloat(a.replace(/,/g, ""), 10) - parseFloat(b.replace(/,/g, ""), 10)).map((prixmin, i) => (
-                        <div
-                          className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
-                          key={i}
-                          onClick={() => handleSelection(prixmin)}
-                        >
-                          <h3 className="font-semibold mr-44 px-0 text-sm text-Cprimary">
-                            {prixmin}
-                          </h3>
-                        </div>
-                      ))}
+                      {prixMinParEtat[etatSelectionne]
+                        ?.sort(
+                          (a, b) =>
+                            parseFloat(a.replace(/,/g, ""), 10) -
+                            parseFloat(b.replace(/,/g, ""), 10)
+                        )
+                        .map((prixmin, i) => (
+                          <div
+                            className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
+                            key={i}
+                            onClick={() => handleSelection(prixmin)}
+                          >
+                            <h3 className="font-semibold mr-44 px-0 text-sm text-Cprimary">
+                              {prixmin}
+                            </h3>
+                          </div>
+                        ))}
                     </div>
                   )}
                 </div>
@@ -585,7 +712,7 @@ const handleDropdownClickMax = () => {
                   </h2>
                   <button
                     // onClick={() => setIsOpenPrice(!isOpenPrice)}
-                    
+
                     onClick={handleDropdownClickMax}
                     className="bg-Csecondary1 p-0  flex w-full items-center justify-between font-bold text-sm rounded-lg tracking-wider border-4 border-transparent active:border-Cprimary duration-300 active:text-Cprimary text-white"
                   >
@@ -596,25 +723,35 @@ const handleDropdownClickMax = () => {
                       <AiOutlineCaretUp className="h-8" />
                     )}
                   </button>
-                  {isOpenMax&& (
+                  {isOpenMax && (
                     <div className="bg-white absolute top-10 flex-col items-start rounded-lg p-2 w-full overflow-y-auto max-h-52 border-2 z-10">
                       {prixMaxParEtat[etatSelectionne]
-                    ?.filter(
-                      (price) =>
-                      parseFloat(price.replace(/,/g, ""), 10) >
-                      (selectedPrixMin ? parseFloat(selectedPrixMin.replace(/,/g, ""), 10) : 0)
-                    ).sort((a, b) => parseFloat(a.replace(/,/g, ""), 10) - parseFloat(b.replace(/,/g, ""), 10))
-                    .map((price, i) => (
-                      <div
-                        className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
-                        key={i}
-                        onClick={() => handlePriceSelection(price)}
-                      >
-                        <h3 className="font-semibold mr-44 px-0 text-sm text-Cprimary">
-                          {price}
-                        </h3>
-                      </div>
-                    ))}
+                        ?.filter(
+                          (price) =>
+                            parseFloat(price.replace(/,/g, ""), 10) >
+                            (selectedPrixMin
+                              ? parseFloat(
+                                  selectedPrixMin.replace(/,/g, ""),
+                                  10
+                                )
+                              : 0)
+                        )
+                        .sort(
+                          (a, b) =>
+                            parseFloat(a.replace(/,/g, ""), 10) -
+                            parseFloat(b.replace(/,/g, ""), 10)
+                        )
+                        .map((price, i) => (
+                          <div
+                            className="flex w-full p-1 hover:bg-Csecondary1 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-Cprimary border-l-4"
+                            key={i}
+                            onClick={() => handlePriceSelection(price)}
+                          >
+                            <h3 className="font-semibold mr-44 px-0 text-sm text-Cprimary">
+                              {price}
+                            </h3>
+                          </div>
+                        ))}
                     </div>
                   )}
                 </div>
@@ -691,26 +828,27 @@ const handleDropdownClickMax = () => {
           <div className="md:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center lg:gap-0 gap-7 2xl:ml-14">
             <div>
               <div className="grid lg:grid-cols-2 gap-7 mb-20 mt-20 items-center lg:px-7">
-                {filteredTerrains.length === 0 ? (
-                  <p className="text-Cred-primary font-semibold text-center md:-end-1/2 mx-auto mt-7 lg:ml-44 text-xl lg:-mt-44">
+                {paginatedTerrains.length === 0 ? (
+                  <p className="text-Cred-primary font-semibold text-center md:-end-1/2 mx-auto mt-7 lg:ml-44 text-xl lg:-mt-44 ">
                     Aucun terrain ne correspond aux critères de recherche
                     sélectionnés.
                   </p>
                 ) : (
-                  filteredTerrains.map((Terrain, index) => {
+                  paginatedTerrains.map((Terrain, index) => {
                     // Créez un numéro de référence alphanumérique en combinant le titre et l'index
-                    const paddedIndex = `00${index + 1}`.slice(-3);
+                    const paddedIndex = `00${Terrain.numReference}`.slice(-3);
 
                     const referenceNumber = `${
                       Terrain.etat === "vendre" ? "TV" : "TL"
                     }-${paddedIndex}`;
                     Terrain.referenceNumber = referenceNumber;
+
                     return (
                       <div
-                        key={Terrain.id}
-                        className="md:w-2/3 lg:w-full  lg:h-full mx-auto bg-Csecondary bg-neutralSilver rounded-2xl shadow-2xl mb-1 border  border-Cprimary hover:scale-95 transition-all duration-300 w-[380px] lg:-ml-24"
+                        key={Terrain.numReference}
+                        className="md:w-full lg:w-full  lg:h-full mx-auto bg-Csecondary bg-neutralSilver rounded-2xl shadow-2xl mb-1 border  border-Cprimary hover:scale-95 transition-all duration-300 w-full lg:-ml-24  "
                       >
-                        <div className="flex items-center gap-2 px-">
+                        <div className="flex items-center gap-2">
                           <div
                             onClick={() => {
                               setSelectedTerrain(Terrain);
@@ -718,7 +856,7 @@ const handleDropdownClickMax = () => {
                               handleTerrainClick(Terrain);
                             }}
                           >
-                            <div className="relative lg:w-[250px] lg:h-60 lg:-mb-1 w-36 w h-60">
+                            <div className="relative lg:w-[250px] lg:h-[260px] lg:-mb-1 w-[120px] h-[260px]   ">
                               <img
                                 src={Terrain.image}
                                 alt="Les valeur d'efficace"
@@ -727,57 +865,66 @@ const handleDropdownClickMax = () => {
                             </div>
                           </div>
 
-                          <div className="lg:w-[1300px] w-full h-full  ">
-                            <h3 className="my-2 mt-0 text-xl font-poppins font-semibold text-Cprimary flex ">
+                          <div className="lg:w-[1300px] w-44 h-full  ">
+                            <h3 className="my-2 mt-0 text-xl xs:text-sm font-poppins font-semibold text-Cprimary flex  ">
                               <div
                                 onClick={() => {
                                   setSelectedTerrain(Terrain);
                                   setShowModal(true);
                                 }}
-                                className="italic underline uppercase top-8 cursor-pointer"
+                                className="italic underline uppercase top-8 cursor-pointer xs:text-sm "
                               >
                                 {referenceNumber}
-                                <div></div>
                               </div>
-                              <h3 className="lg:ml-32 ml-12 italic text-base text-white bg-Cprimary rounded-lg px-1 py-1">
+                              <h3 className="lg:ml-14 ml-4 md:ml-3 xl:ml-28 font-bold  italic text-base text-white bg-Cprimary rounded-lg px-1 py-1">
                                 A {Terrain.etat}
                               </h3>
                             </h3>
                             <p className="text-base font-serif text-texteCouleur text-justify  mr-2 flex ">
-                            <FaMapMarkerAlt
-                                  className="mr-2 mt-1"
-                                  style={{ color: "blue" }}
-                                />
-                             
+                              <FaMapMarkerAlt
+                                className="mr-2 mt-1"
+                                style={{ color: "blue" }}
+                              />
                               {Terrain.pays},{Terrain.ville}-{Terrain.quartier},
-                              {Terrain.descriptin}
                             </p>
                             <p className="text-base font-serif text-texteCouleur text-justify mr-2 flex  ">
-                            <FaRegCalendarAlt
-                                  className="mr-2 mt-1"
-                                  style={{ color: "blue" }}
-                                />
+                              <FaRegCalendarAlt
+                                className="mr-2 mt-1"
+                                style={{ color: "blue" }}
+                              />
 
                               {Terrain.date}
                             </p>
-                            <p className="text-base font-serif text-texteCouleur text-justify mr-4 flex flex-wrap pt-2 lg:px-0 px-2 lg:ml-0  ">
-                            <  FaChartArea
-                                  className="mr-2 mt-1"
-                                  style={{ color: "blue" }}
-                                />
- 
+                            <p className="text-base font-serif text-texteCouleur text-justify mr-2 flex  ">
+                              <MdOutlineTitle
+                                className="mr-2 mt-1"
+                                style={{ color: "blue" }}
+                              />
+
+                              {Terrain.titreFoncier}
+                            </p>
+
+                            <p className="text-base font-serif text-texteCouleur text-justify mr-4 flex flex-wrap  lg:px-0 px-2 lg:ml-0  ">
+                              <FaChartArea
+                                className="mr-2 mt-1 -ml-1 lg:ml-0"
+                                style={{ color: "blue" }}
+                              />
+
                               {Terrain.dimension}
                               <div className="lg:px-3 px-3 flex flex-wrap lg:mt-0 mt-1">
-                              <MdPriceCheck
-                                  className="mr-2 mt-1"
+                                <MdPriceCheck
+                                  className="mr-1 mt-1 -ml-5 w-6 h-6 lg:ml-1 sm:ml-5"
                                   style={{ color: "blue" }}
                                 />
                                 {Terrain.prix}
                               </div>
                             </p>
-                            <div className="pt-3">
-                              <a className="italic underline" href="">
-                                voir plus
+                            <div className="pt-3 text-Cprimary">
+                              <a
+                                className="italic underline"
+                                href={Terrain.vueSatelitte}
+                              >
+                                Vu Satelitte
                               </a>
                             </div>
                           </div>
@@ -794,20 +941,20 @@ const handleDropdownClickMax = () => {
                 >
                   {selectedTerrain && (
                     <div className="p-4">
-                      <div className="flex sticky top-1">
-                        <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-20 p-2 px-2">
+                      <div className="flex sticky top-0 bg-white lg:gap-x-3 gap-1 lg:top-0 ">
+                        <h3 className="text-sm lg:text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg lg:w-20 p-2 px-1 w-24 ">
                           {/* {selectedTerrain.etat} 
                         {selectedTerrain.title} */}
                           {referenceNumber}
                         </h3>
-                        <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-24 p-2 px-2 ml-3">
-                          {selectedTerrain.etat}
+                        <h3 className="text-sm lg:text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-24 p-2  ">
+                          A {selectedTerrain.etat}
                         </h3>
                         <a
                           href={`https://wa.me/237686741680?text=Bonjour%20!%20Je%20suis%20intéressé%20par%20votre%20service,${referenceNumber}`}
                           className=""
                         >
-                          <h3 className="text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-44 px-2 p-2 ml-3 flex ">
+                          <h3 className="text-sm lg:text-base font-semibold text-white mb-5 bg-Cprimary rounded-lg w-36 lg:w-44 p-2 flex ">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               height="1em"
@@ -824,9 +971,9 @@ const handleDropdownClickMax = () => {
                       <img
                         src={selectedTerrain.image}
                         alt={selectedTerrain.title}
-                        className="object-cover w-full h-[500px] rounded-md"
+                        className="object-cover w-full h-full rounded-md"
                       />
-                      {selectedTerrain.pays} -{selectedTerrain.ville}
+                      {/* {selectedTerrain.pays} -{selectedTerrain.ville}
                       <p className="mb-5 font-normal text-texteCouleur text-lg text-justify ">
                         Notre équipe d'experts en immobilier est composée de
                         professionnels passionnés qui connaissent le marché
@@ -836,7 +983,7 @@ const handleDropdownClickMax = () => {
                         votre propriété existante, ou à investir dans des
                         opportunités immobilières.
                         {selectedTerrain.pays}
-                      </p>
+                      </p> */}
                       <div className="px-4 lg:-ml-20 max-w-screen-2x1 mx-auto my-8 mt-4">
                         <div className="md:w-11/12 mx-auto flex flex-col md:flex-row gap-2">
                           <div className="grid lg:grid-cols-3 grid-cols-2 gap-4 ">
@@ -922,35 +1069,75 @@ const handleDropdownClickMax = () => {
                               </button>
                             </Modal>
                           </div>
-                          
-                         
-                          <div className="md:w-2/3 mx-auto text-center md:text-left ">
-                            <h2 className="text-2xl font-semibold mb-4 text-neutralDGrey md:w-4/5 px-5 ">
-                              À Propos d'EFFICACE
-                            </h2>
-                            <p className="md:w-[500px] px-5 mb-5 font-normal text-texteCouleur text-lg text-justify">
-                              Bienvenue chez EFFICACE, votre partenaire de
-                              confiance dans le domaine de l'immobilier depuis
-                              2023. Nous sommes fiers de mettre à votre
-                              disposition notre expertise et notre passion pour
-                              l'immobilier, afin de vous accompagner dans toutes
-                              vos transactions immobilières.
-                              <h3 className="text-2xl font-semibold mb-4 text-neutralDGrey md:w-4/5">
-                                Notre Mission au {selectedTerrain.pays}
-                              </h3>
-                              Chez EFFICACE, notre mission est de vous offrir un
-                              service immobilier de premier ordre, basé sur
-                              l'intégrité, la transparence et le
-                              professionnalisme. Nous comprenons que l'achat, la
-                              vente ou la location d'une propriété est l'une des
-                              décisions les plus importantes de votre vie, c'est
-                              pourquoi nous nous engageons à vous fournir un
-                              accompagnement personnalisé et des solutions sur
-                              mesure.
+
+                          <div className="md:w-2/3 mx-auto text-center md:text-left xs:w-72 xs:-ml-5 ">
+                            <p className="md:w-[500px] lg:px-5 mb-5 font-poppins text-texteCouleur text-lg text-justify leading-0">
+                              Ce terrain est situé dans une{" "}
+                              {selectedTerrain.descriptin} et possede: <br />
+                              <h2 className="text-Cprimary font-semibold">
+                                1. Un dossier techinique:{" "}
+                                <span className="text-Csecondary1 italic">
+                                  {selectedTerrain.dossierTechnique}{" "}
+                                </span>{" "}
+                              </h2>
+                              <h2 className="text-Cprimary font-semibold">
+                                2. Un certicat de propriété:{" "}
+                                <span className="text-Csecondary1 italic">
+                                  {" "}
+                                  {selectedTerrain.certificatPropriete}
+                                </span>
+                              </h2>
+                              <h2 className="text-Cprimary font-semibold">
+                                {" "}
+                                3. Un titre foncier:{" "}
+                                <span className="text-Csecondary1 italic">
+                                  {selectedTerrain.titreFoncier}
+                                </span>{" "}
+                              </h2>
+                              <h2 className="text-Cprimary font-semibold">
+                                {" "}
+                                4. Un relief:{" "}
+                                <span className=" text-Csecondary1 italic">
+                                  {selectedTerrain.relief}
+                                </span>
+                              </h2>
+                              <h2 className="text-Cprimary font-semibold">
+                                {" "}
+                                5. Coordonnées Geographiques:{" "}
+                                <span className="text-Csecondary1 italic">
+                                  <a href={selectedTerrain.vueSatelitte}>
+                                    {selectedTerrain.coordonneesGeographiques}
+                                  </a>
+                                </span>
+                              </h2>
+                              <h2 className="text-Cprimary font-semibold">
+                                {" "}
+                                6. Morcelable:{" "}
+                                <span className="text-Csecondary1 italic uppercase">
+                                  {selectedTerrain.morcelable}
+                                </span>
+                              </h2>
                             </p>
-                            <button className="btn-primary px-4 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4">
+                            <div className="flex xs:-ml-40 ">
+                              <button className="bg-Cprimary text-white h-10 w-20  transition-all duration-300 rounded hover:bg-Csecondary1 animate lg:ml-44 xs:ml-44 lg:-mt-2">
+                                {" "}
+                                <a href="/login" className=" lg:mt-14 ">
+                                  Acheter
+                                </a>{" "}
+                              </button>
+                              <a
+                                href="src/assets/documents/Offre de services_à partager.pdf"
+                                target="_blank"
+                              >
+                                <button className="btn-primary h-10 w-full italic  ml-2 bg-Cprimary text-white rounded hover:bg-Csecondary1 transition-all duration-300 hover:-translate-y-4 -mt-2 xs:-mt-0.5">
+                                  Telecharger la fiche clinte
+                                </button>
+                              </a>
+                            </div>
+
+                            {/* <button className="btn-primary px-4 py-2 bg-brandPrimary text-white rounded hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4">
                               En savoir plus
-                            </button>
+                            </button> */}
                           </div>
                         </div>
                       </div>
@@ -958,30 +1145,20 @@ const handleDropdownClickMax = () => {
                   )}
                 </ModalTerrain>
               </div>
-
-      
-
-             
             </div>
-            <div className="md:w-3/5 lg:-mx-40  text-center md:text-left divide- divide-x-2 divide-gray-400 lg:mt-52 mt-36 2xl:pl-36 ">
-              <h2 className="text-2xl font-semibold mb-4 text-Cprimary  md:w-4/5 -mt-52 uppercase ">
+            <div className="md:w-3/5 lg:-mx-32 mx text-center md:text-left divide- divide-x-2 divide-gray-400 lg:mt-52 mt-36 2xl:pl-36 ">
+              <h2 className="text-2xl font-semibold mb-4 text-Cprimary  md:w-4/5 -mt-52 uppercase lg:ml-8 ">
                 Autres biens
               </h2>
-              <div className=" md:w-4/4 text-lg font-poppins mb-1 text-justify  divide-gray-400  text-texteCouleur">
+              <div className=" md:w-4/4 text-lg font-poppins mb-1 text-justify  divide-gray-400  text-texteCouleur lg:ml-8">
                 <h2 className="pl-2 text-xl font-semibold mb-2 text-Cprimary  md:w-4/5">
                   Commerciaux
                 </h2>
                 <div className="pl-3 divide-gray-400  text-base font-poppins ">
-                  <a
-                    className="block p-1 hover:text-Csecondary1"
-                    href="#"
-                  >
+                  <a className="block p-1 hover:text-Csecondary1" href="#">
                     Bureaux
                   </a>
-                  <a
-                    className="block p-1 hover:text-Csecondary1"
-                    href="#"
-                  >
+                  <a className="block p-1 hover:text-Csecondary1" href="#">
                     Boutiques
                   </a>
                   <a className="block p-1 hover:text-Csecondary1" href="#">
@@ -995,19 +1172,22 @@ const handleDropdownClickMax = () => {
                   Résidentiels
                 </h2>
                 <div className="pl-3  divide- devide- divide-gray-400  text-base font-poppins ">
-                  <a
-                    className="block p-1 hover:text-Csecondary1"
-                    href="/villa"
-                  >
+                  <a className="block p-1 hover:text-Csecondary1" href="/villa">
                     Villa
                   </a>
                   <a className="block p-1 hover:text-Csecondary1" href="#">
                     Appartement
                   </a>
-                  <a className="block p-1 hover:text-Csecondary1" href="/immeuble">
+                  <a
+                    className="block p-1 hover:text-Csecondary1"
+                    href="/immeuble"
+                  >
                     Immeuble
                   </a>
-                  <a className="block p-1 hover:text-Csecondary1" href="/duplex">
+                  <a
+                    className="block p-1 hover:text-Csecondary1"
+                    href="/duplex"
+                  >
                     Duplex
                   </a>
                   <a className="block p-1 hover:text-Csecondary1" href="#">
@@ -1021,7 +1201,7 @@ const handleDropdownClickMax = () => {
                 </a>
               </div>
 
-              <div className="pl-3 mb-4">
+              <div className="pl-3 mb-4 lg:ml-8">
                 <img
                   src="/src/assets/exploration/duplex.jpg"
                   className="h-44 w-44"
@@ -1034,11 +1214,29 @@ const handleDropdownClickMax = () => {
               </button> */}
             </div>
           </div>
-         
         </div>
-
-        
-
+        <div className="mt-16 px-5">
+          <ReactPaginate
+            breakLabel={<span className="mr-4">...</span>}
+            nextLabel={
+              <span className="w-10 h-10 flex items-center justify-center bg-gray-300 rounded-md ">
+                <BsChevronBarRight />
+              </span>
+            }
+            // onPageChange={1}
+            onPageChange={handlePageChange}
+            pageRangeDisplayed={5}
+            pageCount={totalPages}
+            previousLabel={
+              <span className="w-10 h-10 flex items-center justify-center bg-gray-300 rounded-md mr-2">
+                <BsChevronBarLeft />
+              </span>
+            }
+            containerClassName="flex items-center justify-center mt-8 mb-6"
+            pageClassName="block border- border-solid border-Cprimary hover:bg-Cprimary w-10 h-10 flex items-center justify-center rounded-md mr-2"
+            activeClassName="bg-gray-400 text-white"
+          />
+        </div>
         {/* <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto  w-screen lg:py-10 ">
           <div className="flex flex-col md:flex-row justify-between items-center mr-10 ml-10  gap-8">
             <div className="md:w-1/2 ml-20">

@@ -52,7 +52,7 @@ function Login() {
           </div>
 
           {/* Right column container with form */}
-          <div className="md:w-8/12 lg:ml-6 lg:w-5/12 ">
+          <div className="md:w-8/12 lg:ml-6 lg:w-5/12 w-full ">
             <form ref={formRef}>
               {/* Email input */}
               <div className="relative mb-6" data-te-input-wrapper-init>
@@ -62,7 +62,7 @@ function Login() {
                   name="email"
                   id="email"
                   autoComplete="off"
-                  className={`peer block min-h-[auto] w-96 rounded border-2  px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-500 focus:ring-Cprimary focus:border-Cprimary focus:border border-Csecondary1 text-black ${
+                  className={`peer block min-h-[auto] w-80 rounded border-2  px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-500 focus:ring-Cprimary focus:border-Cprimary focus:border border-Csecondary1 text-black ${
                     isValid ? "" : "border-red-500"
                   }`}
                   placeholder="contact@efficace.com"
@@ -85,14 +85,14 @@ function Login() {
                     name="password"
                     id="password"
                     autoComplete="off"
-                    className="peer block min-h-[auto] w-96 rounded border-2 bg-Csecondary px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-500 focus:ring-Cprimary focus:border-Cprimary focus:border border-Csecondary1 text-black"
+                    className="peer block min-h-[auto] w-80 rounded border-2 bg-Csecondary px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-500 focus:ring-Cprimary focus:border-Cprimary focus:border border-Csecondary1 text-black"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <button
                     type="button"
-                    className="absolute inset-y-0 -right-32 pr-0 flex  items-center cursor-pointer "
+                    className="absolute inset-y-0 -right-16 pr-0 flex  items-center cursor-pointer "
                     onClick={togglePasswordVisibility}
                   >
                     {showPassword ? <FiEyeOff /> : <FiEye />}
@@ -130,7 +130,7 @@ function Login() {
               {/* Submit button */}
               <button
                 type="submit"
-                className="inline-block w-96 rounded bg-Cprimary px-7 pb-2.5 pt-3 text-base font-serif uppercase leading-normal text-white  transition duration-150 ]"
+                className="inline-block w-80 rounded bg-Cprimary px-7 pb-2.5 pt-3 text-base font-serif uppercase leading-normal text-white  transition duration-150 ]"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >

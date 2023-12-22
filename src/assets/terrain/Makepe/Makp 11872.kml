@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="makepe11872__entities" id="makepe11872__entities">
+	<SimpleField name="Layer" type="string"></SimpleField>
+	<SimpleField name="PaperSpace" type="int"></SimpleField>
+	<SimpleField name="SubClasses" type="string"></SimpleField>
+	<SimpleField name="Linetype" type="string"></SimpleField>
+	<SimpleField name="EntityHandle" type="string"></SimpleField>
+	<SimpleField name="Text" type="string"></SimpleField>
+</Schema>
+<Folder><name>makepe11872__entities</name>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#makepe11872__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbLine</SimpleData>
+		<SimpleData name="EntityHandle">8E</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.74740553104366,4.08484357891704,0 9.74726183265247,4.08483349091603,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#makepe11872__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbLine</SimpleData>
+		<SimpleData name="EntityHandle">8F</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.74726183265247,4.08483349091603,0 9.74727266425178,4.08466160517726,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#makepe11872__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbLine</SimpleData>
+		<SimpleData name="EntityHandle">90</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.74709791582948,4.08497611968399,0 9.74716792959394,4.08499342285927,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#makepe11872__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbLine</SimpleData>
+		<SimpleData name="EntityHandle">91</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.74716792959394,4.08499342285927,0 9.74738229582814,4.08514347833873,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#makepe11872__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbLine</SimpleData>
+		<SimpleData name="EntityHandle">92</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.74738229582814,4.08514347833873,0 9.74740846909243,4.08480594445907,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#makepe11872__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="Linetype">ByBlock</SimpleData>
+		<SimpleData name="EntityHandle">93</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.74709791582948,4.08497611968399,0 9.74711986684373,4.0846512542505,0 9.74701229599813,4.08464393678666,0 9.7469916783409,4.0849494423565,0 9.74709791582948,4.08497611968399,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#makepe11872__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="Linetype">ByBlock</SimpleData>
+		<SimpleData name="EntityHandle">94</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.74699164228096,4.08494941525187,0 9.74700196912632,4.08479666245014,0 9.74686402172196,4.08478053527192,0 9.74685493026283,4.08491512238246,0 9.74699164228096,4.08494941525187,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#makepe11872__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="Linetype">ByBlock</SimpleData>
+		<SimpleData name="EntityHandle">95</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.74700196912632,4.08479666245014,0 9.74701229521893,4.08464394833264,0 9.746873868846,4.08463454817826,0 9.74686440389327,4.08477490824958,0 9.74700196912632,4.08479666245014,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#makepe11872__entities">
+		<SimpleData name="Layer">0</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbLine</SimpleData>
+		<SimpleData name="EntityHandle">96</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.746873868846,4.08463454817826,0 9.74727219911479,4.08466898639643,0</coordinates></LineString>
+  </Placemark>
+</Folder>
+</Document></kml>

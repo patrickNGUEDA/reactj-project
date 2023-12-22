@@ -177,22 +177,22 @@ const About = () => {
   return (
     <div>
       {/* <Services/> */}
-      <div className=" mt-20 ">
+      <div className=" mt-10 ">
         <div className="px-0 lg:px-0 py-20  relative ">
           <img
             src={AboutImage}
             alt="About image"
             className="w-full h-[550px] bg-gradient-to-r opacity-80 object-cover z-0 absolute top-0 md:mt-12 left-0  "
           />
-          <div className="relative z-10  mx-auto text-center md:text-center md:ml-44  lg:ml-48 ml-5 mr-5  bg-Csecondary bg-gray-300  rounded-md lg:w-[800px] lg:mt-0 hover:scale-95 transition-all duration-300 border border-Cprimary mt-2 ">
-            <div className="mx-auto text-center md:text-center ml-7 ">
-              <h2 className="text-2xl font-semibold mb-7 text-Cprimary md:w-4/5 uppercase ml-0 mr-8 py-4 underline italic ">
+          <div className="relative z-10  mx-auto text-center md:text-center md:ml-44  lg:ml-48 ml-5 mr-5  rounded-md lg:w-[1200px] lg:mt-0 hover:scale-95 transition-all duration-300  -mt-12 ">
+            <div className="mx-auto text-center md:text-center ml-1 ">
+              <h2 className="text-2xl font-semibold mb-7 text-Csecondary1 md:w-4/5 uppercase ml-0 mr-8 py-4 underline italic ">
                 Qui sommes nous ?
               </h2>
               {/* <h2 className="text-3xl font-semibold mb-7 text-black md:w-4/5 uppercase ml-0 mr-7 py-4 -mt-12">
                 À Propos d'EFFICACE
               </h2> */}
-              <p className="lg:text-lg  font-lato text-texteCouleur mb-0 mr-7 text-justify -mt-10 lg:font-poppins  ">
+              <p className="lg:text-lg md:text-base text-sm font-lato text-white mb-0 mr-7 text-justify -mt-10 lg:font-poppins font-bold  ">
               
                 <span className="font-semibold italic"> EFFICACE</span> est une
                 entreprise{" "}
@@ -227,8 +227,8 @@ const About = () => {
 
       {/* Le texte d'appropos */}
 
-      <div className="text-center md:-end-1/2 mx-auto">
-        <h2 className="text-3xl font-semibold mb-4 text-Csecondary1 lg:pt-36 uppercase ">
+      <div className="text-center md:-end-1/2 mx-auto lg:mt-24 xs:mt-20 ">
+        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-Csecondary1 lg:pt-36 uppercase ">
           Les valeurs d'EFFICACE
         </h2>
       </div>
@@ -265,7 +265,7 @@ const About = () => {
 
       <div className="text-center md:-end-1/2 mx-auto">
         <h2 className="text-4xl font-semibold mb-4 text-Csecondary1 pt-10 uppercase ">
-          Nos domaines de compétences
+          Nos domaines d'activités
         </h2>
         <h2 className="text-lg font-semibold mb-4 text-Cprimary ">
           Nous offrons une large gamme de services innovants dans le domaine de
@@ -410,12 +410,12 @@ const About = () => {
             {/* <a href="src/assets/documents/Offre de services_à partager.pdf"><button className='btn-primary px-3 py-2 ml-3 bg-Cprimary text-white rounded hover:bg-Csecondary1 transition-all duration-300 hover:-translate-y-4'>En savoir plus</button></a> */}
           </div>
         </div>
-        <div className="text-center md:-end-1/2 mx-auto">
+        <div className="text-center md:-end-1/2 mx-auto hidden">
           <h2 className="text-3xl font-semibold mb-4 text-Cprimary lg:pt-10  underline ">
             Nos responsables
           </h2>
         </div>
-        <div className="grid lg:grid-cols-4 gap-x-2 gap-y-4 mb-20 mt-7 xl:ml-12 ">
+        <div className="grid lg:grid-cols-4 gap-x-2 gap-y-4 mb-20 mt-7 xl:ml-12 hidden ">
           {NotreEquipe.map((NotreEquipe) => (
             <div
               key={NotreEquipe.id}
@@ -451,7 +451,7 @@ const About = () => {
         </h2>
       </div>
 
-      <div className="px-4 lg:px-14 max-w-screen-2x1 mx-auto  w-screen py-8">
+      <div className="px-4 lg:px-32 max-w-screen-2x1 mx-auto  w-screen py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="md:w-1/3">
             <img src={Partenaire} alt="" className="float-left rounded-md " />

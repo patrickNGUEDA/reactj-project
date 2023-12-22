@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="mbga_bak_645__entities" id="mbga_bak_645__entities">
+	<SimpleField name="Layer" type="string"></SimpleField>
+	<SimpleField name="PaperSpace" type="int"></SimpleField>
+	<SimpleField name="SubClasses" type="string"></SimpleField>
+	<SimpleField name="Linetype" type="string"></SimpleField>
+	<SimpleField name="EntityHandle" type="string"></SimpleField>
+	<SimpleField name="Text" type="string"></SimpleField>
+</Schema>
+<Folder><name>mbga_bak_645__entities</name>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">CONTOUR</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">A8</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80743837728937,4.01329091819591,0 9.80748600737697,4.01325177139582,0 9.8074667769666,4.01314306775188,0 9.8072345661848,4.01318450960407,0 9.80723947915572,4.01321223967318,0 9.80743837728937,4.01329091819591,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">CONTOUR</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">A9</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.8065266041116,4.01198916228521,0 9.80672480515146,4.01195378882831,0 9.80669170576349,4.01176675332639,0 9.80680228389123,4.01174701836758,0 9.80670475114104,4.01145376464856,0 9.80638428995823,4.01156125735859,0 9.8065266041116,4.01198916228521,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">CONTOUR</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">AA</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80692525517864,4.01155573570865,0 9.80717789996588,4.01151064000616,0 9.80714976722609,4.01135166935825,0 9.8070991689149,4.01132146717376,0 9.80687261343288,4.01139746019344,0 9.80692525517864,4.01155573570865,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">MAJ APRES LE 13.01.2023</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">AB</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80710353685921,4.01315846146623,0 9.80707729695123,4.01301102723033,0 9.80722462644835,4.012982777385,0 9.80724226460823,4.01307542687353,0 9.80747391946374,4.01303093549676,0 9.80741059172624,4.01269839254809,0 9.80721679021152,4.01273562200355,0 9.80718126040135,4.01254909476118,0 9.80737504455709,4.01251182169249,0 9.80732042765558,4.01231606736036,0 9.80696567534687,4.01237937778267,0 9.80692785083357,4.01216562328389,0 9.80708834513684,4.01213698089941,0 9.80712143092858,4.01232401505986,0 9.80731569499839,4.0122893436964,0 9.80720694938276,4.01167480476287,0 9.8068522018984,4.0117381142658,0 9.80689002635075,4.01195186877827,0 9.80653526531679,4.01201517557889,0 9.80666724825574,4.01264763388897,0 9.80686104504047,4.01261041784541,0 9.80690019028665,4.01280508399478,0 9.80668184627566,4.01284347818808,0 9.80670216138579,4.01295827978016,0 9.80675195012845,4.01301939137573,0 9.80710353685921,4.01315846146623,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">AC</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80725990276522,4.01316806731469,0 9.80749155765275,4.01312358497388,0 9.80747391946374,4.01303093549676,0 9.80724226460823,4.01307542687353,0 9.80725990276522,4.01316806731469,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">AE</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80725990276522,4.01316806731469,0 9.80749155765275,4.01312358497388,0 9.80747391946374,4.01303093549676,0 9.80724226460823,4.01307542687353,0 9.80725990276522,4.01316806731469,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">MAJ NOV 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">B0</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80710003372754,4.01212244407545,0 9.80729383358119,4.01208520076221,0 9.80725828518779,4.01189864816234,0 9.80706450481465,4.01193586046162,0 9.80710003372754,4.01212244407545,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">B1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80725990276522,4.01316806731469,0 9.80749155765275,4.01312358497388,0 9.80747391946374,4.01303093549676,0 9.80724226460823,4.01307542687353,0 9.80725990276522,4.01316806731469,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">B3</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80721679021152,4.01273562200355,0 9.80741059235999,4.01269839587434,0 9.80737504455709,4.01251182169249,0 9.80718125145538,4.01254904779591,0 9.80721679021152,4.01273562200355,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">B4</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80725990276522,4.01316806731469,0 9.80749155765275,4.01312358497388,0 9.80747391946374,4.01303093549676,0 9.80724226460823,4.01307542687353,0 9.80725990276522,4.01316806731469,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">Dossiers rejetÃ©s</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">B5</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80686104504047,4.01261041784541,0 9.80702114729579,4.01257967132351,0 9.80698223484269,4.01237531604989,0 9.80682212358379,4.01240603090457,0 9.80683227542936,4.01245934054717,0 9.80686104504047,4.01261041784541,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">Dossiers rejetÃ©s</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">B6</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80666724825574,4.01264763388897,0 9.80686104504047,4.01261041784541,0 9.80683227542936,4.01245934054717,0 9.80663848494171,4.012496515864,0 9.80666724825574,4.01264763388897,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">Dossiers rejetÃ©s</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">B7</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80710235774386,4.01300614569608,0 9.80722461012953,4.01298267065867,0 9.80726245645518,4.01297540273526,0 9.80722693387114,4.01278881766368,0 9.80742071352192,4.01275160240712,0 9.80741563757817,4.01272494895085,0 9.80706175025244,4.01279290896802,0 9.80710235774386,4.01300614569608,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">Dossiers rejetÃ©s</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">B8</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80689932779908,4.01193995021499,0 9.80725320309196,4.01187199306394,0 9.80724812806626,4.01184534050757,0 9.80705435851246,4.01188255476784,0 9.80701882706307,4.01169596967204,0 9.80685377702378,4.01172766093185,0 9.80689932779908,4.01193995021499,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">Dossiers rejetÃ©s</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">B9</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.8070617684021,4.01279304554426,0 9.80741564479417,4.01272495889428,0 9.80741057434442,4.01269839589218,0 9.8072167992726,4.01273567627042,0 9.80718126951536,4.0125490930079,0 9.80702117723635,4.01257989020645,0 9.8070617684021,4.01279304554426,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">Dossiers rejetÃ©s</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">BA</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.8065826872192,4.0122037311369,0 9.80693659057869,4.01213575326208,0 9.80691538525876,4.01202459017391,0 9.80656153608595,4.01209266748255,0 9.8065826872192,4.0122037311369,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">0</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbLine</SimpleData>
+		<SimpleData name="EntityHandle">C2</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80675195012845,4.01301939137573,0 9.80743838618882,4.01329091088152,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">0</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbLine</SimpleData>
+		<SimpleData name="EntityHandle">C3</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.80741060250516,4.01269839047745,0 9.8074914012188,4.01312361501233,0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#mbga_bak_645__entities">
+		<SimpleData name="Layer">end maj 26 02 2021</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="Linetype">ByBlock</SimpleData>
+		<SimpleData name="EntityHandle">E6</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.78952806905495,4.00931000989665,0 9.78957795229697,4.00919534863959,0 9.78891758339006,4.00890561030798,0 9.78882383883717,4.00912126746773,0 9.78952806905495,4.00931000989665,0</coordinates></LineString>
+  </Placemark>
+</Folder>
+</Document></kml>

@@ -11,7 +11,7 @@ const ModalTerrain = ({ isVisible, onClose, children }) => {
       id="wrapper"
       onClick={handleClose}
     >
-      <div className="lg:w-[1200px] 2xl:w-[1500px] w-96 mt-10 flex flex-col ">
+      <div className="lg:w-[1200px] 2xl:w-[1500px] w-80 mt-10 flex flex-col ">
         <button
           className="text-white text-xl place-self-end px-2 "
           onClick={() => onClose()}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="jap_20458__entities" id="jap_20458__entities">
+	<SimpleField name="Layer" type="string"></SimpleField>
+	<SimpleField name="PaperSpace" type="int"></SimpleField>
+	<SimpleField name="SubClasses" type="string"></SimpleField>
+	<SimpleField name="Linetype" type="string"></SimpleField>
+	<SimpleField name="EntityHandle" type="string"></SimpleField>
+	<SimpleField name="Text" type="string"></SimpleField>
+</Schema>
+<Folder><name>jap_20458__entities</name>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#jap_20458__entities">
+		<SimpleData name="Layer">Parcelle MAJ</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">89</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82943399406221,4.01287095542042 9.82960890216032,4.01260781245063 9.8292342961467,4.01235670781264 9.82905939695668,4.01261985070833 9.82943399406221,4.01287095542042</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#jap_20458__entities">
+		<SimpleData name="Layer">MAJ APRES LE 13.01.2023</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">8A</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82943402110367,4.01287097348476 9.8292840308188,4.01277044493963 9.82945896598001,4.01250730196834 9.82960886614764,4.01260783057912 9.82943402110367,4.01287097348476</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#jap_20458__entities">
+		<SimpleData name="Layer">Parcelle MAJ</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">91</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82943399406221,4.01287095542042 9.82960890216032,4.01260781245063 9.8292342961467,4.01235670781264 9.82905939695668,4.01261985070833 9.82943399406221,4.01287095542042</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#jap_20458__entities">
+		<SimpleData name="Layer">MAJ APRES LE 13.01.2023</SimpleData>
+		<SimpleData name="SubClasses">AcDbEntity:AcDbPolyline</SimpleData>
+		<SimpleData name="EntityHandle">92</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>9.82943402110367,4.01287097348476 9.8292840308188,4.01277044493963 9.82945896598001,4.01250730196834 9.82960886614764,4.01260783057912 9.82943402110367,4.01287097348476</coordinates></LineString>
+  </Placemark>
+</Folder>
+</Document></kml>
