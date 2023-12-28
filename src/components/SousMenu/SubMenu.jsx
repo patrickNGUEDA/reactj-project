@@ -29,8 +29,6 @@ const SubMenuInvestir =()=>{
                 <a className="block p-2 hover:text-Csecondary1" href="/service8">Centres médicals</a>
                 <a className="block p-2 hover:text-Csecondary1" href="/service9">Hotels</a>
                 <a className="block p-2 hover:text-Csecondary1" href="/service9">Industriels</a>
-                
-
             </div>
         </div>
     );

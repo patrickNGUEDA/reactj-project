@@ -236,7 +236,6 @@ const Duplex = () => {
       grosOeuvre: "22,500,000fcfa",
       finition: "32,500,000fcfa",
       prixHorsTerrain: "57,125,000fcfa",
-
       coutTerrain: "6,000,000fcfa",
       prix: "57,125,000fcfa",
       date: "12/05/2023",
@@ -280,7 +279,6 @@ const Duplex = () => {
       grosOeuvre: "30,725,000fcfa",
       finition: "37,960,000fcfa",
       prixHorsTerrain: "71,066,000fcfa",
-
       coutTerrain: "4,600,000fcfa",
       prix: "71,066,000fcfa",
       date: "12/05/2023",

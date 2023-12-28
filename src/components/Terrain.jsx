@@ -108,7 +108,7 @@ const Terrain = () => {
       "20,000",
       "25,000",
       "30,000",
-      "20,000,000,000," /* ... autres valeurs pour A louer */,
+      "20,000,000,000" /* ... autres valeurs pour A louer */,
     ],
   };
   // Liste des prix max pour chaque état
