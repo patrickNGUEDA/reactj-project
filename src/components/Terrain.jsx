@@ -83,7 +83,7 @@ const Terrain = () => {
   const prixMinParEtat = {
     vendre: [
       "3,000",
-      "5,000",
+      "5000",
       "10,000",
       "15,000",
       "20,000",
@@ -114,6 +114,7 @@ const Terrain = () => {
   // Liste des prix max pour chaque état
   const prixMaxParEtat = {
     vendre: [
+      "4000",
       "15,000",
       "25,000",
       "30,000",
@@ -219,7 +220,7 @@ const Terrain = () => {
       alt: "image terrain",
       pageUrl: "/login",
       dimension: "1000 m²",
-      prix: "50,000fcfa/m²",
+      prix: "50000fcfa/m²",
       date: "12/05/2023",
       vueSatelitte:
         "https://www.google.com/maps/place/4%C2%B000'44.5%22N+9%C2%B049'45.6%22E/@4.0184,9.8255782,2916m/data=!3m1!1e3!4m4!3m3!8m2!3d4.0123611!4d9.8293333?entry=ttu",
@@ -252,7 +253,7 @@ const Terrain = () => {
       alt: "image villa",
       pageUrl: "/login",
       dimension: "1 112 m²",
-      prix: "165,000 fcfa/m²",
+      prix: "165000 fcfa/m²",
       date: "12/05/2023",
       vueSatelitte: "",
       etat: "vendre",
@@ -286,7 +287,7 @@ const Terrain = () => {
       alt: "img terrain",
       pageUrl: "/login",
       dimension: "2 741m²",
-      prix: "35,000fcfa/m²",
+      prix: "35000fcfa/m²",
       date: "12/05/2023",
       vueSatelitte: "",
       etat: "vendre",
@@ -321,7 +322,7 @@ const Terrain = () => {
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "460 m²",
-      prix: "40,000fcfa/m²",
+      prix: "40000fcfa/m²",
       date: "12/05/2023",
       vueSatelitte: "",
       etat: "vendre",
@@ -381,7 +382,7 @@ const Terrain = () => {
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "11,30Ha",
-      prix: "3,500fcfa/m²",
+      prix: "3500fcfa/m²",
       date: "12/05/2023",
       vueSatelitte: "",
       etat: "vendre",
@@ -412,7 +413,7 @@ const Terrain = () => {
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "400m²",
-      prix: "10,000FCFA/m²",
+      prix: "10000FCFA/m²",
       date: "12/05/2023",
       vueSatelitte: "",
       etat: "vendre",
@@ -442,7 +443,7 @@ const Terrain = () => {
       ],
       pageUrl: "/login",
       dimension: "1000m²",
-      prix: "100,000fcfa/m²",
+      prix: "100000fcfa/m²",
       date: "12/05/2023",
       vueSatelitte: "",
       etat: "louer",
@@ -472,7 +473,7 @@ const Terrain = () => {
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "400m²",
-      prix: "8,000fcfa/m²",
+      prix: "8000fcfa/m²",
       date: "12/05/2023",
       vueSatelitte: "",
       etat: "vendre",
@@ -501,7 +502,7 @@ const Terrain = () => {
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "100.000m²",
-      prix: "150,000fcfa/m²",
+      prix: "150000fcfa/m²",
       date: "12/05/2023",
       vueSatelitte: "",
       etat: "louer",
@@ -531,7 +532,7 @@ const Terrain = () => {
       alt: "image appatement",
       pageUrl: "/login",
       dimension: "100.000m²",
-      prix: "120,000fcfa/m²",
+      prix: "120000fcfa/m²",
       date: "12/05/2023",
       vueSatelitte: "",
       etat: "louer",
@@ -566,7 +567,7 @@ const Terrain = () => {
   });
   const paginatedTerrains = filteredTerrains.slice(startIndex, endIndex);
   const totalTerrains = filteredTerrains.length; // utilisez la liste complète ou filtrée selon vos besoins
-const totalPages = Math.ceil(totalTerrains / itemsPerPage);
+  const totalPages = Math.ceil(totalTerrains / itemsPerPage);
 
   return (
     <>
@@ -669,7 +670,7 @@ const totalPages = Math.ceil(totalTerrains / itemsPerPage);
 
                 <div className="relative flex flex-col items-center h-10 lg:w-[200px] rounded-md ml-0 lg:mr-10 mr-2 right-3">
                   <h2 className="lg:mr-14 mr-36  -mt-6 font-semibold text-base text-Cprimary">
-                    Prix min
+                    Prix min/m²
                   </h2>
                   <button
                     // onClick={() => setIsOpen((prev) => !prev)}
@@ -708,7 +709,7 @@ const totalPages = Math.ceil(totalTerrains / itemsPerPage);
 
                 <div className="relative flex flex-col items-center h-10 lg:w-[200px] rounded-md ml-0 lg:mr-10 mr-2 right-3">
                   <h2 className="lg:mr-14 mr-36 -mt-6 font-semibold text-base text-Cprimary">
-                    Prix max
+                    Prix max/m²
                   </h2>
                   <button
                     // onClick={() => setIsOpenPrice(!isOpenPrice)}
@@ -846,7 +847,7 @@ const totalPages = Math.ceil(totalTerrains / itemsPerPage);
                     return (
                       <div
                         key={Terrain.numReference}
-                        className="md:w-full lg:w-full  lg:h-full mx-auto bg-Csecondary bg-neutralSilver rounded-2xl shadow-2xl mb-1 border  border-Cprimary hover:scale-95 transition-all duration-300 w-full lg:-ml-24  "
+                        className="md:w-full lg:w-full  lg:h-full mx-auto bg-Csecondary bg-neutralSilver rounded-2xl shadow-2xl mb-1 border  border-Cprimary transition-all duration-300 w-full lg:-ml-24      hover:transform-translate-x-n5 hover:transform-translate-y-n5 hover:rotate-5 hover:scale-95 "
                       >
                         <div className="flex items-center gap-2">
                           <div

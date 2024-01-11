@@ -173,12 +173,12 @@ const Home = () => {
                   <img
                     src={explorez.image}
                     alt="Mes biens immobiliers"
-                    className="bg-Csecondary1 absolute top-0 left-0 h-full w-full object-cover z-0 rounded-full shadow-2xl mb-20 border border-Csecondary1 brightness-125 md:-ml-32 "
+                    className="bg-Csecondary1 absolute top-0 2xl:left-12 left-0 h-full w-full object-cover z-0 rounded-full shadow-2xl mb-20 border border-Csecondary1 brightness-125 md:-ml-32 "
                   />
                 </div>
               </a>
               <div className="flex flex-col items-center justify-center  pb-3">
-                <h3 className="my-3 text-2xl font-poppins font-semibold text-Csecondary mr-0 lg:mr-14">
+                <h3 className="my-3 text-2xl font-poppins font-semibold text-Csecondary mr-0 lg:mr-16">
                 {explorez.title}
                 </h3>
                 <p className="text-center text-base font-serif text-texteCouleur lg:-ml -ml-2">
